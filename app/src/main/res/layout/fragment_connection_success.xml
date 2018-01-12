@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/rounded_corner">
+
+        <com.turnipconsultants.brongo_client.CustomWidgets.GifView
+            android:id="@+id/check_mark_GV"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:visibility="gone" />
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/newGif"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/check_mark" />
+
+        <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+            android:id="@+id/congratulations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/newGif"
+            android:gravity="center"
+            android:text="Congratulations!"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/congratulations"
+            android:gravity="center"
+            android:text="You are connected to broker"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="normal" />
+
+        <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+            android:id="@+id/broker_name_TV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line1"
+            android:gravity="center"
+            android:text="Yasir Mohammed"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/lock"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_below="@id/broker_name_TV"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/connected_lock" />
+
+        <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+            android:id="@+id/box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lock"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="-10dp"
+            android:background="@drawable/simple_rounded_corner"
+            android:gravity="center"
+            android:lineSpacingExtra="5dp"
+            android:paddingBottom="17dp"
+            android:paddingLeft="17dp"
+            android:paddingRight="17dp"
+            android:paddingTop="20dp"
+            android:text="@string/privacy_popup"
+            android:textColor="@color/appPrimaryFont"
+            android:textSize="15sp"
+            android:textStyle="normal" />
+
+
+        <com.turnipconsultants.brongo_client.CustomWidgets.BrongoButton
+            android:id="@+id/okBTN"
+            style="@style/BrongoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/box"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="30dp"
+            android:text="Ok, Got It" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

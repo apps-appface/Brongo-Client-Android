@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/rv_topbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/brongo_picker_header_color">
+
+        <com.bigkoo.pickerview.view.BrongoViews.BrongoButton
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="@dimen/pickerview_topbar_padding"
+            android:text="Cancel"
+            android:textColor="@color/white"
+            android:textSize="@dimen/pickerview_topbar_btn_textsize"
+            android:textStyle="normal"
+            android:textAllCaps="false"/>
+
+        <com.bigkoo.pickerview.view.BrongoViews.BrongoTextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/btnSubmit"
+            android:layout_toRightOf="@+id/btnCancel"
+            android:gravity="center"
+            android:text="BUDGET"
+            android:textColor="@color/white"
+            android:textSize="@dimen/pickerview_topbar_title_textsize"
+            android:textStyle="normal" />
+
+        <com.bigkoo.pickerview.view.BrongoViews.BrongoButton
+            android:id="@id/btnSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="right|center_vertical"
+            android:paddingRight="@dimen/pickerview_topbar_padding"
+            android:text="Done"
+            android:textColor="@color/white"
+            android:textSize="@dimen/pickerview_topbar_btn_textsize"
+            android:textStyle="normal"
+            android:textAllCaps="false"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

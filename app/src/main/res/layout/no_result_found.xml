@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:layout_marginLeft="30dp">
+
+    <ImageView
+        android:id="@+id/cancel"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:adjustViewBounds="false"
+        android:elevation="20dp"
+        android:src="@drawable/cancel" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rounded_corner">
+
+        <ImageView
+            android:id="@+id/cry"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/smiley" />
+
+        <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+            android:id="@+id/no_brockers_found_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cry"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="No brockers found."
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+ <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+     android:textStyle="normal"
+            android:id="@+id/sorrytv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/no_brockers_found_tv"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Looks like all the brokers are currently busy."
+            android:textColor="@color/black"
+            android:textSize="@dimen/content_size" />
+
+        <com.turnipconsultants.brongo_client.CustomWidgets.BrongoButton
+            style="@style/BrongoButton"
+            android:id="@+id/continuebtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sorrytv"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="30dp"
+            android:text="Continue last search"
+            android:layout_centerHorizontal="true"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/continuebtn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:textStyle="normal"
+                android:id="@+id/newSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Search"
+                android:textColor="@color/appPrimaryBlue"
+                android:textSize="@dimen/content_size" />
+
+            <ImageView
+                android:id="@+id/arrow"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/blue_arrow" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

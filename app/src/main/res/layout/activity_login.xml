@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/appBGWhite"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/appBar"
+            layout="@layout/app_bar_main" />
+
+        <RelativeLayout
+            android:id="@+id/mainRL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/appBar"
+            android:layout_marginLeft="@dimen/signup_mainRL_mleft_mright"
+            android:layout_marginRight="@dimen/signup_mainRL_mleft_mright">
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:id="@+id/please"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/login_please_mtop"
+                android:text="@string/login_please"
+                android:textColor="@color/appPrimaryFont"
+                android:textSize="@dimen/content_size"
+                android:textStyle="normal" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/mobileTIL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/please"
+                android:layout_marginTop="@dimen/login_mobileTIL_mtop"
+                android:theme="@style/TextLabel">
+
+                <EditText
+                    android:id="@+id/mobileET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/appPrimaryFont"
+                    android:hint="ENTER MOBILE NUMBER"
+                    android:imeOptions="actionDone"
+                    android:inputType="phone"
+                    android:digits="0123456789"
+                    android:maxLength="10"
+                    android:maxLines="1"
+                    android:paddingBottom="@dimen/signup_mainRL_mtop"
+                    android:textColor="@color/appPrimaryFont"
+                    android:textSize="@dimen/content_size" />
+            </android.support.design.widget.TextInputLayout>
+
+        </RelativeLayout>
+
+        <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="hideKeyboard"
+            android:textStyle="normal"></com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView>
+    </LinearLayout>
+
+    <com.turnipconsultants.brongo_client.CustomWidgets.BrongoButton
+        android:id="@+id/sendOtpBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/appPurple"
+        android:onClick="openOTP"
+        android:text="@string/login_send_otp"
+        android:textAllCaps="true"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

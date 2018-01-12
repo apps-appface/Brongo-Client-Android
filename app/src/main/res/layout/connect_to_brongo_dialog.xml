@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="30dp"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/cancel"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:adjustViewBounds="false"
+        android:elevation="20dp"
+        android:src="@drawable/cancel" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rounded_corner">
+
+        <RelativeLayout
+            android:id="@+id/RL1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:background="?attr/selectableItemBackground"
+                android:src="@drawable/left_black_arrow" />
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:id="@+id/connectbrongo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/back"
+                android:gravity="center|left"
+                android:text="Connect with Brongo"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/RL2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/RL1">
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/view_color" />
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:id="@+id/callus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/view1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Call Us"
+                android:textColor="@color/appPrimaryFont"
+                android:textSize="13sp"
+                android:textStyle="normal" />
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:id="@+id/mobileNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/callus"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="6dp"
+                android:text="+91 98451 55526"
+                android:textColor="@color/appPrimaryBlue"
+                android:textSize="15sp"
+                android:textStyle="normal" />
+
+            <ImageView
+                android:id="@+id/callIM"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/circle_purple"
+                android:src="@drawable/call" />
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@id/mobileNo"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/view_color" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/RL3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/RL2"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="10dp">
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:id="@+id/emailus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Email Us"
+                android:textColor="@color/appPrimaryFont"
+                android:textSize="13sp"
+                android:textStyle="normal" />
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:id="@+id/emailid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/emailus"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="6dp"
+                android:text="usersupport@brongo.in"
+                android:textColor="@color/appPrimaryBlue"
+                android:textSize="15sp"
+                android:textStyle="normal" />
+
+            <ImageView
+                android:id="@+id/emailIM"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/email" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

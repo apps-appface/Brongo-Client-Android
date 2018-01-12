@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/line_container_RL"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp">
+
+            <View
+                android:id="@+id/vertical_1"
+                android:layout_width="3dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/deal_status_green"
+                android:layout_marginLeft="6dp"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id="@+id/dot"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:background="@drawable/green_circle"
+                    android:visibility="visible"/>
+
+                <View
+                    android:id="@+id/horizontal_line"
+                    android:layout_width="18dp"
+                    android:layout_height="3dp"
+                    android:background="@color/deal_status_green"
+                    android:layout_toRightOf="@id/dot"
+                    android:layout_centerVertical="true"/>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/vertical_2"
+                android:layout_width="3dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/deal_status_green"
+                android:layout_marginLeft="6dp"  />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/line_container_RL"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+            android:textStyle="normal"
+            android:id="@+id/status_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Broker shortlisting properties"
+            android:textColor="@color/timelinegreen"
+            android:textSize="14sp"
+            android:layout_gravity="left|center"/>
+
+        <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+            android:textStyle="normal"
+            android:id="@+id/date_TV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Broker shortlisting properties"
+            android:textColor="@color/dealStatusDate"
+            android:textSize="12sp"
+            android:layout_gravity="left|center" />
+    </LinearLayout>
+
+</LinearLayout>

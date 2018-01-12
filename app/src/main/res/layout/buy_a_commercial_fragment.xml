@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:zhy="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBGWhite">
+
+    <com.turnipconsultants.brongo_client.CustomWidgets.BrongoButton
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:id="@+id/connect_BTN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/appButton"
+        android:text="Connect to the best Local brokers"
+        android:textSize="@dimen/content_size" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/connect_BTN">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--<TextView
+                android:id="@+id/selectTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Select Loaction / Type street name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/content_size" />
+
+            <EditText
+                android:id="@+id/locationET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/selectTV"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="@color/appPrimaryFont"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/location"
+                android:maxLines="1"
+                android:paddingBottom="20dp"
+                android:singleLine="true"
+                android:text="Koramagala,wfewhfjfjhfeherhjnrrjjrjejeffjefj"
+                android:textColor="@color/appPrimaryFont"
+                android:textSize="@dimen/content_size" />-->
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:textStyle="normal"
+                android:id="@+id/popular_locations_TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Popular Locations"
+                android:textColor="@color/black"
+                android:textSize="@dimen/content_size" />
+
+            <com.zhy.view.flowlayout.TagFlowLayout
+                android:id="@+id/popular_locations_FL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/popular_locations_TV"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                zhy:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:textStyle="normal"
+                android:id="@+id/property_types_TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/popular_locations_FL"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Select Property Types"
+                android:textColor="@color/black"
+                android:textSize="@dimen/content_size" />
+
+            <com.zhy.view.flowlayout.TagFlowLayout
+                android:id="@+id/property_types_FL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/property_types_TV"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                zhy:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:textStyle="normal"
+                android:id="@+id/property_status_TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/property_types_FL"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Property Status"
+                android:textColor="@color/black"
+                android:textSize="@dimen/content_size" />
+
+            <com.zhy.view.flowlayout.TagFlowLayout
+                android:id="@+id/property_status_FL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/property_status_TV"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                zhy:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
+
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:textStyle="normal"
+                android:id="@+id/required_size_TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/property_status_FL"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Required Size ( In Sqft)"
+                android:textColor="@color/black"
+                android:textSize="@dimen/content_size" />
+
+            <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
+                android:id="@+id/req_size_SB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/required_size_TV"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                app:bar_color="@color/rangeBarInactive"
+                app:bar_highlight_color="@color/appPrimaryBlue"
+                app:left_thumb_color="@color/appPrimaryBlue"
+                app:right_thumb_color="@color/appPrimaryBlue" />
+
+            <LinearLayout
+                android:id="@+id/req_size_LL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/req_size_SB"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/req_size_min_ET"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:text="500 Sqft (min)"
+                    android:textColor="@color/appPrimaryFont"
+                    android:editable="false" />
+
+                <EditText
+                    android:id="@+id/req_size_max_ET"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:text="15000 Sqft"
+                    android:textColor="@color/appPrimaryFont"
+                    android:editable="false" />
+
+            </LinearLayout>
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:textStyle="normal"
+                android:id="@+id/floor_TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/req_size_LL"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Floor"
+                android:textColor="@color/black"
+                android:textSize="@dimen/content_size" />
+
+            <com.zhy.view.flowlayout.TagFlowLayout
+                android:id="@+id/floor_FL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/floor_TV"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                zhy:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
+
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:textStyle="normal"
+                android:id="@+id/budget_TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/floor_FL"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Budget"
+                android:textColor="@color/black"
+                android:textSize="@dimen/content_size" />
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:id="@+id/selectBudgetTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Budget"
+                android:layout_below="@id/budget_TV"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/primaryBuleAlpha1"/>
+            <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
+                android:id="@+id/budget_SB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/selectBudgetTV"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                app:bar_color="@color/rangeBarInactive"
+                app:bar_highlight_color="@color/appPrimaryBlue"
+                app:left_thumb_color="@color/appPrimaryBlue"
+                app:right_thumb_color="@color/appPrimaryBlue"
+                />
+            <LinearLayout
+                android:id="@+id/budget_LL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/budget_SB"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/budget_min_TV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/appPrimaryFont"
+                    android:background="@drawable/bottom_broder_rectangle"/>
+
+                <TextView
+                    android:id="@+id/budget_max_TV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/appPrimaryFont"
+                    android:background="@drawable/bottom_broder_rectangle" />
+
+            </LinearLayout>
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:textStyle="normal"
+                android:id="@+id/car_parking_TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/budget_LL"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Car Parking"
+                android:textColor="@color/black"
+                android:textSize="@dimen/content_size" />
+
+            <com.zhy.view.flowlayout.TagFlowLayout
+                android:id="@+id/car_parking_FL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/car_parking_TV"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                />
+
+            <EditText
+                android:id="@+id/other_req_ET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/car_parking_FL"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:hint="Any other requirements (Please specify)"
+                android:textColorHint="@color/appPrimaryFont"
+                android:textSize="15sp" />
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

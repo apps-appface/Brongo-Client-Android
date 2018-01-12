@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBGWhite">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/main_bg"
+                android:elevation="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_marginTop="5dp">
+
+                    <RelativeLayout
+                        android:id="@+id/LinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <RelativeLayout
+                            android:id="@+id/reside_menu_toggle_BTN"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginTop="7dp"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:clickable="true"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="20dp">
+
+                            <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_centerVertical="true"
+                                android:padding="2dp"
+                                android:src="@drawable/menu_icon" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/chatRL"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@+id/notiRL"
+                            android:background="?attr/selectableItemBackground"
+                            android:gravity="center_vertical"
+                            android:onClick="openChat"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="12dp">
+
+                            <ImageView
+                                android:id="@+id/chat_icon"
+                                android:layout_width="@dimen/notification_icon_size"
+                                android:layout_height="@dimen/notification_icon_size"
+                                android:layout_marginTop="7dp"
+                                android:gravity="center"
+                                android:padding="@dimen/notification_icon_padding"
+                                android:src="@drawable/chat_blue" />
+
+                            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                                android:id="@+id/chat_num"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentTop="true"
+                                android:layout_alignRight="@+id/chat_icon"
+                                android:background="@drawable/blue_dot"
+                                android:gravity="center"
+                                android:text="1"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/notification_count_text_size"
+                                android:textStyle="normal" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/notiRL"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:background="?attr/selectableItemBackground"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="12dp"
+                            android:paddingRight="15dp">
+
+                            <ImageView
+                                android:id="@+id/bell"
+                                android:layout_width="@dimen/notification_icon_size"
+                                android:layout_height="@dimen/notification_icon_size"
+                                android:layout_marginTop="7dp"
+                                android:gravity="center"
+                                android:padding="@dimen/notification_icon_padding"
+                                android:src="@drawable/bell" />
+
+                            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                                android:id="@+id/not_num"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentTop="true"
+                                android:layout_alignRight="@+id/bell"
+                                android:background="@drawable/blue_dot"
+                                android:gravity="center"
+                                android:text="1"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/notification_count_text_size"
+                                android:textStyle="normal" />
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/homeLogo"
+                    android:layout_width="33dp"
+                    android:layout_height="43dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/home_logo" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/foruiconrl"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:visibility="visible">
+
+                <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                    android:id="@+id/getConnect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:letterSpacing="0.05"
+                    android:text="Get connected to the best local broker"
+                    android:textColor="@color/appPrimaryBlue"
+                    android:textSize="@dimen/content_size"
+                    android:textStyle="normal" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/getConnect"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="17dp"
+                    android:layout_marginRight="17dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/buy_back_drawable"
+                            android:clickable="true"
+                            android:elevation="6dp"
+                            android:onClick="openBuyProperty">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="44dp"
+                                    android:layout_height="44dp"
+                                    android:src="@drawable/buy_home_icon" />
+
+                                <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="12dp"
+                                    android:text="BUY A PROPERTY"
+                                    android:textColor="@color/white"
+                                    android:textSize="12sp"
+                                    android:textStyle="normal" />
+                            </LinearLayout>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/rent_back_drawable"
+                            android:clickable="true"
+                            android:elevation="6dp"
+                            android:onClick="openRentProperty">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true">
+
+                                <ImageView
+                                    android:id="@+id/rent_icon"
+                                    android:layout_width="44dp"
+                                    android:layout_height="44dp"
+                                    android:layout_centerHorizontal="true"
+                                    android:src="@drawable/rent_home_icon" />
+
+                                <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/rent_icon"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="12dp"
+                                    android:text="RENT A PROPERTY"
+                                    android:textColor="@color/white"
+                                    android:textSize="12sp"
+                                    android:textStyle="normal" />
+                            </RelativeLayout>
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/sell_back_drawable"
+                            android:clickable="true"
+                            android:elevation="6dp"
+                            android:onClick="sellYourProperty">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:id="@+id/sell_icon"
+                                    android:layout_width="44dp"
+                                    android:layout_height="44dp"
+                                    android:layout_centerHorizontal="true"
+                                    android:src="@drawable/sell_home_icon" />
+
+                                <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/sell_icon"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="12dp"
+                                    android:text="SELL YOUR PROPERTY"
+                                    android:textColor="@color/white"
+                                    android:textSize="12sp"
+                                    android:textStyle="normal" />
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/rent_out_back_drawable"
+                            android:clickable="true"
+                            android:elevation="6dp"
+                            android:onClick="rentYourProperty">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true">
+
+                                <ImageView
+                                    android:id="@+id/rent_out_icon"
+                                    android:layout_width="44dp"
+                                    android:layout_height="44dp"
+                                    android:layout_centerHorizontal="true"
+                                    android:src="@drawable/rent_out_home_icon" />
+
+                                <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/rent_out_icon"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="12dp"
+                                    android:text="RENT YOUR PROPERTY"
+                                    android:textColor="@color/white"
+                                    android:textSize="12sp"
+                                    android:textStyle="normal" />
+                            </RelativeLayout>
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/second_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp" />
+
+    </RelativeLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/newSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_gravity="right|bottom"
+        app:backgroundTint="@color/appPurple"
+        app:elevation="6dp"
+        app:fabSize="normal"
+        app:layout_anchor="@id/second_view_pager"
+        app:layout_anchorGravity="bottom|right|end"
+        app:pressedTranslationZ="12dp"
+        app:srcCompat="@drawable/search_icon" />
+</FrameLayout>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="splash_logo_width">100dp</dimen>
+    <dimen name="splash_logo_height">150dp</dimen>
+    <dimen name="splash_logo_mtop">120dp</dimen>
+    <dimen name="splash_loginLL_mtop">50dp</dimen>
+    <dimen name="content_size">14sp</dimen>
+    <dimen name="splash_signupBtn_mleft_mright">25dp</dimen>
+    <dimen name="splash_signupBtn_mtop">30dp</dimen>
+    <dimen name="splash_social_width_height">60dp</dimen>
+
+    <dimen name="signup_mainRL_mleft_mright">20dp</dimen>
+    <dimen name="signup_mainRL_mtop">25dp</dimen>
+    <dimen name="signup_generateOtpBtn_mtop">50dp</dimen>
+
+    <dimen name="login_please_mtop">20dp</dimen>
+    <dimen name="login_mobileTIL_mtop">20dp</dimen>
+
+    <dimen name="otp_mtop">20dp</dimen>
+    <dimen name="otp_mleft_mright">20dp</dimen>
+    <dimen name="otp_textLL_mtop">30dp</dimen>
+    <dimen name="otp_sandglass_mright">10dp</dimen>
+    <dimen name="otp_sandglass_width">15dp</dimen>
+    <dimen name="otp_sandglass_height">20dp</dimen>
+    <dimen name="otp_otpView_mtop">25dp</dimen>
+    <dimen name="otp_ET1_mright">15dp</dimen>
+    <dimen name="otp_ET1_pBottom">20dp</dimen>
+    <dimen name="otp_resendotpTV_mtop">25dp</dimen>
+    <dimen name="otp_resendotpTV_mbottom">120dp</dimen>
+    <dimen name="otp_tickRL_height">50dp</dimen>
+    <dimen name="otp_tickRL_width">30dp</dimen>
+    <dimen name="otp_tick_height">25dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="notification_count_text_size">9sp</dimen>
+    <dimen name="notification_icon_padding">3dp</dimen>
+    <dimen name="notification_icon_size">30dp</dimen>
+</resources>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="30dp"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/rounded_corner"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="30dp"
+        android:paddingTop="30dp">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/no_internet" />
+
+        <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="Network Error"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="You seem to have lost your"
+            android:textColor="@color/text_color_payment_failed"
+            android:textSize="15sp"
+            android:textStyle="normal" />
+
+        <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="internet connection. Try again with an"
+            android:textColor="@color/text_color_payment_failed"
+            android:textSize="15sp"
+            android:textStyle="normal" />
+
+        <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="active connection"
+            android:textColor="@color/text_color_payment_failed"
+            android:textSize="15sp"
+            android:textStyle="normal" />
+
+        <com.turnipconsultants.brongo_client.CustomWidgets.BrongoButton
+            android:id="@+id/try_again"
+            style="@style/BrongoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/recyclerView"
+            android:layout_marginTop="18dp"
+            android:text="Reconnect"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/close"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="12dp"
+        android:adjustViewBounds="false"
+        android:elevation="20dp"
+        android:src="@drawable/cancel" />
+
+</RelativeLayout>

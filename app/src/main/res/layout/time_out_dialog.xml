@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:layout_marginLeft="30dp"
+
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rounded_corner">
+
+        <ImageView
+            android:id="@+id/timeout"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/timeout" />
+
+        <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+            android:textStyle="normal"
+            android:id="@+id/timetv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/timeout"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:text="You ran out of time."
+            android:textColor="@color/black"
+            android:textSize="@dimen/content_size" />
+
+        <com.turnipconsultants.brongo_client.CustomWidgets.BrongoButton
+            style="@style/BrongoButton"
+            android:id="@+id/continuebtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/timetv"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="30dp"
+            android:text="Continue last search"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:id="@+id/newsearcll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/continuebtn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:textStyle="normal"
+                android:id="@+id/newSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Search"
+                android:textColor="@color/appPrimaryBlue"
+                android:textSize="@dimen/content_size"/>
+
+            <ImageView
+                android:id="@+id/arrow"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/blue_arrow" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

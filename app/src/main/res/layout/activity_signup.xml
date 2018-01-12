@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBGWhite">
+
+    <include
+        android:id="@+id/appBar"
+        layout="@layout/app_bar_main" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appBar"
+        android:layout_marginLeft="@dimen/signup_mainRL_mleft_mright"
+        android:layout_marginRight="@dimen/signup_mainRL_mleft_mright">
+
+        <RelativeLayout
+            android:id="@+id/mainRL"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/nameTIL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/signup_mainRL_mtop"
+                android:hint="NAME"
+                android:theme="@style/TextLabel">
+
+                <EditText
+                    android:id="@+id/nameET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/appPrimaryFont"
+                    android:inputType="textCapWords"
+                    android:maxLines="1"
+                    android:paddingBottom="@dimen/signup_mainRL_mtop"
+                    android:textColor="@color/appPrimaryFont"
+                    android:textSize="@dimen/content_size" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/mobileTIL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/nameTIL"
+                android:layout_marginTop="@dimen/signup_mainRL_mtop"
+                android:hint="MOBILE NUMBER"
+                android:theme="@style/TextLabel">
+
+                <EditText
+                    android:id="@+id/mobileET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/appPrimaryFont"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:maxLines="1"
+                    android:paddingBottom="@dimen/signup_mainRL_mtop"
+                    android:textColor="@color/appPrimaryFont"
+                    android:textSize="@dimen/content_size" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/emailidTIL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/mobileTIL"
+                android:layout_marginTop="@dimen/signup_mainRL_mtop"
+                android:hint="EMAIL ID"
+                android:theme="@style/TextLabel">
+
+                <EditText
+                    android:id="@+id/emailIdET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/appPrimaryFont"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:paddingBottom="@dimen/signup_mainRL_mtop"
+                    android:textColor="@color/appPrimaryFont"
+                    android:textSize="@dimen/content_size" />
+            </android.support.design.widget.TextInputLayout>
+
+            <LinearLayout
+                android:id="@+id/policyLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/emailidTIL"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                    android:id="@+id/policy1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/emailidTIL"
+                    android:layout_marginTop="@dimen/signup_mainRL_mtop"
+                    android:text="@string/policy1"
+                    android:textColor="@color/appPrimaryFont"
+                    android:textSize="@dimen/content_size"
+                    android:textStyle="normal" />
+
+                <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                    android:id="@+id/policy2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/emailidTIL"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/policy2"
+                    android:textColor="@color/appPrimaryBlue"
+                    android:textSize="@dimen/content_size"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoButton
+                android:id="@+id/generateOtpBtn"
+                style="@style/BrongoButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/policyLL"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/signup_mainRL_mleft_mright"
+                android:layout_marginRight="@dimen/signup_mainRL_mleft_mright"
+                android:layout_marginTop="@dimen/signup_generateOtpBtn_mtop"
+                android:text="@string/signup_generate" />
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBGWhite">
+
+    <include
+        android:id="@+id/appBar"
+        layout="@layout/app_bar_main" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appBar"
+        android:layout_marginLeft="@dimen/otp_mleft_mright"
+        android:layout_marginRight="@dimen/otp_mleft_mright"
+        android:layout_marginTop="@dimen/otp_mtop">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:textStyle="normal"
+                android:id="@+id/sentOtpTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4.9sp"
+                android:text="Mobile No"
+                android:textColor="@color/appPrimaryFont"
+                android:textSize="@dimen/content_size" />
+
+            <LinearLayout
+                android:id="@+id/textLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sentOtpTV"
+                android:layout_marginTop="@dimen/otp_textLL_mtop"
+                android:orientation="horizontal">
+
+                <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                    android:textStyle="normal"
+                    android:id="@+id/enterotpTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ENTER OTP"
+                    android:textColor="@color/appPurple"
+                    android:textSize="@dimen/content_size" />
+
+                <ImageView
+                    android:layout_width="@dimen/otp_sandglass_width"
+                    android:layout_height="@dimen/otp_sandglass_height"
+                    android:layout_marginRight="@dimen/otp_sandglass_mright"
+                    android:src="@drawable/sandglass" />
+
+                <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                    android:textStyle="normal"
+                    android:id="@+id/timerTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00:36"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/content_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/otpView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textLL"
+                android:layout_marginTop="@dimen/otp_otpView_mtop"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/otp_ET1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/otp_ET1_mright"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/appPrimaryFont"
+                    android:gravity="center"
+                    android:inputType="numberPassword"
+                    android:digits="0123456789"
+                    android:maxLength="1"
+                    android:paddingBottom="@dimen/otp_ET1_pBottom"
+                    android:textColor="@color/appPrimaryFont"
+                    android:textSize="@dimen/content_size"
+                    android:imeOptions="actionNext"/>
+
+                <EditText
+                    android:id="@+id/otp_ET2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/otp_ET1_mright"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/appPrimaryFont"
+                    android:gravity="center"
+                    android:inputType="numberPassword"
+                    android:digits="0123456789"
+                    android:maxLength="1"
+                    android:paddingBottom="@dimen/otp_ET1_pBottom"
+                    android:textColor="@color/appPrimaryFont"
+                    android:textSize="@dimen/content_size"
+                    android:imeOptions="actionNext"/>
+
+                <EditText
+                    android:id="@+id/otp_ET3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/otp_ET1_mright"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/appPrimaryFont"
+                    android:gravity="center"
+                    android:inputType="numberPassword"
+                    android:digits="0123456789"
+                    android:paddingBottom="@dimen/otp_ET1_pBottom"
+                    android:maxLength="1"
+                    android:textColor="@color/appPrimaryFont"
+                    android:textSize="@dimen/content_size"
+                    android:imeOptions="actionNext"/>
+
+                <EditText
+                    android:id="@+id/otp_ET4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/otp_ET1_mright"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/appPrimaryFont"
+                    android:gravity="center"
+                    android:inputType="numberPassword"
+                    android:digits="0123456789"
+                    android:maxLength="1"
+                    android:paddingBottom="@dimen/otp_ET1_pBottom"
+                    android:textColor="@color/appPrimaryFont"
+                    android:textSize="@dimen/content_size"
+                    android:imeOptions="actionDone"/>
+
+            </LinearLayout>
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:id="@+id/resendotpTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/otpView"
+                android:layout_marginBottom="@dimen/otp_resendotpTV_mbottom"
+                android:layout_marginTop="@dimen/otp_resendotpTV_mtop"
+                android:gravity="center"
+                android:text="Resend OTP?"
+                android:textColor="@color/appPrimaryBlue"
+                android:textSize="@dimen/content_size"
+                android:textStyle="bold"/>
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/tickRL"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/otp_tickRL_height"
+        android:layout_alignParentBottom="true"
+        android:background="@color/appPurple"
+        android:onClick="openMain">
+
+        <ImageView
+            android:id="@+id/sendOtpBtn"
+            android:layout_width="@dimen/otp_tickRL_width"
+            android:layout_height="@dimen/otp_tick_height"
+            android:layout_centerInParent="true"
+            android:src="@drawable/tick" />
+    </RelativeLayout>
+</RelativeLayout>

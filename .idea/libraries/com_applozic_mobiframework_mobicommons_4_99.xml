@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="com.applozic.mobiframework:mobicommons-4.99">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/mobicommons-4.99.aar/14242cf47206b0139a0d2a40660910e0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/mobicommons-4.99.aar/14242cf47206b0139a0d2a40660910e0/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.applozic.mobiframework/mobicommons/4.99/b6774f164f5c94ab6c5e22256b63aa3ee2ead9a1/mobicommons-4.99-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

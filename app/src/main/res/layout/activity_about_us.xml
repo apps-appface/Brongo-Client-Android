@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/appBar"
+        layout="@layout/app_bar_main" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/appBar"
+        android:background="#F9F9F9">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_margin="40dp">
+
+            <ImageView
+                android:id="@+id/homeLogo"
+                android:layout_width="65dp"
+                android:layout_height="70dp"
+                android:src="@drawable/splash_logo"/>
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/about_1"
+                android:textColor="@color/black"
+                android:layout_marginTop="20dp"/>
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/about_2"
+                android:layout_marginTop="20dp" />
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/about_3"
+                android:layout_marginTop="20dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBGWhite">
+
+    <include
+        android:id="@+id/appbar"
+        layout="@layout/map_app_bar_main" />
+
+    <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+        android:textStyle="normal"
+        android:id="@+id/timeTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appbar"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="You have 5 minutes to choose 1 of the 3 brokers"
+        android:textColor="@color/slateGrey"
+        android:textSize="15sp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/brokerRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/relativeLayout"
+        android:layout_below="@id/timeTV"
+        android:layout_marginTop="15dp" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp">
+
+        <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+            android:textStyle="normal"
+            android:id="@+id/timeLeft"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="TIME LEFT"
+            android:textColor="@color/appPrimaryBlue"
+            android:textSize="15sp" />
+
+        <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+            android:textStyle="normal"
+            android:id="@+id/timer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/timeLeft"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="04m 30sec"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/timer"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_marginTop="15dp">
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:textStyle="normal"
+                android:id="@+id/nothappy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+
+                android:text="Not happy with the above choice?"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:id="@+id/connect_brongo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/nothappy"
+                android:text=" Connect with Brongo"
+                android:textColor="@color/appPurple"
+                android:textSize="14sp"
+                android:onClick="openConnectBrongo"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

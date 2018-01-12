@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+    android:textStyle="normal" xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="5dp"
+    android:background="@drawable/sec_landing_tagview_bg"
+    android:gravity="center"
+    android:paddingBottom="5dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="5dp"
+    android:text="Helloworld"
+    android:textColor="@color/appPrimaryBlue"
+    android:textSize="13sp">
+
+</com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView>

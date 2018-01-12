@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="com.applozic.communication.message:mobicomkit-4.99">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/mobicomkit-4.99.aar/d13477369c64f9720ad18744f05b1d8a/jars/libs/org.eclipse.paho.android.service-1.0.2.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/mobicomkit-4.99.aar/d13477369c64f9720ad18744f05b1d8a/jars/libs/org.eclipse.paho.client.mqttv3-1.0.2.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/mobicomkit-4.99.aar/d13477369c64f9720ad18744f05b1d8a/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/mobicomkit-4.99.aar/d13477369c64f9720ad18744f05b1d8a/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.applozic.communication.message/mobicomkit/4.99/64164537e9fa2c8dfacb9f3633b98869db4dedcc/mobicomkit-4.99-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

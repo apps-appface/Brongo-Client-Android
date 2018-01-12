@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="22dp"
+    android:layout_marginBottom="12dp"
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:background="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profilePicCIV"
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="14dp"
+            android:gravity="center_vertical">
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+               android:id="@+id/userName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="Sachin Tendulkar"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="2dp">
+
+                <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                    android:textStyle="normal"
+                    android:id="@+id/rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/userName"
+                    android:layout_centerVertical="true"
+                    android:text="4.0"
+                    android:textSize="13sp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:textColor="@color/white" />
+
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"
+                    android:layout_below="@id/userName"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/rating"
+                    android:numStars="5"
+                    android:progressTint="@color/starYellow"
+                    android:rating="4"
+                    android:stepSize="0.5"
+                    android:theme="@style/RatingBar" />
+
+            </LinearLayout>
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:textStyle="normal"
+                android:id="@+id/request"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rating"
+                android:gravity="center_vertical"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="230dp"
+        android:layout_height="0.6dp"
+        android:layout_marginTop="28dp"
+        android:background="@color/profile_header_rating_text_color" />
+</LinearLayout>

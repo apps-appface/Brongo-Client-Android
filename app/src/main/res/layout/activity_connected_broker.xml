@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:id="@+id/connected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="You are connected to the best broker in"
+                android:textColor="@color/appPrimaryFont"
+                android:textSize="15sp"
+                android:textStyle="normal" />
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:id="@+id/place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/connected"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:text="Sarjapura,Bangalore"
+                android:textColor="@color/appPurple"
+                android:textSize="15sp"
+                android:textStyle="normal" />
+
+            <ImageView
+                android:id="@+id/greenTick"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_below="@id/place"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/green_tick" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/greenTick"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:elevation="10dp"
+                    app:cardBackgroundColor="@color/appBGWhite"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="2dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3">
+
+                        <RelativeLayout
+                            android:id="@+id/firstRL"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/blue_purple_bg">
+
+                            <LinearLayout
+                                android:id="@+id/headLL"
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+
+                                android:orientation="horizontal">
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/brokerImage"
+                                    android:layout_width="45dp"
+                                    android:layout_height="45dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="20dp" />
+
+                                <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                                    android:id="@+id/brokerName"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_weight="1"
+                                    android:text="Morgan Freeman"
+                                    android:textColor="@color/white"
+                                    android:textSize="15sp"
+                                    android:textStyle="normal" />
+
+                                <ImageView
+                                    android:id="@+id/rank"
+                                    android:layout_width="50dp"
+                                    android:layout_height="20dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginRight="20dp"
+                                    android:src="@drawable/medal" />
+                            </LinearLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/firstrowRL"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/headLL"
+                                android:layout_marginTop="10dp">
+
+                                <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                                    android:id="@+id/rating"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+                                    android:text="4.0"
+                                    android:textColor="@color/white"
+                                    android:textSize="15sp"
+                                    android:textStyle="normal" />
+
+                                <RatingBar
+                                    android:id="@+id/ratingBar"
+                                    style="?android:attr/ratingBarStyleSmall"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="20dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_toRightOf="@+id/rating"
+                                    android:numStars="4"
+                                    android:rating="4"
+                                    android:stepSize="1.0"
+                                    android:theme="@style/RatingBar" />
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_marginRight="20dp">
+
+                                    <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                                        android:id="@+id/userdeals"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginRight="10dp"
+                                        android:text="21"
+                                        android:textColor="@color/white"
+                                        android:textSize="15sp"
+                                        android:textStyle="normal" />
+
+                                    <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                                        android:id="@+id/userdealstv"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toRightOf="@+id/userdeals"
+                                        android:text="user reviews"
+                                        android:textColor="@color/white50"
+                                        android:textSize="14sp"
+                                        android:textStyle="normal" />
+                                </RelativeLayout>
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/secondrowRL"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/firstrowRL"
+                                android:layout_marginTop="10dp">
+
+                                <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                                    android:id="@+id/closedDeals"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+                                    android:text="55"
+                                    android:textColor="@color/white"
+                                    android:textSize="15sp"
+                                    android:textStyle="normal" />
+
+                                <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                                    android:id="@+id/closedDealsTV"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_toRightOf="@+id/closedDeals"
+                                    android:text="closed deals"
+                                    android:textColor="@color/white50"
+                                    android:textSize="14sp"
+                                    android:textStyle="normal" />
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_marginRight="20dp">
+
+                                    <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                                        android:id="@+id/opendeals"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginRight="10dp"
+                                        android:text="21"
+
+                                        android:textColor="@color/white"
+                                        android:textSize="15sp"
+                                        android:textStyle="normal" />
+
+                                    <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                                        android:id="@+id/opendealstv"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_toRightOf="@+id/opendeals"
+                                        android:text="open deals"
+                                        android:textColor="@color/white50"
+                                        android:textSize="14sp"
+                                        android:textStyle="normal" />
+                                </RelativeLayout>
+                            </RelativeLayout>
+
+                            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                                android:id="@+id/viewall"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_below="@id/secondrowRL"
+                                android:layout_marginTop="10dp"
+                                android:background="#5b5c5c5b"
+                                android:gravity="center"
+                                android:text="+ View All Reviews"
+                                android:textColor="@color/white"
+                                android:textSize="15sp"
+                                android:textStyle="normal" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/firstRL">
+
+                            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                                android:id="@+id/doyoutv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="15dp"
+                                android:text="Do you wish to connect with the broker?"
+                                android:textColor="@color/appPrimaryFont"
+                                android:textSize="15sp"
+                                android:textStyle="normal" />
+
+                            <LinearLayout
+                                android:id="@+id/callchat"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/doyoutv"
+                                android:layout_marginTop="15dp"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <de.hdodenhof.circleimageview.CircleImageView
+                                        android:id="@+id/chat"
+                                        android:layout_width="35dp"
+                                        android:layout_height="35dp"
+                                        android:layout_alignEnd="@+id/bchattv"
+                                        android:layout_alignParentTop="true"
+                                        android:background="@drawable/chat2" />
+
+                                    <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                                        android:id="@+id/bchattv"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="10dp"
+                                        android:gravity="center"
+                                        android:text="B-Chat"
+                                        android:textColor="@color/appPrimaryBlue"
+                                        android:textSize="15sp"
+                                        android:textStyle="normal" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <ImageView
+                                        android:id="@+id/call"
+                                        android:layout_width="35dp"
+                                        android:layout_height="35dp"
+                                        android:layout_centerHorizontal="true"
+                                        android:background="@drawable/circle_purple"
+                                        android:padding="5dp"
+                                        android:src="@drawable/call_icon" />
+
+                                    <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                                        android:id="@+id/calltv"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/call"
+                                        android:layout_centerHorizontal="true"
+                                        android:layout_marginTop="10dp"
+                                        android:text="Call"
+                                        android:textColor="@color/appPurple"
+                                        android:textSize="15sp"
+                                        android:textStyle="normal" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/callchat"
+                                android:layout_marginTop="15dp"
+                                android:background="#2620518e"
+                                android:gravity="center"
+                                android:text="Your identity will be hidden and personal data will be not shown to the broker"
+                                android:textColor="@color/appPurple"
+                                android:textSize="15sp"
+                                android:textStyle="normal" />
+
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+                <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:text="OR"
+                    android:textColor="@color/appPrimaryFont"
+                    android:textSize="15sp"
+                    android:textStyle="normal" />
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:elevation="10dp"
+                    app:cardBackgroundColor="@color/appBGWhite"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="2dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                            android:id="@+id/doyoubrokertv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="15dp"
+                            android:text="Do you want the broker to contact you?"
+                            android:textColor="@color/appPrimaryFont"
+                            android:textSize="15sp"
+                            android:textStyle="normal" />
+
+                        <LinearLayout
+                            android:id="@+id/callschedule"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/doyoubrokertv"
+                            android:layout_marginBottom="15dp"
+                            android:layout_marginTop="15dp"
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1">
+
+
+                                <ImageView
+                                    android:id="@+id/call2"
+                                    android:layout_width="45dp"
+                                    android:layout_height="45dp"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginLeft="20dp"
+                                    android:background="@drawable/circle_purple"
+                                    android:src="@drawable/call" />
+
+                                <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                                    android:id="@+id/call2tv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/call2"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="10dp"
+                                    android:gravity="center"
+                                    android:text="Request A Call"
+                                    android:textColor="@color/appPurple"
+                                    android:textSize="15sp"
+                                    android:textStyle="normal" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/schedule"
+                                    android:layout_width="45dp"
+                                    android:layout_height="45dp"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginLeft="20dp"
+                                    android:background="@drawable/schedule" />
+
+                                <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                                    android:id="@+id/scheduletv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/schedule"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="10dp"
+                                    android:text="Schedule A Meeting"
+                                    android:textColor="@color/appPrimaryBlue"
+                                    android:textSize="15sp"
+                                    android:textStyle="normal" />
+                            </RelativeLayout>
+
+                        </LinearLayout>
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+                <RelativeLayout
+                    android:id="@+id/backRl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/leftarrow"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/grey_left_arrow" />
+
+                    <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/leftarrow"
+                        android:text="Back to Home"
+                        android:textColor="@color/appPrimaryFont"
+                        android:textSize="15sp"
+                        android:textStyle="normal" />
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

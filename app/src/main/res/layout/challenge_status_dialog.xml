@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:layout_marginLeft="30dp">
+
+    <ImageView
+        android:id="@+id/cancel"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:adjustViewBounds="false"
+        android:elevation="20dp"
+        android:src="@drawable/cancel" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rounded_corner"
+        android:paddingBottom="30dp">
+
+        <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+            android:id="@+id/dealtv"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center|left"
+            android:text="Challenge Status"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/dealtv"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#3358595B" />
+
+        <RelativeLayout
+            android:id="@+id/quesRl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view1"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:textStyle="normal"
+                android:id="@+id/questtv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center|left"
+                android:text="What should be the correct status of the deal?"
+                android:textColor="@color/appPrimaryFont"
+                android:textSize="15sp" />
+
+            <RadioGroup
+                android:id="@+id/radiogroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/questtv"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/appPurple"
+                android:theme="@style/MyRadioButton"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:text="Have not see any property"
+                    android:textColor="@color/appPrimaryFont"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:text="Shortlisting options"
+                    android:textColor="@color/appPrimaryFont"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:text="Site Visit "
+                    android:textColor="@color/appPrimaryFont"
+                    android:textSize="14sp" />
+
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/comments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/radiogroup"
+                android:layout_marginTop="20dp"
+                android:hint="Add Comments"
+                android:backgroundTint="@color/appPrimaryFont"
+                android:textColor="@color/appPrimaryFont"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <com.turnipconsultants.brongo_client.CustomWidgets.BrongoButton
+            style="@style/BrongoButton"
+            android:id="@+id/challengeBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/quesRl"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="30dp"
+            android:text="Submit" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

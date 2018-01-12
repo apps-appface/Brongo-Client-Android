@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical|right">
+
+        <LinearLayout
+            android:id="@+id/viewPagerCountDots"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:gravity="center_vertical|right"
+            android:orientation="horizontal"
+            android:layout_weight="1"></LinearLayout>
+        <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+            android:id="@+id/skip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="35dp"
+            android:text="SKIP"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:layout_gravity="right|center_vertical"
+            android:textStyle="normal"
+            android:background="?attr/selectableItemBackground"/>
+    </LinearLayout>
+
+</RelativeLayout>
