@@ -26,6 +26,7 @@ import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarChangeListener;
 import com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.turnipconsultants.brongo_client.BrongoClientApplication;
 import com.turnipconsultants.brongo_client.Listener.CommissionListenerFactory;
 import com.turnipconsultants.brongo_client.Listener.NoInternetTryConnectListener;
 import com.turnipconsultants.brongo_client.ProvinceBean;
@@ -36,6 +37,7 @@ import com.turnipconsultants.brongo_client.models.BuyAProperty.BuyPropertyModel;
 import com.turnipconsultants.brongo_client.models.TokenInputModel;
 import com.turnipconsultants.brongo_client.others.AllUtils.AllUtils;
 import com.turnipconsultants.brongo_client.responseModels.BrokersCountModel;
+import com.turnipconsultants.brongo_client.responseModels.FetchMicroMarketResponse;
 import com.turnipconsultants.brongo_client.responseModels.PropertyTransactionResponseModel;
 import com.turnipconsultants.brongo_client.others.Constants.AppConstants;
 import com.turnipconsultants.brongo_client.others.CommissionDialogFactory;
@@ -129,7 +131,7 @@ public class BUY_A_CommercialFragment extends BaseFragment implements Commission
 
     private Context context;
     private SharedPreferences pref;
-    private String popLocStr = "", propTypeStr = "", propStatusStr = "", floorStr = "", commission = "", carParkingStr = "";
+    private String popLocStr = "", propTypeStr = "", propStatusStr = "", floorStr = "", commission = "", carParkingStr = "",microMarketId = "";
     private float reqSizeMin, reqSizeMax;
     private double budgetMin, budgetMax;
 
@@ -142,7 +144,13 @@ public class BUY_A_CommercialFragment extends BaseFragment implements Commission
     private Unbinder unbinder;
     private ArrayList<ProvinceBean> options1Items = new ArrayList<>();
     private ArrayList<ArrayList<ProvinceBean>> options2Items = new ArrayList<>();
-    
+
+    private FetchMicroMarketResponse microMarketResponse;
+    private ArrayList<String> marketName, marketId;
+    private ArrayList<Integer> brokersCountList;
+    private ArrayList<List<String>> coordinatesList;
+    private ArrayList<String> coordinates;
+
 
     @Nullable
     @Override
@@ -173,10 +181,30 @@ public class BUY_A_CommercialFragment extends BaseFragment implements Commission
         Type type = new TypeToken<List<BrokersCountModel.Data>>() {
         }.getType();
         arrayList = gson.fromJson(brokerCountJSON, type);
+
+        marketId = new ArrayList<>();
+        marketName = new ArrayList<>();
+        brokersCountList = new ArrayList<>();
+        coordinatesList = new ArrayList<>();
+        getMicroMarketsData();
+    }
+
+    private void getMicroMarketsData() {
+        BrongoClientApplication app = (BrongoClientApplication) context.getApplicationContext();
+        microMarketResponse = app.getMicroMarketResponse();
+        List<FetchMicroMarketResponse.DataEntity> dataEntityList = microMarketResponse.getData();
+        for (int i = 0; i < dataEntityList.size(); i++) {
+            if (dataEntityList.get(i).isTrending()) {
+                marketName.add(dataEntityList.get(i).getName());
+                marketId.add(dataEntityList.get(i).getMicroMarketId());
+                brokersCountList.add(dataEntityList.get(i).getBrokersCount());
+                coordinatesList.add(dataEntityList.get(i).getMarketLocation().getCoordinates());
+            }
+        }
     }
 
     private void setValues() {
-        popularLocationsFL.setAdapter(new TagAdapter<String>(popularLoc) {
+        popularLocationsFL.setAdapter(new TagAdapter<String>(marketName) {
 
             @Override
             public View getView(FlowLayout parent, int position, String s) {
@@ -195,15 +223,13 @@ public class BUY_A_CommercialFragment extends BaseFragment implements Commission
             @Override
             public void onSelected(int position, View view) {
                 super.onSelected(position, view);
-                popLocStr = popularLoc[position];
+                //                popLocStr = popularLoc[position];
+                popLocStr = marketName.get(position);
+                coordinates = (ArrayList<String>) coordinatesList.get(position);
+                microMarketId = marketId.get(position);
                 DecideSubmitButtonColor();
                 try {
-                    for (BrokersCountModel.Data d : arrayList) {
-                        if (d.getMicroMarketName().equalsIgnoreCase(popLocStr)) {
-                            connectBrokersBTN.setText("CONNECT TO THE BEST " + d.getCount() + " LOCAL BROKERS");
-                            break;
-                        }
-                    }
+                    connectBrokersBTN.setText("CONNECT TO THE BEST " + brokersCountList.get(position) + " LOCAL BROKERS");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -416,6 +442,7 @@ public class BUY_A_CommercialFragment extends BaseFragment implements Commission
                                 pref.edit().putString("propertyId", data.get(0).getPropertyId()).commit();
                                 Intent intent = new Intent(getActivity(), BrokersMapActivity.class);
                                 intent.putExtra("place", popLocStr);
+                                intent.putStringArrayListExtra("coordinates", coordinates);
                                 startActivity(intent);
                             } else {
                                 Toast.makeText(context, responseModel.getMessage(), Toast.LENGTH_SHORT).show();
@@ -453,12 +480,12 @@ public class BUY_A_CommercialFragment extends BaseFragment implements Commission
     private BuyPropertyModel getStringValues() {
         BuyPropertyModel p = new BuyPropertyModel();
         p.setPostingType(AppConstants.POSTING_TYPE.BUY_A_PROPERTY);
-        BuyPropertyModel.Area area1 = new BuyPropertyModel.Area();
+        /*BuyPropertyModel.Area area1 = new BuyPropertyModel.Area();
         area1.setMicroMarketCity("Bangalore");
         area1.setMicroMarketState("Karnataka");
         area1.setMicroMarketName(popLocStr);
-        p.setArea(area1);
-
+        p.setArea(area1);*/
+        p.setMicroMarketId(microMarketId);
         p.setPropertyType("COMMERCIAL");
         p.setSubPropertyType(propTypeStr);
         p.setPropertyStatus(propStatusStr);

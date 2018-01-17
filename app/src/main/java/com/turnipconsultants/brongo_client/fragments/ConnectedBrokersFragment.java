@@ -52,6 +52,7 @@ import com.turnipconsultants.brongo_client.others.AllUtils.AllUtils;
 import com.turnipconsultants.brongo_client.responseModels.GeneralApiResponseModel;
 import com.turnipconsultants.brongo_client.responseModels.KnowlarityApiResponseModel;
 import com.turnipconsultants.brongo_client.responseModels.QuestionsResponseModel;
+import com.turnipconsultants.brongo_client.responseModels.SecondLandingResponse;
 import com.turnipconsultants.brongo_client.responseModels.SecondLandingResponseModel;
 import com.turnipconsultants.brongo_client.others.Constants.AppConstants;
 import com.turnipconsultants.brongo_client.others.InternetConnection;
@@ -208,16 +209,7 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
      * @return A new instance of fragment ConnectedBrokersFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ConnectedBrokersFragment newInstance(SecondLandingResponseModel.Data.BuyAndRent param1, String whichPage) {
-        ConnectedBrokersFragment fragment = new ConnectedBrokersFragment();
-        Bundle args = new Bundle();
-        args.putParcelable(BUY_RENT_MODEL, param1);
-        args.putString(WHICH_PAGE, whichPage);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    public static ConnectedBrokersFragment newInstance(SecondLandingResponseModel.Data.SellAndRentOut param1, String whichPage) {
+    public static ConnectedBrokersFragment newInstance(SecondLandingResponse.DataEntity param1, String whichPage) {
         ConnectedBrokersFragment fragment = new ConnectedBrokersFragment();
         Bundle args = new Bundle();
         args.putParcelable(BUY_RENT_MODEL, param1);
@@ -244,7 +236,7 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
             unbinder = ButterKnife.bind(this, view);
 
             initPage();
-            setValues();
+            setValues2();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -257,11 +249,11 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
         pref = context.getSharedPreferences(AppConstants.PREF_NAME, Context.MODE_PRIVATE);
     }
 
-    private void setValues() {
+    private void setValues2() {
 
-        if (object instanceof SecondLandingResponseModel.Data.BuyAndRent) {
+        if (object instanceof SecondLandingResponse.DataEntity) {
 
-            SecondLandingResponseModel.Data.BuyAndRent buyAndRent = (SecondLandingResponseModel.Data.BuyAndRent) object;
+            SecondLandingResponse.DataEntity dataEntity = (SecondLandingResponse.DataEntity) object;
             switch (whichPageToDisplay) {
                 case AppConstants.VISIBILITY_PAGE.GET_CONNECTED_ACTIVITY:
                     getConnectedLL.setVisibility(View.VISIBLE);
@@ -269,43 +261,45 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
                     break;
                 case AppConstants.VISIBILITY_PAGE.SECOND_TIME_ACTIVITY:
                     secondTimeLandingLL.setVisibility(View.VISIBLE);
-                    getConnectedLL.setVisibility(View.GONE);
-                    if (buyAndRent.getMeetingLocation().isEmpty()) {
+                    getConnectedLL.setVisibility(View.VISIBLE);
+                    if (dataEntity.getMeetingLocation().isEmpty()) {
                         projectLocation.setText("No Meetings Scheduled Yet");
                         date.setText("N/A");
                         time.setText("N/A");
                     } else {
-                        projectLocation.setText(buyAndRent.getMeetingLocation());
-                        date.setText(df.format(buyAndRent.getDateOfVisit()));
-                        time.setText(df.format(buyAndRent.getTimeOfVisit()));
+                        projectLocation.setText(dataEntity.getMeetingLocation());
+                        date.setText(df.format(dataEntity.getDateOfVisit()));
+                        time.setText(df.format(dataEntity.getTimeOfVisit()));
                     }
                     break;
             }
 
-            badge.setText(AllUtils.StringUtilsBrongo.toCamelCase(buyAndRent.getPostingType()) + "/" + AllUtils.StringUtilsBrongo.toCamelCase(buyAndRent.getPropertyType()));
+            if (dataEntity.getPostingType().equals("BUY")) {
+                badge.setBackground(getResources().getDrawable(R.drawable.lead_type_buy));
+            } else if (dataEntity.getPostingType().equals("RENT")) {
+                badge.setBackground(getResources().getDrawable(R.drawable.lead_type_rent));
+            } else if (dataEntity.getPostingType().equals("SELL")) {
+                badge.setBackground(getResources().getDrawable(R.drawable.lead_type_sell));
+            } else if (dataEntity.getPostingType().equals("RENT_OUT")) {
+                badge.setBackground(getResources().getDrawable(R.drawable.lead_type_rentout));
+            }
+            badge.setText(AllUtils.StringUtilsBrongo.toCamelCase(dataEntity.getPostingType()) + "/" + AllUtils.StringUtilsBrongo.toCamelCase(dataEntity.getPropertyType()));
 
             Glide.with(context)
-                    .load(buyAndRent.getBrokerImage())
+                    .load(dataEntity.getBrokerImage())
                     .apply(BrongoClientApplication.getRequestOption(true))
                     .into(brokerImage);
-            brokerName.setText(buyAndRent.getBrokerName());
-            rating.setText(Float.parseFloat(buyAndRent.getRating() + "") + "");
-            ratingBar.setRating(Float.parseFloat(buyAndRent.getRating() + ""));
-            reviews.setText(buyAndRent.getReviews() + "");
+            brokerName.setText(dataEntity.getBrokerName());
+            rating.setText(Float.parseFloat(dataEntity.getRating() + "") + "");
+            ratingBar.setRating(Float.parseFloat(dataEntity.getRating() + ""));
+            reviews.setText(dataEntity.getReviews() + "");
 
             requireList = new ArrayList<>();
-            requireList.add(buyAndRent.getMicroMarketName());
-
-            if (!buyAndRent.getSubPropertyType().isEmpty())
-                requireList.add(buyAndRent.getSubPropertyType());
-
-            if (!buyAndRent.getPropertyStatus().isEmpty())
-                requireList.add(buyAndRent.getPropertyStatus());
-
-            if (!buyAndRent.getBedRoomType().isEmpty())
-                requireList.add(buyAndRent.getBedRoomType());
-
-            requireList.add(Utils.Budget(df, buyAndRent.getBudgetRange1() + "") + " - " + Utils.Budget(df, buyAndRent.getBudgetRange2() + ""));
+            for (int i = 0; i < dataEntity.getProperty().size(); i++) {
+                if (!dataEntity.getProperty().get(i).isEmpty())
+                    requireList.add(dataEntity.getProperty().get(i));
+            }
+//            requireList = dataEntity.getProperty();
 
             final LayoutInflater mInflater = LayoutInflater.from(context);
 
@@ -321,134 +315,40 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
 
             });
 
-            setDealGraph();
-            propertyId.setText("Deal No : " + buyAndRent.getPropertyId());
-
-            tempDetails.setPaintFlags(tempDetails.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-
-        } else if (object instanceof SecondLandingResponseModel.Data.SellAndRentOut) {
-
-            SecondLandingResponseModel.Data.SellAndRentOut sellAndRentOut = (SecondLandingResponseModel.Data.SellAndRentOut) object;
-            switch (whichPageToDisplay) {
-                case AppConstants.VISIBILITY_PAGE.GET_CONNECTED_ACTIVITY:
-                    getConnectedLL.setVisibility(View.VISIBLE);
-                    secondTimeLandingLL.setVisibility(View.GONE);
-                    break;
-                case AppConstants.VISIBILITY_PAGE.SECOND_TIME_ACTIVITY:
-                    secondTimeLandingLL.setVisibility(View.VISIBLE);
-                    getConnectedLL.setVisibility(View.GONE);
-                    if (sellAndRentOut.getMeetingLocation().isEmpty()) {
-                        projectLocation.setText("No Meetings Scheduled Yet");
-                        date.setText("N/A");
-                        time.setText("N/A");
-                    } else {
-                        projectLocation.setText(sellAndRentOut.getMeetingLocation());
-                        date.setText(df.format(sellAndRentOut.getDateOfVisit()));
-                        time.setText(df.format(sellAndRentOut.getTimeOfVisit()));
-                    }
-                    break;
-            }
-
-            badge.setText(AllUtils.StringUtilsBrongo.toCamelCase(sellAndRentOut.getPostingType()) + "/" + AllUtils.StringUtilsBrongo.toCamelCase(sellAndRentOut.getPropertyType()));
-
-            Glide.with(context)
-                    .load(sellAndRentOut.getBrokerImage())
-                    .apply(BrongoClientApplication.getRequestOption(true))
-                    .into(brokerImage);
-            brokerName.setText(sellAndRentOut.getBrokerName());
-            rating.setText(Float.parseFloat(sellAndRentOut.getRating() + "") + "");
-            ratingBar.setRating(Float.parseFloat(sellAndRentOut.getRating() + ""));
-            reviews.setText(sellAndRentOut.getReviews() + "");
-
-            requireList = new ArrayList<>();
-            requireList.add(sellAndRentOut.getMicroMarketName());
-            requireList.add(sellAndRentOut.getSubPropertyType());
-            requireList.add(sellAndRentOut.getPropertyStatus());
-            requireList.add(sellAndRentOut.getBedRoomType());
-
-            requireList.add(Utils.Budget(df, sellAndRentOut.getBudgetRange1() + "") + " - " + Utils.Budget(df, sellAndRentOut.getBudgetRange2() + ""));
-
-
-            final LayoutInflater mInflater = LayoutInflater.from(context);
-
-            tagFlowLayout.setAdapter(mAdapter = new TagAdapter<String>(requireList) {
-
-                @Override
-                public View getView(FlowLayout parent, int position, String s) {
-                    TextView tv = (TextView) mInflater.inflate(R.layout.second_tv, tagFlowLayout, false);
-                    tv.setText(s);
-                    return tv;
-                }
-
-            });
-
-            setDealGraph();
-            propertyId.setText("Deal No : " + sellAndRentOut.getPropertyId());
+            setDealGraph2();
+            propertyId.setText("Deal No : " + dataEntity.getPropertyId());
             tempDetails.setPaintFlags(tempDetails.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         }
     }
 
-    public void setDealGraph() {
+    public void setDealGraph2() {
 
-        if (object instanceof SecondLandingResponseModel.Data.BuyAndRent) {
-            SecondLandingResponseModel.Data.BuyAndRent buyAndRent = (SecondLandingResponseModel.Data.BuyAndRent) object;
+        if (object instanceof SecondLandingResponse.DataEntity) {
+            SecondLandingResponse.DataEntity dataEntity = (SecondLandingResponse.DataEntity) object;
             dealStatusList.removeAllViews();
-            List<String> completedStatus = buyAndRent.getCompletedStatus();
-            List<String> pendingStatus = buyAndRent.getRemainingStatus();
+            List<String> completedStatus = dataEntity.getCompletedStatus();
+            List<String> pendingStatus = dataEntity.getRemainingStatus();
             ArrayList<Object> allList = new ArrayList<>();
             if (completedStatus.size() == 0) {                                                          // Show Only Pending
-                allList.addAll(buyAndRent.getRemainingStatus());
+                allList.addAll(dataEntity.getRemainingStatus());
                 dealStatusList.addView(TimeLineUtil.getRedOne(context, allList));
             } else if (pendingStatus.size() == 0) {                                                     // Show Only Completed
                 for (int i = 0; i < completedStatus.size(); i++) {
-                    allList.add(new DealStatusCompleted(completedStatus.get(i), buyAndRent.getStatusUpdatedTimes().get(i)));
+                    allList.add(new DealStatusCompleted(completedStatus.get(i), dataEntity.getStatusUpdatedTimes().get(i)));
                 }
                 dealStatusList.addView(TimeLineUtil.getGreenOne(context, allList));
             } else {                                                                                    // Show Both Merged
                 for (int i = 0; i < completedStatus.size(); i++) {
-                    allList.add(new DealStatusCompleted(completedStatus.get(i), buyAndRent.getStatusUpdatedTimes().get(i)));
+                    allList.add(new DealStatusCompleted(completedStatus.get(i), dataEntity.getStatusUpdatedTimes().get(i)));
                 }
-                allList.addAll(buyAndRent.getRemainingStatus());
+                allList.addAll(dataEntity.getRemainingStatus());
                 dealStatusList.addView(TimeLineUtil.getMergedOne(context, allList));
             }
 
             if (pendingStatus.size() == 1) {
                 dealClosedRL.setVisibility(View.VISIBLE);
                 feedbackBTN.setVisibility(View.VISIBLE);
-                payoffline.setVisibility(View.VISIBLE);
-                paymentBTN.setVisibility(View.GONE);
-            } else {
-                dealClosedRL.setVisibility(View.VISIBLE);
-                feedbackBTN.setVisibility(View.INVISIBLE);
-                payoffline.setVisibility(View.VISIBLE);
-                paymentBTN.setVisibility(View.GONE);
-            }
-        } else if ((object instanceof SecondLandingResponseModel.Data.SellAndRentOut)) {
-            SecondLandingResponseModel.Data.SellAndRentOut sellAndRentOut = (SecondLandingResponseModel.Data.SellAndRentOut) object;
-            dealStatusList.removeAllViews();
-            List<String> completedStatus = sellAndRentOut.getCompletedStatus();
-            List<String> pendingStatus = sellAndRentOut.getRemainingStatus();
-            ArrayList<Object> allList = new ArrayList<>();
-            if (completedStatus.size() == 0) {                                                          // Show Only Pending
-                allList.addAll(sellAndRentOut.getRemainingStatus());
-                dealStatusList.addView(TimeLineUtil.getRedOne(context, allList));
-            } else if (pendingStatus.size() == 0) {                                                     // Show Only Completed
-                for (int i = 0; i < completedStatus.size(); i++) {
-                    allList.add(new DealStatusCompleted(completedStatus.get(i), sellAndRentOut.getStatusUpdatedTimes().get(i)));
-                }
-                dealStatusList.addView(TimeLineUtil.getGreenOne(context, allList));
-            } else {                                                                                    // Show Both Merged
-                for (int i = 0; i < completedStatus.size(); i++) {
-                    allList.add(new DealStatusCompleted(completedStatus.get(i), sellAndRentOut.getStatusUpdatedTimes().get(i)));
-                }
-                allList.addAll(sellAndRentOut.getRemainingStatus());
-                dealStatusList.addView(TimeLineUtil.getMergedOne(context, allList));
-            }
-
-            if (pendingStatus.size() == 1) {
-                dealClosedRL.setVisibility(View.VISIBLE);
-                feedbackBTN.setVisibility(View.VISIBLE);
-                if (sellAndRentOut.getPostingType().equals("SELL")) {
+                if (dataEntity.getPostingType().equals("BUY") || dataEntity.getPostingType().equals("SELL")) {
                     payoffline.setVisibility(View.VISIBLE);
                     paymentBTN.setVisibility(View.GONE);
                 } else {
@@ -458,7 +358,7 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
             } else {
                 dealClosedRL.setVisibility(View.VISIBLE);
                 feedbackBTN.setVisibility(View.INVISIBLE);
-                if (sellAndRentOut.getPostingType().equals("SELL")) {
+                if (dataEntity.getPostingType().equals("BUY") || dataEntity.getPostingType().equals("SELL")) {
                     payoffline.setVisibility(View.VISIBLE);
                     paymentBTN.setVisibility(View.GONE);
                 } else {
@@ -472,8 +372,13 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
 
     @OnClick(R.id.detailstv)
     public void viewReqDetails() {
+        SecondLandingResponse.DataEntity obj = (SecondLandingResponse.DataEntity) object;
         Intent intent = new Intent(context, RequirementsDetailsActivity.class);
-        intent.putExtra(BUY_RENT_MODEL, (Parcelable) object);
+        intent.putExtra("brokerNo", obj.getBrokerMobileNo());
+        intent.putExtra("clientNo", pref.getString(AppConstants.PREFS.USER_MOBILE_NO, ""));
+        intent.putExtra("postingType", obj.getPostingType());
+        intent.putExtra("propertyId", obj.getPropertyId());
+        intent.putExtra("propertyType", obj.getPropertyType());
         startActivity(intent);
     }
 
@@ -490,17 +395,14 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
             final String email = pref.getString(AppConstants.PREFS.USER_EMAIL, "");
 
             String postingType = "", propertyId = "", brokerNo = "";
-            if (object instanceof SecondLandingResponseModel.Data.BuyAndRent) {
-                SecondLandingResponseModel.Data.BuyAndRent buyAndRent = (SecondLandingResponseModel.Data.BuyAndRent) object;
-                postingType = buyAndRent.getPostingType();
-                propertyId = buyAndRent.getPropertyId();
-                brokerNo = buyAndRent.getBrokerMobileNo();
-            } else if (object instanceof SecondLandingResponseModel.Data.SellAndRentOut) {
-                SecondLandingResponseModel.Data.SellAndRentOut sellAndRentOut = (SecondLandingResponseModel.Data.SellAndRentOut) object;
-                postingType = sellAndRentOut.getPostingType();
-                propertyId = sellAndRentOut.getPropertyId();
-                brokerNo = sellAndRentOut.getBrokerMobileNo();
+
+            if (object instanceof SecondLandingResponse.DataEntity) {
+                SecondLandingResponse.DataEntity dataEntity = (SecondLandingResponse.DataEntity) object;
+                postingType = dataEntity.getPostingType();
+                propertyId = dataEntity.getPropertyId();
+                brokerNo = dataEntity.getBrokerMobileNo();
             }
+
             PaymentHashModel paymentHashModel = new PaymentHashModel();
             paymentHashModel.setAmount("1");
             paymentHashModel.setFirstname(firstName);
@@ -585,19 +487,15 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
     public void GiveFeedBack(Button button) {
         String name = "", pic = "", brokerMobileNo = "";
         float rating = 0;
-        if (object instanceof SecondLandingResponseModel.Data.BuyAndRent) {
-            SecondLandingResponseModel.Data.BuyAndRent buyAndRent = (SecondLandingResponseModel.Data.BuyAndRent) object;
-            name = buyAndRent.getBrokerName();
-            rating = buyAndRent.getRating();
-            pic = buyAndRent.getBrokerImage();
-            brokerMobileNo = buyAndRent.getBrokerMobileNo();
-        } else if (object instanceof SecondLandingResponseModel) {
-            SecondLandingResponseModel.Data.SellAndRentOut sellAndRentOut = (SecondLandingResponseModel.Data.SellAndRentOut) object;
-            name = sellAndRentOut.getBrokerName();
-            rating = sellAndRentOut.getRating();
-            pic = sellAndRentOut.getBrokerImage();
-            brokerMobileNo = sellAndRentOut.getBrokerMobileNo();
+
+        if (object instanceof SecondLandingResponse.DataEntity) {
+            SecondLandingResponse.DataEntity dataEntity = (SecondLandingResponse.DataEntity) object;
+            name = dataEntity.getBrokerName();
+            rating = (float) dataEntity.getRating();
+            pic = dataEntity.getBrokerImage();
+            brokerMobileNo = dataEntity.getBrokerMobileNo();
         }
+
 
         Intent intent = new Intent(context, FeedbackActivity.class);
         intent.putExtra("name", name);
@@ -609,23 +507,19 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
 
     @OnClick(R.id.chatIV)
     public void Chat(ImageView button) {
-        if (object instanceof SecondLandingResponseModel.Data.BuyAndRent) {
-            SecondLandingResponseModel.Data.BuyAndRent buyAndRent = (SecondLandingResponseModel.Data.BuyAndRent) object;
-            showChatPopDialog(buyAndRent.getBrokerMobileNo(), buyAndRent.getBrokerName());
-        } else {
-            SecondLandingResponseModel.Data.SellAndRentOut sellAndRentOut = (SecondLandingResponseModel.Data.SellAndRentOut) object;
-            showChatPopDialog(sellAndRentOut.getBrokerMobileNo(), sellAndRentOut.getBrokerName());
+
+        if (object instanceof SecondLandingResponse.DataEntity) {
+            SecondLandingResponse.DataEntity dataEntity = (SecondLandingResponse.DataEntity) object;
+            showChatPopDialog(dataEntity.getBrokerMobileNo(), dataEntity.getBrokerName());
         }
     }
 
     @OnClick(R.id.callIM)
     public void Call(ImageView call) {
-        if (object instanceof SecondLandingResponseModel.Data.BuyAndRent) {
-            SecondLandingResponseModel.Data.BuyAndRent buyAndRent = (SecondLandingResponseModel.Data.BuyAndRent) object;
-            getKnowalarityCall(buyAndRent.getBrokerMobileNo());
-        } else {
-            SecondLandingResponseModel.Data.SellAndRentOut sellAndRentOut = (SecondLandingResponseModel.Data.SellAndRentOut) object;
-            getKnowalarityCall(sellAndRentOut.getBrokerMobileNo());
+
+        if (object instanceof SecondLandingResponse.DataEntity) {
+            SecondLandingResponse.DataEntity dataEntity = (SecondLandingResponse.DataEntity) object;
+            getKnowalarityCall(dataEntity.getBrokerMobileNo());
         }
     }
 
@@ -696,28 +590,20 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
     @OnClick(R.id.challengeStatus)
     public void ChallengeStatus(TextView tv) {
         ArrayList<String> challengeList = getArrayList(object);
-        if (object instanceof SecondLandingResponseModel.Data.BuyAndRent) {
-            SecondLandingResponseModel.Data.BuyAndRent buyAndRent = (SecondLandingResponseModel.Data.BuyAndRent) object;
-            showChallengeStatusDialog(buyAndRent.getPropertyId(), buyAndRent.getBrokerMobileNo(), challengeList);
-        } else if (object instanceof SecondLandingResponseModel.Data.SellAndRentOut) {
-            SecondLandingResponseModel.Data.SellAndRentOut sellAndRentOut = (SecondLandingResponseModel.Data.SellAndRentOut) object;
-            showChallengeStatusDialog(sellAndRentOut.getPropertyId(), sellAndRentOut.getBrokerMobileNo(), challengeList);
+
+        if (object instanceof SecondLandingResponse.DataEntity) {
+            SecondLandingResponse.DataEntity dataEntity = (SecondLandingResponse.DataEntity) object;
+            showChallengeStatusDialog(dataEntity.getPropertyId(), dataEntity.getBrokerMobileNo(), challengeList);
         }
     }
 
     private ArrayList<String> getArrayList(Object object) {
         ArrayList<String> challengeList = new ArrayList<>();
 
-        if (object instanceof SecondLandingResponseModel.Data.BuyAndRent) {
-            SecondLandingResponseModel.Data.BuyAndRent buyAndRent = (SecondLandingResponseModel.Data.BuyAndRent) object;
-            for (int i = 0; i < buyAndRent.getCompletedStatus().size() - 2; i++) {
-                challengeList.add(buyAndRent.getCompletedStatus().get(i));
-            }
-
-        } else {
-            SecondLandingResponseModel.Data.SellAndRentOut sellAndRentOut = (SecondLandingResponseModel.Data.SellAndRentOut) object;
-            for (int i = 0; i < sellAndRentOut.getCompletedStatus().size() - 2; i++) {
-                challengeList.add(sellAndRentOut.getCompletedStatus().get(i));
+        if (object instanceof SecondLandingResponse.DataEntity) {
+            SecondLandingResponse.DataEntity dataEntity = (SecondLandingResponse.DataEntity) object;
+            for (int i = 0; i < dataEntity.getCompletedStatus().size() - 2; i++) {
+                challengeList.add(dataEntity.getCompletedStatus().get(i));
             }
         }
         return challengeList;
@@ -725,12 +611,10 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
 
     @OnClick(R.id.dropDeal)
     public void DropTheDeal(LinearLayout button) {
-        if (object instanceof SecondLandingResponseModel.Data.BuyAndRent) {
-            SecondLandingResponseModel.Data.BuyAndRent buyAndRent = (SecondLandingResponseModel.Data.BuyAndRent) object;
-            getBrongoQuestionsApi(buyAndRent.getPropertyId(), buyAndRent.getBrokerMobileNo(), buyAndRent.getPostingType());
-        } else {
-            SecondLandingResponseModel.Data.SellAndRentOut sellAndRentOut = (SecondLandingResponseModel.Data.SellAndRentOut) object;
-            getBrongoQuestionsApi(sellAndRentOut.getPropertyId(), sellAndRentOut.getBrokerMobileNo(), sellAndRentOut.getPostingType());
+
+        if (object instanceof SecondLandingResponse.DataEntity) {
+            SecondLandingResponse.DataEntity dataEntity = (SecondLandingResponse.DataEntity) object;
+            getBrongoQuestionsApi(dataEntity.getPropertyId(), dataEntity.getBrokerMobileNo(), dataEntity.getPostingType());
         }
     }
 
@@ -925,19 +809,14 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
                 String brokerName = "", brokerImage = "", brokerMobileNo = "";
                 float brokerRating = 0.0F;
 
-                if (object instanceof SecondLandingResponseModel.Data.BuyAndRent) {
-                    SecondLandingResponseModel.Data.BuyAndRent buyAndRent = (SecondLandingResponseModel.Data.BuyAndRent) object;
-                    brokerName = buyAndRent.getBrokerName();
-                    brokerImage = buyAndRent.getBrokerImage();
-                    brokerRating = buyAndRent.getRating();
-                    brokerMobileNo = buyAndRent.getBrokerMobileNo();
-                } else {
-                    SecondLandingResponseModel.Data.SellAndRentOut sellAndRentOut = (SecondLandingResponseModel.Data.SellAndRentOut) object;
-                    brokerName = sellAndRentOut.getBrokerName();
-                    brokerImage = sellAndRentOut.getBrokerImage();
-                    brokerRating = sellAndRentOut.getRating();
-                    brokerMobileNo = sellAndRentOut.getBrokerMobileNo();
+                if (object instanceof SecondLandingResponse.DataEntity) {
+                    SecondLandingResponse.DataEntity dataEntity = (SecondLandingResponse.DataEntity) object;
+                    brokerName = dataEntity.getBrokerName();
+                    brokerImage = dataEntity.getBrokerImage();
+                    brokerRating = (float) dataEntity.getRating();
+                    brokerMobileNo = dataEntity.getBrokerMobileNo();
                 }
+
                 Intent intent = new Intent(context, FeedbackActivity.class);
                 intent.putExtra("name", brokerName);
                 intent.putExtra("rating", brokerRating);
@@ -1153,12 +1032,10 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
                 break;
             }
             case DROP_DEAL: {
-                if (object instanceof SecondLandingResponseModel.Data.BuyAndRent) {
-                    SecondLandingResponseModel.Data.BuyAndRent buyAndRent = (SecondLandingResponseModel.Data.BuyAndRent) object;
-                    dropLeadAPI(buyAndRent.getPropertyId(), buyAndRent.getPostingType(), buyAndRent.getBrokerMobileNo(), radioBtn2.getText().toString());
-                } else {
-                    SecondLandingResponseModel.Data.SellAndRentOut sellAndRentOut = (SecondLandingResponseModel.Data.SellAndRentOut) object;
-                    dropLeadAPI(sellAndRentOut.getPropertyId(), sellAndRentOut.getPostingType(), sellAndRentOut.getBrokerMobileNo(), radioBtn2.getText().toString());
+
+                if (object instanceof SecondLandingResponse.DataEntity) {
+                    SecondLandingResponse.DataEntity dataEntity = (SecondLandingResponse.DataEntity) object;
+                    dropLeadAPI(dataEntity.getPropertyId(), dataEntity.getPostingType(), dataEntity.getBrokerMobileNo(), radioBtn2.getText().toString());
                 }
                 break;
             }
@@ -1171,32 +1048,17 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
                 break;
             }
             case CHALLENGE_STATUS: {
-                if (object instanceof SecondLandingResponseModel.Data.BuyAndRent) {
-                    SecondLandingResponseModel.Data.BuyAndRent buyAndRent = (SecondLandingResponseModel.Data.BuyAndRent) object;
-                    challengeStatusApi(buyAndRent.getPropertyId(), commentsET.getText().toString(), radioBtn.getId(), buyAndRent.getBrokerMobileNo());
-                } else if (object instanceof SecondLandingResponseModel.Data.SellAndRentOut) {
-                    SecondLandingResponseModel.Data.SellAndRentOut sellAndRentOut = (SecondLandingResponseModel.Data.SellAndRentOut) object;
-                    challengeStatusApi(sellAndRentOut.getPropertyId(), commentsET.getText().toString(), radioBtn.getId(), sellAndRentOut.getBrokerMobileNo());
+
+                if (object instanceof SecondLandingResponse.DataEntity) {
+                    SecondLandingResponse.DataEntity dataEntity = (SecondLandingResponse.DataEntity) object;
+                    challengeStatusApi(dataEntity.getPropertyId(), commentsET.getText().toString(), radioBtn.getId(), dataEntity.getBrokerMobileNo());
                 }
                 break;
             }
         }
     }
 
-    /*@Override
-    public void updateDealStatus(List<SecondLandingResponseModel.Data.BuyAndRent> buyAndRentList) {
-        if (buyAndRentList != null) {
-            for (int i = 0; i < buyAndRentList.size(); i++) {
-                SecondLandingResponseModel.Data.BuyAndRent buyAndRent1 = buyAndRentList.get(i);
-                if (buyAndRent1.getBrokerMobileNo().equals(buyAndRent.getBrokerMobileNo())) {
-                    buyAndRent = buyAndRent1;
-                    setDealGraph();
-                    Log.i(TAG, "updateDealStatus: +++Updated++++");
-                    break;
-                }
-            }
-        }
-    }*/
+    
 
     public interface BrokerListener {
         void ReloadBrokers();

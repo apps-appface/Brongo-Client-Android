@@ -31,6 +31,7 @@ import com.bigkoo.pickerview.OptionsPickerView;
 import com.bigkoo.pickerview.listener.CustomListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.turnipconsultants.brongo_client.BrongoClientApplication;
 import com.turnipconsultants.brongo_client.CustomWidgets.BrongoButton;
 import com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView;
 import com.turnipconsultants.brongo_client.Listener.CommissionListenerFactory;
@@ -49,6 +50,7 @@ import com.turnipconsultants.brongo_client.others.RetrofitAPIs;
 import com.turnipconsultants.brongo_client.others.RetrofitBuilders;
 import com.turnipconsultants.brongo_client.others.Utils;
 import com.turnipconsultants.brongo_client.responseModels.BrokersCountModel;
+import com.turnipconsultants.brongo_client.responseModels.FetchMicroMarketResponse;
 import com.turnipconsultants.brongo_client.responseModels.PropertyTransactionResponseModel;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
@@ -154,7 +156,7 @@ public class RENT_Your_CommercialFragment extends BaseFragment implements Commis
     private Context context;
     private String headerToken, headerDeviceId, headerPlatform;
     private SharedPreferences pref;
-    private String popLocStr = "", propTypeStr = "", floorStr = "", immediatelyStr = "", commission = "";
+    private String popLocStr = "", propTypeStr = "", floorStr = "", immediatelyStr = "", commission = "", microMarketId = "";
     private int selectedCount = 0;
     private Uri selectedImgUri, uriImg1, uriImg2, uriImg3;
     Activity activity;
@@ -177,6 +179,12 @@ public class RENT_Your_CommercialFragment extends BaseFragment implements Commis
         RENT, DEPOSIT
     }
 
+    private FetchMicroMarketResponse microMarketResponse;
+    private ArrayList<String> marketName, marketId;
+    private ArrayList<Integer> brokersCountList;
+    private ArrayList<List<String>> coordinatesList;
+    private ArrayList<String> coordinates;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -194,9 +202,23 @@ public class RENT_Your_CommercialFragment extends BaseFragment implements Commis
         return v;
     }
 
+    private void getMicroMarketsData() {
+        BrongoClientApplication app = (BrongoClientApplication) context.getApplicationContext();
+        microMarketResponse = app.getMicroMarketResponse();
+        List<FetchMicroMarketResponse.DataEntity> dataEntityList = microMarketResponse.getData();
+        for (int i = 0; i < dataEntityList.size(); i++) {
+            if (dataEntityList.get(i).isTrending()) {
+                marketName.add(dataEntityList.get(i).getName());
+                marketId.add(dataEntityList.get(i).getMicroMarketId());
+                brokersCountList.add(dataEntityList.get(i).getBrokersCount());
+                coordinatesList.add(dataEntityList.get(i).getMarketLocation().getCoordinates());
+            }
+        }
+    }
+
     private void SetValues() {
         final LayoutInflater mInflater = LayoutInflater.from(getActivity());
-        popularLocationsFL.setAdapter(new TagAdapter<String>(popularLocArray) {
+        popularLocationsFL.setAdapter(new TagAdapter<String>(marketName) {
 
             @Override
             public View getView(FlowLayout parent, int position, String s) {
@@ -215,16 +237,12 @@ public class RENT_Your_CommercialFragment extends BaseFragment implements Commis
             @Override
             public void onSelected(int position, View view) {
                 super.onSelected(position, view);
-                popLocStr = popularLocArray[position];
+                popLocStr = marketName.get(position);
+                coordinates = (ArrayList<String>) coordinatesList.get(position);
+                microMarketId = marketId.get(position);
                 DecideSubmitButtonColor();
-
                 try {
-                    for (BrokersCountModel.Data d : arrayList) {
-                        if (d.getMicroMarketName().equalsIgnoreCase(popLocStr)) {
-                            connectBrokersBTN.setText("CONNECT TO THE BEST " + d.getCount() + " LOCAL BROKERS");
-                            break;
-                        }
-                    }
+                    connectBrokersBTN.setText("CONNECT TO THE BEST " + brokersCountList.get(position) + " LOCAL BROKERS");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -314,6 +332,11 @@ public class RENT_Your_CommercialFragment extends BaseFragment implements Commis
         }.getType();
         arrayList = gson.fromJson(brokerCountJSON, type);
 
+        marketId = new ArrayList<>();
+        marketName = new ArrayList<>();
+        brokersCountList = new ArrayList<>();
+        coordinatesList = new ArrayList<>();
+        getMicroMarketsData();
     }
 
     private void setTodayDate() {
@@ -363,15 +386,16 @@ public class RENT_Your_CommercialFragment extends BaseFragment implements Commis
             map.put("expectedRent", RequestBody.create(MultipartBody.FORM, expectedRentAmount + ""));
             map.put("expectedDeposit", RequestBody.create(MultipartBody.FORM, expectedDepositAmount + ""));
 //            map.put("furnishingStatus", RequestBody.create(MultipartBody.FORM, ""));
-            map.put("microMarketName", RequestBody.create(MultipartBody.FORM, popLocStr));
-            map.put("microMarketCity", RequestBody.create(MultipartBody.FORM, "Bangalore"));
-            map.put("microMarketState", RequestBody.create(MultipartBody.FORM, "Karnataka"));
+//            map.put("microMarketName", RequestBody.create(MultipartBody.FORM, popLocStr));
+//            map.put("microMarketCity", RequestBody.create(MultipartBody.FORM, "Bangalore"));
+//            map.put("microMarketState", RequestBody.create(MultipartBody.FORM, "Karnataka"));
 //            map.put("orientation", RequestBody.create(MultipartBody.FORM, ""));
 //            map.put("tenantType", RequestBody.create(MultipartBody.FORM, ""));
 //            map.put("propertyStatus", RequestBody.create(MultipartBody.FORM, ""));
+            map.put("microMarketId", RequestBody.create(okhttp3.MultipartBody.FORM, microMarketId));
             map.put("comments", RequestBody.create(okhttp3.MultipartBody.FORM, commentsET.getText().toString()));
             map.put("commission", RequestBody.create(okhttp3.MultipartBody.FORM, 2 + ""));
-            map.put("availableFloors", RequestBody.create(okhttp3.MultipartBody.FORM, floorStr));
+            map.put("availableFloor", RequestBody.create(okhttp3.MultipartBody.FORM, floorStr));
             map.put("possessionBy", RequestBody.create(okhttp3.MultipartBody.FORM, availableDateTV.getText().toString()));
 
             RetrofitAPIs apiInstance = RetrofitBuilders.getInstance().getAPIService(RetrofitBuilders.getBaseUrl());
@@ -389,6 +413,7 @@ public class RENT_Your_CommercialFragment extends BaseFragment implements Commis
                                 pref.edit().putString("propertyId", data.get(0).getPropertyId()).commit();
                                 Intent intent = new Intent(activity, BrokersMapActivity.class);
                                 intent.putExtra("place", popLocStr);
+                                intent.putStringArrayListExtra("coordinates", coordinates);
                                 startActivity(intent);
                             } else {
                                 Toast.makeText(context, responseModel.getMessage(), Toast.LENGTH_SHORT).show();
@@ -639,7 +664,7 @@ public class RENT_Your_CommercialFragment extends BaseFragment implements Commis
             unbinder.unbind();
     }
 
-    @OnClick({R.id.connect_BTN,R.id.possession_date_TV, R.id.expected_rent_amount_TV, R.id.deposit_amount_TV, R.id.select_picture_RL})
+    @OnClick({R.id.connect_BTN, R.id.possession_date_TV, R.id.expected_rent_amount_TV, R.id.deposit_amount_TV, R.id.select_picture_RL})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.connect_BTN:
@@ -728,11 +753,11 @@ public class RENT_Your_CommercialFragment extends BaseFragment implements Commis
                             thousand = thousand.length() == 1 ? "0" + thousand : thousand;
 
                             if (selectedPickerTask == PICKER_TASK.RENT) {
-                                expectedRentAmount = Double.parseDouble(crore + lakh + thousand+"000");
+                                expectedRentAmount = Double.parseDouble(crore + lakh + thousand + "000");
                                 rentAmountTV.setText(rupeeSymbol + " " + crore + "," + lakh + "," + thousand + "," + "000");
                                 rentAmountWordTV.setText(String.valueOf(numToWords.convert(Integer.parseInt(crore + lakh + thousand + "000"))));
                             } else if (selectedPickerTask == PICKER_TASK.DEPOSIT) {
-                                expectedDepositAmount = Double.parseDouble(crore + lakh + thousand+"000");
+                                expectedDepositAmount = Double.parseDouble(crore + lakh + thousand + "000");
                                 depositAmountTV.setText(rupeeSymbol + " " + crore + "," + lakh + "," + thousand + "," + "000");
                                 depositWordsTV.setText(String.valueOf(numToWords.convert(Integer.parseInt(crore + lakh + thousand + "000"))));
                             }

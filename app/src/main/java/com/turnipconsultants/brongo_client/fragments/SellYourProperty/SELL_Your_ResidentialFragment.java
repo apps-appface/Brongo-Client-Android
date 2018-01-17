@@ -30,6 +30,7 @@ import com.bigkoo.pickerview.OptionsPickerView;
 import com.bigkoo.pickerview.listener.CustomListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.turnipconsultants.brongo_client.BrongoClientApplication;
 import com.turnipconsultants.brongo_client.Listener.CommissionListenerFactory;
 import com.turnipconsultants.brongo_client.Listener.NoInternetTryConnectListener;
 import com.turnipconsultants.brongo_client.R;
@@ -39,6 +40,7 @@ import com.turnipconsultants.brongo_client.models.TokenInputModel;
 import com.turnipconsultants.brongo_client.others.AllUtils.AllUtils;
 import com.turnipconsultants.brongo_client.others.AllUtils.NumToWords;
 import com.turnipconsultants.brongo_client.responseModels.BrokersCountModel;
+import com.turnipconsultants.brongo_client.responseModels.FetchMicroMarketResponse;
 import com.turnipconsultants.brongo_client.responseModels.PropertyTransactionResponseModel;
 import com.turnipconsultants.brongo_client.others.Constants.AppConstants;
 import com.turnipconsultants.brongo_client.others.CommissionDialogFactory;
@@ -148,7 +150,7 @@ public class SELL_Your_ResidentialFragment extends BaseFragment implements Commi
     private Context context;
     private String headerToken, headerDeviceId, headerPlatform;
     private SharedPreferences pref;
-    private String popLocStr = "", propTypeStr = "", propStatusStr = "", bedroomStr = "", floorStr = "Any", furnishedStr = "Any", houseOrientationStr = "Any", commission = "";
+    private String popLocStr = "", propTypeStr = "", propStatusStr = "", bedroomStr = "", floorStr = "Any",microMarketId = "", furnishedStr = "Any", houseOrientationStr = "Any", commission = "";
     private int selectedCount = 0;
 
     private Uri selectedImgUri, uriImg1, uriImg2, uriImg3;
@@ -170,6 +172,11 @@ public class SELL_Your_ResidentialFragment extends BaseFragment implements Commi
     private double expectedRentAmount;
     private DecimalFormat df = new DecimalFormat("#.##");
 
+    private FetchMicroMarketResponse microMarketResponse;
+    private ArrayList<String> marketName, marketId;
+    private ArrayList<Integer> brokersCountList;
+    private ArrayList<List<String>> coordinatesList;
+    private ArrayList<String> coordinates;
 
     @Nullable
     @Override
@@ -200,11 +207,31 @@ public class SELL_Your_ResidentialFragment extends BaseFragment implements Commi
         arrayList = gson.fromJson(brokerCountJSON, type);
         numToWords = new NumToWords();
         expectedRentAmount = 0;
+
+        marketId = new ArrayList<>();
+        marketName = new ArrayList<>();
+        brokersCountList = new ArrayList<>();
+        coordinatesList = new ArrayList<>();
+        getMicroMarketsData();
+    }
+
+    private void getMicroMarketsData() {
+        BrongoClientApplication app = (BrongoClientApplication) context.getApplicationContext();
+        microMarketResponse = app.getMicroMarketResponse();
+        List<FetchMicroMarketResponse.DataEntity> dataEntityList = microMarketResponse.getData();
+        for (int i = 0; i < dataEntityList.size(); i++) {
+            if (dataEntityList.get(i).isTrending()) {
+                marketName.add(dataEntityList.get(i).getName());
+                marketId.add(dataEntityList.get(i).getMicroMarketId());
+                brokersCountList.add(dataEntityList.get(i).getBrokersCount());
+                coordinatesList.add(dataEntityList.get(i).getMarketLocation().getCoordinates());
+            }
+        }
     }
 
     private void SetValues() {
         final LayoutInflater mInflater = LayoutInflater.from(getActivity());
-        popularLocationsFL.setAdapter(new TagAdapter<String>(popularLocArray) {
+        popularLocationsFL.setAdapter(new TagAdapter<String>(marketName) {
 
             @Override
             public View getView(FlowLayout parent, int position, String s) {
@@ -223,16 +250,14 @@ public class SELL_Your_ResidentialFragment extends BaseFragment implements Commi
             @Override
             public void onSelected(int position, View view) {
                 super.onSelected(position, view);
-                popLocStr = popularLocArray[position];
-                DecideSubmitButtonColor();
+//                popLocStr = popularLocArray[position];
 
+                popLocStr = marketName.get(position);
+                coordinates = (ArrayList<String>) coordinatesList.get(position);
+                microMarketId = marketId.get(position);
+                DecideSubmitButtonColor();
                 try {
-                    for (BrokersCountModel.Data d : arrayList) {
-                        if (d.getMicroMarketName().equalsIgnoreCase(popLocStr)) {
-                            connectBrokersBTN.setText("CONNECT TO THE BEST " + d.getCount() + " LOCAL BROKERS");
-                            break;
-                        }
-                    }
+                    connectBrokersBTN.setText("CONNECT TO THE BEST " + brokersCountList.get(position) + " LOCAL BROKERS");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -410,17 +435,19 @@ public class SELL_Your_ResidentialFragment extends BaseFragment implements Commi
             map.put("projectName", RequestBody.create(okhttp3.MultipartBody.FORM, projectNameET.getText().toString()));
             map.put("clientMobileNo", RequestBody.create(okhttp3.MultipartBody.FORM, pref.getString(AppConstants.PREFS.USER_MOBILE_NO, "")));
             map.put("subPropertyType", RequestBody.create(okhttp3.MultipartBody.FORM, propTypeStr));
-            map.put("microMarketName", RequestBody.create(okhttp3.MultipartBody.FORM, popLocStr));
-            map.put("microMarketCity", RequestBody.create(okhttp3.MultipartBody.FORM, "Bangalore"));
-            map.put("microMarketState", RequestBody.create(okhttp3.MultipartBody.FORM, "Karnataka"));
+//            map.put("microMarketName", RequestBody.create(okhttp3.MultipartBody.FORM, popLocStr));
+//            map.put("microMarketCity", RequestBody.create(okhttp3.MultipartBody.FORM, "Bangalore"));
+//            map.put("microMarketState", RequestBody.create(okhttp3.MultipartBody.FORM, "Karnataka"));
+            map.put("microMarketId", RequestBody.create(okhttp3.MultipartBody.FORM, microMarketId));
+
             map.put("comments", RequestBody.create(okhttp3.MultipartBody.FORM, commentsET.getText().toString()));
             map.put("bedRoomType", RequestBody.create(okhttp3.MultipartBody.FORM, bedroomStr));
 //            map.put("approxSizeSquareFeet", RequestBody.create(okhttp3.MultipartBody.FORM, ""));
             map.put("furnishingStatus", RequestBody.create(okhttp3.MultipartBody.FORM, furnishedStr));
 //            map.put("budget", RequestBody.create(okhttp3.MultipartBody.FORM, expectedRentAmount + ""));
-            map.put("expectedPrice", RequestBody.create(okhttp3.MultipartBody.FORM, expectedRentAmount+""));
+            map.put("expectedPrice", RequestBody.create(okhttp3.MultipartBody.FORM, expectedRentAmount + ""));
             map.put("commission", RequestBody.create(okhttp3.MultipartBody.FORM, 2 + ""));
-            map.put("availableFloors", RequestBody.create(okhttp3.MultipartBody.FORM, floorStr));
+            map.put("availableFloor", RequestBody.create(okhttp3.MultipartBody.FORM, floorStr));
             map.put("orientation", RequestBody.create(okhttp3.MultipartBody.FORM, houseOrientationStr));
 //            map.put("plotSize", RequestBody.create(okhttp3.MultipartBody.FORM, ""));
 //            map.put("preferredFloors", RequestBody.create(okhttp3.MultipartBody.FORM, ""));
@@ -444,6 +471,7 @@ public class SELL_Your_ResidentialFragment extends BaseFragment implements Commi
                                 pref.edit().putString("propertyId", data.get(0).getPropertyId()).commit();
                                 Intent intent = new Intent(activity, BrokersMapActivity.class);
                                 intent.putExtra("place", popLocStr);
+                                intent.putStringArrayListExtra("coordinates", coordinates);
                                 startActivity(intent);
                             } else {
                                 Toast.makeText(context, responseModel.getMessage(), Toast.LENGTH_SHORT).show();
@@ -740,7 +768,7 @@ public class SELL_Your_ResidentialFragment extends BaseFragment implements Commi
             public void onClick(View v) {
                 RentOptions.dismiss();
                 RentOptions.returnData();
-                Log.i(TAG, "Expected amount"+expectedRentAmount);
+                Log.i(TAG, "Expected amount" + expectedRentAmount);
 
             }
         });
@@ -780,7 +808,7 @@ public class SELL_Your_ResidentialFragment extends BaseFragment implements Commi
                             lakh = lakh.length() == 1 ? "0" + lakh : lakh;
                             thousand = thousand.length() == 1 ? "0" + thousand : thousand;
 
-                            expectedRentAmount = Double.parseDouble(crore + lakh + thousand+"000");
+                            expectedRentAmount = Double.parseDouble(crore + lakh + thousand + "000");
                             budgetWordTV.setText(String.valueOf(numToWords.convert(Integer.parseInt(crore + lakh + thousand + "000"))));
                             expectedRentTV.setText(rupeeSymbol + " " + crore + "," + lakh + "," + thousand + "," + "000");
                         } catch (Exception e) {

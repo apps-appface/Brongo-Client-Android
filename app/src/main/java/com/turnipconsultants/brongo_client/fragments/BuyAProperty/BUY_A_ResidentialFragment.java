@@ -36,7 +36,6 @@ import com.turnipconsultants.brongo_client.fragments.BaseFragment;
 import com.turnipconsultants.brongo_client.models.BuyAProperty.BuyPropertyModel;
 import com.turnipconsultants.brongo_client.models.TokenInputModel;
 import com.turnipconsultants.brongo_client.mvp.HomePresenterImpl;
-import com.turnipconsultants.brongo_client.mvp.MicroMarketsView;
 import com.turnipconsultants.brongo_client.others.AllUtils.AllUtils;
 import com.turnipconsultants.brongo_client.responseModels.BrokersCountModel;
 import com.turnipconsultants.brongo_client.responseModels.FetchMicroMarketResponse;

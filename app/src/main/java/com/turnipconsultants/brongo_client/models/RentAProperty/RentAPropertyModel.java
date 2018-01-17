@@ -37,6 +37,15 @@ public class RentAPropertyModel {
 
     private String comments;
     private int commission;
+    private String microMarketId;
+
+    public String getMicroMarketId() {
+        return microMarketId;
+    }
+
+    public void setMicroMarketId(String microMarketId) {
+        this.microMarketId = microMarketId;
+    }
 
     public String getOrientation() {
         return orientation;

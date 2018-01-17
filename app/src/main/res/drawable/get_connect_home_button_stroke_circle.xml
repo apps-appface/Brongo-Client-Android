@@ -3,7 +3,7 @@
     <item>
         <shape android:shape="oval">
             <completeSize android:width="50dp" android:height="50dp"/>
-            <stroke android:color="@color/deal_status_red" android:width="2dp"/>
+            <stroke android:color="@color/appPurple" android:width="2dp"/>
         </shape>
     </item>
 </selector>

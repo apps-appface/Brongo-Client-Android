@@ -46,7 +46,7 @@ public class AcceptedBrokersResponseModel {
         @SerializedName("name")
         private String name;
         @SerializedName("rating")
-        private int rating;
+        private float rating;
         @SerializedName("review")
         private List<String> review;
         @SerializedName("comment")
@@ -62,11 +62,11 @@ public class AcceptedBrokersResponseModel {
             this.name = name;
         }
 
-        public int getRating() {
+        public float getRating() {
             return rating;
         }
 
-        public void setRating(int rating) {
+        public void setRating(float rating) {
             this.rating = rating;
         }
 
@@ -103,7 +103,7 @@ public class AcceptedBrokersResponseModel {
         @SerializedName("plan")
         private String plan;
         @SerializedName("rating")
-        private int rating;
+        private float rating;
         @SerializedName("closedLeads")
         private int closedLeads;
         @SerializedName("openDeals")
@@ -137,11 +137,11 @@ public class AcceptedBrokersResponseModel {
             this.plan = plan;
         }
 
-        public int getRating() {
+        public float getRating() {
             return rating;
         }
 
-        public void setRating(int rating) {
+        public void setRating(float rating) {
             this.rating = rating;
         }
 
@@ -186,7 +186,7 @@ public class AcceptedBrokersResponseModel {
         @SerializedName("lastName")
         private String lastName;
         @SerializedName("rating")
-        private int rating;
+        private float rating;
         @SerializedName("mobileNo")
         private String mobileNo;
         @SerializedName("reviews")
@@ -220,11 +220,11 @@ public class AcceptedBrokersResponseModel {
             this.lastName = lastName;
         }
 
-        public int getRating() {
+        public float getRating() {
             return rating;
         }
 
-        public void setRating(int rating) {
+        public void setRating(float rating) {
             this.rating = rating;
         }
 

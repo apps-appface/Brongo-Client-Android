@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.View;
 
 import com.turnipconsultants.brongo_client.fragments.ConnectedBrokersFragment;
+import com.turnipconsultants.brongo_client.responseModels.SecondLandingResponse;
 import com.turnipconsultants.brongo_client.responseModels.SecondLandingResponseModel;
 
 import java.util.HashMap;
@@ -32,11 +33,8 @@ public class ConnectedBrokersAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int pos) {
         ConnectedBrokersFragment fr = null;
         Object obj = objectList.get(pos);
-        if (obj instanceof SecondLandingResponseModel.Data.BuyAndRent) {
-            fr = ConnectedBrokersFragment.newInstance((SecondLandingResponseModel.Data.BuyAndRent) obj, whichPage);
-            referenceMap.put(pos, fr);
-        } else if (obj instanceof SecondLandingResponseModel.Data.SellAndRentOut) {
-            fr = ConnectedBrokersFragment.newInstance((SecondLandingResponseModel.Data.SellAndRentOut) obj, whichPage);
+        if (obj instanceof SecondLandingResponse.DataEntity) {
+            fr = ConnectedBrokersFragment.newInstance((SecondLandingResponse.DataEntity) obj, whichPage);
             referenceMap.put(pos, fr);
         }
         return fr;

@@ -11,15 +11,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
-import com.turnipconsultants.brongo_client.CustomWidgets.GifView;
 import com.turnipconsultants.brongo_client.R;
 import com.turnipconsultants.brongo_client.activities.HomeActivity;
+
+import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import pl.droidsonroids.gif.GifDrawable;
 import pl.droidsonroids.gif.GifImageView;
 
 /**
@@ -41,8 +42,8 @@ public class ConnectionSuccessFragment extends Fragment {
     @BindView(R.id.broker_name_TV)
     TextView brokerNameTV;
 
-    @BindView(R.id.check_mark_GV)
-    GifView check_mark_GV;
+//    @BindView(R.id.check_mark_GV)
+//    GifView check_mark_GV;
 
     @BindView(R.id.newGif)
     GifImageView newGif;
@@ -93,17 +94,15 @@ public class ConnectionSuccessFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_connection_success, container, false);
         unbinder = ButterKnife.bind(this, view);
         brokerNameTV.setText(brokerName);
-
-        newGif.setFreezesAnimation(true);
-
-        /*context = getActivity();
-        check_mark_GV.setGifResource(R.drawable.check_mark);
-        check_mark_GV.play();*/
-
-       /* MediaPlayer mp = new MediaPlayer();
-        mp.reset();
-        mp = MediaPlayer.create(context.getApplicationContext(), R.raw.check_mark);
-        mp.start();*/
+        context = getActivity();
+        GifDrawable gifDrawable = null;
+        try {
+            gifDrawable = new GifDrawable(getResources(), R.drawable.check_mark);
+            gifDrawable.setLoopCount(1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        newGif.setImageDrawable(gifDrawable);
 
         return view;
     }

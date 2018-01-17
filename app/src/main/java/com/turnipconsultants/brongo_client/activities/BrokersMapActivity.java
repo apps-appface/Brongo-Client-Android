@@ -186,13 +186,14 @@ public class BrokersMapActivity extends AppCompatActivity implements OnMapReadyC
                 break;
         }*/
 
-        cameraPosition = new CameraPosition.Builder().target(latLng).zoom(12).build();
+        cameraPosition = new CameraPosition.Builder().target(latLng).zoom(15).build();
         mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
 
         for (int i = 0; i < 30; i++) {
-            mMap.addMarker(new MarkerOptions().position(AllUtils.MapUtils.getRandomLocation(latLng, 20000)).title("").icon(BitmapDescriptorFactory.fromResource(R.drawable.broker_on_map_icon)));
+            mMap.addMarker(new MarkerOptions().position(AllUtils.MapUtils.getRandomLocation(latLng, 5000)).title("").icon(BitmapDescriptorFactory.fromResource(R.drawable.broker_on_map_icon)));
         }
+
     }
 
     @Override

@@ -15,7 +15,6 @@ import com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView;
 import com.turnipconsultants.brongo_client.Listener.NoInternetTryConnectListener;
 import com.turnipconsultants.brongo_client.R;
 import com.turnipconsultants.brongo_client.adapters.PastReqAdapter;
-import com.turnipconsultants.brongo_client.fragments.ConnectedBrokersFragment;
 import com.turnipconsultants.brongo_client.models.TokenInputModel;
 import com.turnipconsultants.brongo_client.others.AllUtils.AllUtils;
 import com.turnipconsultants.brongo_client.others.Constants.AppConstants;
@@ -24,7 +23,6 @@ import com.turnipconsultants.brongo_client.others.RetrofitAPIs;
 import com.turnipconsultants.brongo_client.others.RetrofitBuilders;
 import com.turnipconsultants.brongo_client.others.Utils;
 import com.turnipconsultants.brongo_client.responseModels.PastRequirementResponse;
-import com.turnipconsultants.brongo_client.responseModels.SecondLandingResponseModel;
 
 import org.json.JSONObject;
 
@@ -55,7 +53,7 @@ public class PastRequirementActivity extends AppCompatActivity implements NoInte
     @BindView(R.id.pastReqRV)
     RecyclerView pastReqRV;
 
-    private ArrayList<PastRequirementResponse.Dropped> droppedArrayList;
+    private ArrayList<PastRequirementResponse.DataEntity> droppedArrayList;
     private PastReqAdapter pastReqAdapter;
     private Unbinder unbinder;
     private Context context;
@@ -105,16 +103,17 @@ public class PastRequirementActivity extends AppCompatActivity implements NoInte
                         if (response != null && response.isSuccessful()) {
                             PastRequirementResponse responseModel = response.body();
                             if (responseModel.getStatusCode() == 200) {
-                                if (responseModel.getData().get(0).getDropped().size() == 0) {
+                                List<PastRequirementResponse.DataEntity> dataEntityList=responseModel.getData();
+                                /*if (responseModel.getData()) {
                                     noDataBTV.setVisibility(View.VISIBLE);
                                     pastReqRV.setVisibility(View.GONE);
                                 } else {
                                     noDataBTV.setVisibility(View.GONE);
                                     pastReqRV.setVisibility(View.VISIBLE);
                                     droppedArrayList.addAll(responseModel.getData().get(0).getDropped());
-                                    pastReqAdapter.notifyDataSetChanged();
-                                }
-
+                                }*/
+                                droppedArrayList.addAll(dataEntityList);
+                                pastReqAdapter.notifyDataSetChanged();
                             } else {
                                 Toast.makeText(context, responseModel.getMessage(), Toast.LENGTH_SHORT).show();
 

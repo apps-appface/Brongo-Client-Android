@@ -19,6 +19,15 @@ public class AcceptedBrokersInputModel {
     private float rating;
     private List<String> review;
     private String comment;
+    private String propertyType;
+
+    public String getPropertyType() {
+        return propertyType;
+    }
+
+    public void setPropertyType(String propertyType) {
+        this.propertyType = propertyType;
+    }
 
     public float getRating() {
         return rating;

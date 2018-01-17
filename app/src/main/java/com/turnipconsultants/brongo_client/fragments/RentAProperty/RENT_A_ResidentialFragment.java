@@ -25,6 +25,7 @@ import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarChangeListener;
 import com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.turnipconsultants.brongo_client.BrongoClientApplication;
 import com.turnipconsultants.brongo_client.CustomWidgets.BrongoButton;
 import com.turnipconsultants.brongo_client.Listener.CommissionListenerFactory;
 import com.turnipconsultants.brongo_client.Listener.NoInternetTryConnectListener;
@@ -42,6 +43,7 @@ import com.turnipconsultants.brongo_client.others.RetrofitAPIs;
 import com.turnipconsultants.brongo_client.others.RetrofitBuilders;
 import com.turnipconsultants.brongo_client.others.Utils;
 import com.turnipconsultants.brongo_client.responseModels.BrokersCountModel;
+import com.turnipconsultants.brongo_client.responseModels.FetchMicroMarketResponse;
 import com.turnipconsultants.brongo_client.responseModels.PropertyTransactionResponseModel;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
@@ -127,7 +129,7 @@ public class RENT_A_ResidentialFragment extends BaseFragment implements Commissi
     private Context context;
     private String headerToken, headerDeviceId, headerPlatform;
     private SharedPreferences pref;
-    private String popLocStr = "", propTypeStr = "", bedroomStr = "", tenantTypeStr = "", furnishedStr = "", housingOrientationStr = "";
+    private String popLocStr = "", propTypeStr = "", bedroomStr = "", tenantTypeStr = "", furnishedStr = "", housingOrientationStr = "",microMarketId="";
     private double budgetMin, budgetMax;
     private DecimalFormat df = new DecimalFormat("#.##");
     private int commission;
@@ -141,6 +143,11 @@ public class RENT_A_ResidentialFragment extends BaseFragment implements Commissi
     private ArrayList<ProvinceBean> options1Items = new ArrayList<>();
     private ArrayList<ArrayList<ProvinceBean>> options2Items = new ArrayList<>();
 
+    private FetchMicroMarketResponse microMarketResponse;
+    private ArrayList<String> marketName, marketId;
+    private ArrayList<Integer> brokersCountList;
+    private ArrayList<List<String>> coordinatesList;
+    private ArrayList<String> coordinates;
 
     @Nullable
     @Override
@@ -173,9 +180,23 @@ public class RENT_A_ResidentialFragment extends BaseFragment implements Commissi
         });
     }
 
+    private void getMicroMarketsData() {
+        BrongoClientApplication app = (BrongoClientApplication) context.getApplicationContext();
+        microMarketResponse = app.getMicroMarketResponse();
+        List<FetchMicroMarketResponse.DataEntity> dataEntityList = microMarketResponse.getData();
+        for (int i = 0; i < dataEntityList.size(); i++) {
+            if (dataEntityList.get(i).isTrending()) {
+                marketName.add(dataEntityList.get(i).getName());
+                marketId.add(dataEntityList.get(i).getMicroMarketId());
+                brokersCountList.add(dataEntityList.get(i).getBrokersCount());
+                coordinatesList.add(dataEntityList.get(i).getMarketLocation().getCoordinates());
+            }
+        }
+    }
+
     private void SetValues() {
         final LayoutInflater mInflater = LayoutInflater.from(getActivity());
-        popularLocationsFL.setAdapter(new TagAdapter<String>(popularLocArray) {
+        popularLocationsFL.setAdapter(new TagAdapter<String>(marketName) {
 
             @Override
             public View getView(FlowLayout parent, int position, String s) {
@@ -194,16 +215,13 @@ public class RENT_A_ResidentialFragment extends BaseFragment implements Commissi
             @Override
             public void onSelected(int position, View view) {
                 super.onSelected(position, view);
-                popLocStr = popularLocArray[position];
+//                popLocStr = popularLocArray[position];
+                popLocStr = marketName.get(position);
+                coordinates = (ArrayList<String>) coordinatesList.get(position);
+                microMarketId = marketId.get(position);
                 DecideSubmitButtonColor();
-
                 try {
-                    for (BrokersCountModel.Data d : arrayList) {
-                        if (d.getMicroMarketName().equalsIgnoreCase(popLocStr)) {
-                            connectBrokersBTN.setText("CONNECT TO THE BEST " + d.getCount() + " LOCAL BROKERS");
-                            break;
-                        }
-                    }
+                    connectBrokersBTN.setText("CONNECT TO THE BEST " + brokersCountList.get(position) + " LOCAL BROKERS");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -340,6 +358,12 @@ public class RENT_A_ResidentialFragment extends BaseFragment implements Commissi
         Type type = new TypeToken<List<BrokersCountModel.Data>>() {
         }.getType();
         arrayList = gson.fromJson(brokerCountJSON, type);
+
+        marketId = new ArrayList<>();
+        marketName = new ArrayList<>();
+        brokersCountList = new ArrayList<>();
+        coordinatesList = new ArrayList<>();
+        getMicroMarketsData();
     }
 
     @OnClick({R.id.selectBudgetTV})
@@ -369,6 +393,7 @@ public class RENT_A_ResidentialFragment extends BaseFragment implements Commissi
                                 pref.edit().putString("propertyId", data.get(0).getPropertyId()).commit();
                                 Intent intent = new Intent(getActivity(), BrokersMapActivity.class);
                                 intent.putExtra("place", popLocStr);
+                                intent.putStringArrayListExtra("coordinates", coordinates);
                                 startActivity(intent);
                             } else {
                                 Toast.makeText(context, responseModel.getMessage(), Toast.LENGTH_SHORT).show();
@@ -409,11 +434,12 @@ public class RENT_A_ResidentialFragment extends BaseFragment implements Commissi
         p.setPropertyType("RESIDENTIAL");
         p.setPostingType(AppConstants.POSTING_TYPE.RENT_A_PROPERTY);
         p.setClientMobileNo(pref.getString(AppConstants.PREFS.USER_MOBILE_NO, ""));
-        RentAPropertyModel.Area area = new RentAPropertyModel.Area();
+        /*RentAPropertyModel.Area area = new RentAPropertyModel.Area();
         area.setMicroMarketCity("Bangalore");
         area.setMicroMarketState("Karnataka");
         area.setMicroMarketName(popLocStr);
-        p.setArea(area);
+        p.setArea(area);*/
+        p.setMicroMarketId(microMarketId);
         p.setSubPropertyType(propTypeStr);
         p.setBedRoomType(bedroomStr);
 //        p.setBudget(budgetMax + "");

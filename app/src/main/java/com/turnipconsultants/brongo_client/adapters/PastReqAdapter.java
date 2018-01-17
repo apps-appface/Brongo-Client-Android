@@ -10,10 +10,8 @@ import android.widget.TextView;
 import com.turnipconsultants.brongo_client.CustomWidgets.BrongoButton;
 import com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView;
 import com.turnipconsultants.brongo_client.R;
-import com.turnipconsultants.brongo_client.others.AllUtils.AllUtils;
-import com.turnipconsultants.brongo_client.others.Constants.AppConstants;
-import com.turnipconsultants.brongo_client.others.Utils;
 import com.turnipconsultants.brongo_client.responseModels.PastRequirementResponse;
+import com.turnipconsultants.brongo_client.others.AllUtils.AllUtils;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
@@ -32,7 +30,7 @@ import butterknife.ButterKnife;
 public class PastReqAdapter extends RecyclerView.Adapter<PastReqAdapter.PastReqViewHolder> {
 
     private Context context;
-    private List<PastRequirementResponse.Dropped> pastRequirementList;
+    private List<PastRequirementResponse.DataEntity> pastRequirementList;
     private String rs = "";
     private DecimalFormat df = new DecimalFormat("#.##");
 
@@ -59,7 +57,7 @@ public class PastReqAdapter extends RecyclerView.Adapter<PastReqAdapter.PastReqV
     }
 
 
-    public PastReqAdapter(Context context, ArrayList<PastRequirementResponse.Dropped> pastRequirementList) {
+    public PastReqAdapter(Context context, ArrayList<PastRequirementResponse.DataEntity> pastRequirementList) {
         this.context = context;
         this.pastRequirementList = pastRequirementList;
         this.rs = context.getResources().getString(R.string.rupee);
@@ -75,70 +73,12 @@ public class PastReqAdapter extends RecyclerView.Adapter<PastReqAdapter.PastReqV
 
     @Override
     public void onBindViewHolder(final PastReqViewHolder holder, final int position) {
-        PastRequirementResponse.Dropped item = pastRequirementList.get(position);
-        holder.nameBTV.setText(item.getBrokerName());
+        PastRequirementResponse.DataEntity item = pastRequirementList.get(position);
+        holder.nameBTV.setText(item.getStatus().toUpperCase());
         holder.postTypeBTV.setText(item.getPostingType() + "/" + AllUtils.StringUtilsBrongo.toCamelCase(item.getPropertyType()));
-        holder.commissionBTV.setText(rs + " 5600");
+        holder.commissionBTV.setText(item.getCommission() + "");
         ArrayList<String> flowList = new ArrayList<>();
-        switch (item.getPostingType()) {
-            case AppConstants.POSTING_TYPE.BUY_A_PROPERTY: {
-                String microMarket = item.getMicroMarketName();
-                String rentalType = item.getRentalType();
-                String bedroomType = item.getRentalType();
-                String propertyStatus = item.getPropertyStatus();
-                int budget1 = item.getBudgetRange1();
-                int budget2 = item.getBudgetRange2();
-                if (!microMarket.isEmpty())
-                    flowList.add(microMarket);
-                if (!rentalType.isEmpty())
-                    flowList.add(rentalType);
-                if (!bedroomType.isEmpty())
-                    flowList.add(bedroomType);
-                if (!propertyStatus.isEmpty())
-                    flowList.add(propertyStatus);
-                flowList.add(Utils.Budget(df, budget1 + "") + "-" + Utils.Budget(df, budget2 + ""));
-
-                break;
-            }
-            case AppConstants.POSTING_TYPE.RENT_A_PROPERTY: {
-                String microMarket = item.getMicroMarketName();
-                String rentalType = item.getRentalType();
-                String bedroomType = item.getRentalType();
-                String subPropertyType = item.getSubPropertyType();
-                int budget1 = item.getBudgetRange1();
-                int budget2 = item.getBudgetRange2();
-                if (!microMarket.isEmpty())
-                    flowList.add(microMarket);
-                if (!rentalType.isEmpty())
-                    flowList.add(rentalType);
-                if (!bedroomType.isEmpty())
-                    flowList.add(bedroomType);
-                if (!subPropertyType.isEmpty())
-                    flowList.add(subPropertyType);
-                flowList.add(Utils.Budget(df, budget1 + "") + "-" + Utils.Budget(df, budget2 + ""));
-
-                break;
-            }
-            case AppConstants.POSTING_TYPE.SELL_A_PROPERTY: {
-                String microMarket = item.getMicroMarketName();
-                String subPropType = item.getSubPropertyType();
-                String bedroomType = item.getBedRoomType();
-                int budget1 = item.getBudgetRange1();
-                int budget2 = item.getBudgetRange2();
-                if (!microMarket.isEmpty())
-                    flowList.add(microMarket);
-                if (!subPropType.isEmpty())
-                    flowList.add(subPropType);
-                if (!bedroomType.isEmpty())
-                    flowList.add(bedroomType);
-                flowList.add(Utils.Budget(df, budget1 + "") + "-" + Utils.Budget(df, budget2 + ""));
-
-                break;
-            }
-            case AppConstants.POSTING_TYPE.RENT_YOUR_PROPERTY: {
-                break;
-            }
-        }
+        flowList.addAll(item.getProperty());
 
         holder.propertyDetailFL.setAdapter(new TagAdapter<String>(flowList) {
 

@@ -24,7 +24,6 @@ import retrofit2.Response;
 public class HomePresenterImpl implements HomePresenter {
     private HomeView homeView;
     private Context context;
-    private MicroMarketsView marketView;
 
     RetrofitAPIs apiInstance = RetrofitBuilders.getInstance().getAPIService(RetrofitBuilders.getBaseUrl());
     private SharedPreferences pref;
@@ -39,14 +38,6 @@ public class HomePresenterImpl implements HomePresenter {
         headerToken = pref.getString("token", "");
     }
 
-    public HomePresenterImpl(Context context, MicroMarketsView marketView) {
-        this.context = context;
-        this.marketView = marketView;
-        pref = context.getSharedPreferences(AppConstants.PREF_NAME, 0);
-        headerDeviceId = Utils.getDeviceId(context);
-        headerPlatform = "android";
-        headerToken = pref.getString("token", "");
-    }
 
     @Override
     public void getChatCount() {

@@ -1,5 +1,6 @@
 package com.turnipconsultants.brongo_client.others;
 
+import com.turnipconsultants.brongo_client.responseModels.PastRequirementResponse;
 import com.turnipconsultants.brongo_client.models.AcceptedBrokersInputModel;
 import com.turnipconsultants.brongo_client.models.DeviceInfoInputModel;
 import com.turnipconsultants.brongo_client.models.OtpInputModel;
@@ -8,10 +9,10 @@ import com.turnipconsultants.brongo_client.models.SellYourProperty.PaymentHashRe
 import com.turnipconsultants.brongo_client.models.SignUpInputModel;
 import com.turnipconsultants.brongo_client.models.TokenInputModel;
 import com.turnipconsultants.brongo_client.responseModels.AcceptedBrokersResponseModel;
+import com.turnipconsultants.brongo_client.responseModels.AllRequirementsResponse;
 import com.turnipconsultants.brongo_client.responseModels.BrokerRatingResponseModel;
 import com.turnipconsultants.brongo_client.responseModels.BrokersCountModel;
 import com.turnipconsultants.brongo_client.responseModels.FetchMicroMarketResponse;
-import com.turnipconsultants.brongo_client.responseModels.PastRequirementResponse;
 import com.turnipconsultants.brongo_client.responseModels.PropertyTransactionResponseModel;
 import com.turnipconsultants.brongo_client.responseModels.DeviceInfo;
 import com.turnipconsultants.brongo_client.responseModels.GeneralApiResponseModel;
@@ -20,6 +21,7 @@ import com.turnipconsultants.brongo_client.responseModels.NotificationResponseMo
 import com.turnipconsultants.brongo_client.responseModels.OtpResponseModel;
 import com.turnipconsultants.brongo_client.responseModels.ProfileResponseModel;
 import com.turnipconsultants.brongo_client.responseModels.QuestionsResponseModel;
+import com.turnipconsultants.brongo_client.responseModels.SecondLandingResponse;
 import com.turnipconsultants.brongo_client.responseModels.SecondLandingResponseModel;
 import com.turnipconsultants.brongo_client.responseModels.SignUpResponseModel;
 import com.turnipconsultants.brongo_client.responseModels.TimeLineResponseModel;
@@ -117,6 +119,10 @@ public interface RetrofitAPIs {
     @GET("/Brongo/client/activeLeads")
     Call<SecondLandingResponseModel> getPostedLeadsData(@Header("accessToken") String accessToken, @Header("platform") String platform, @Header("deviceId") String deviceId, @Query("mobileNo") String mobileNo, @Query("onlyConnected") String onlyConnected);
 
+    @GET("/Brongo/client/activeLeads")
+    Call<SecondLandingResponse> getPostedLeadsData2(@Header("accessToken") String accessToken, @Header("platform") String platform, @Header("deviceId") String deviceId, @Query("mobileNo") String mobileNo, @Query("onlyConnected") String onlyConnected);
+
+
     @Headers({"Accept: application/json"})
     @POST("/Brongo/client/fetchLeadStatus")
     Call<TimeLineResponseModel> fetchLeadStatus(@Header("accessToken") String accessToken, @Header("platform") String platform, @Header("deviceId") String deviceId, @Body AcceptedBrokersInputModel accepBrokInputModel);
@@ -173,5 +179,11 @@ public interface RetrofitAPIs {
 
     @GET("/Brongo/client/fetchMicroMarkets")
     Call<FetchMicroMarketResponse> getMicroMarketDetails(@Header("accessToken") String accessToken, @Header("platform") String platform, @Header("deviceId") String deviceId, @Query("mobileNo") String mobileNo);
+
+    @Headers({"Accept: application/json"})
+    @POST("/Brongo/client/fetchProperty")
+    Call<AllRequirementsResponse> getAllRequirementDetails(@Header("accessToken") String accessToken, @Header("platform") String platform, @Header("deviceId") String deviceId, @Body AcceptedBrokersInputModel inputModel);
+
+
 }
 

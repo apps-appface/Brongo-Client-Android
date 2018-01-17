@@ -55,10 +55,10 @@ import com.turnipconsultants.brongo_client.models.TokenInputModel;
 import com.turnipconsultants.brongo_client.mvp.HomePresenter;
 import com.turnipconsultants.brongo_client.mvp.HomePresenterImpl;
 import com.turnipconsultants.brongo_client.mvp.HomeView;
-import com.turnipconsultants.brongo_client.mvp.MicroMarketsView;
 import com.turnipconsultants.brongo_client.others.AllUtils.AllUtils;
 import com.turnipconsultants.brongo_client.responseModels.FetchMicroMarketResponse;
 import com.turnipconsultants.brongo_client.responseModels.QuestionsResponseModel;
+import com.turnipconsultants.brongo_client.responseModels.SecondLandingResponse;
 import com.turnipconsultants.brongo_client.responseModels.SecondLandingResponseModel;
 import com.turnipconsultants.brongo_client.others.Constants.AppConstants;
 import com.turnipconsultants.brongo_client.others.InternetConnection;
@@ -394,7 +394,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
     }
 
 
-    private void LoadBrokers(final boolean isForLeadUpdate) {
+    private void LoadBrokers2(final boolean isForLeadUpdate) {
         selectedTask = TASK.LOAD_BROKER;
         headerDeviceId = Utils.getDeviceId(context);
         headerPlatform = "android";
@@ -404,51 +404,32 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
             if (!isForLeadUpdate)
                 AllUtils.LoaderUtils.showLoader(context);
             RetrofitAPIs apiInstance = RetrofitBuilders.getInstance().getAPIService(RetrofitBuilders.getBaseUrl());
-            Call<SecondLandingResponseModel> call = apiInstance.getPostedLeadsData(headerToken, headerPlatform, headerDeviceId, clientMobileNo, isOnlyConnected);
-            call.enqueue(new Callback<SecondLandingResponseModel>() {
+            Call<SecondLandingResponse> call = apiInstance.getPostedLeadsData2(headerToken, headerPlatform, headerDeviceId, clientMobileNo, isOnlyConnected);
+            call.enqueue(new Callback<SecondLandingResponse>() {
                 @Override
-                public void onResponse(Call<SecondLandingResponseModel> call, Response<SecondLandingResponseModel> response) {
+                public void onResponse(Call<SecondLandingResponse> call, Response<SecondLandingResponse> response) {
 
                     try {
                         if (!isForLeadUpdate)
                             AllUtils.LoaderUtils.dismissLoader();
                         if (response != null && response.isSuccessful()) {
-                            SecondLandingResponseModel responseModel = response.body();
+                            SecondLandingResponse responseModel = response.body();
                             if (responseModel.getStatusCode() == 200) {
-                                List<SecondLandingResponseModel.Data.BuyAndRent> buyAndRents = responseModel.getData().get(0).getBuyAndRent();
-                                List<SecondLandingResponseModel.Data.SellAndRentOut> sellAndRentOuts = responseModel.getData().get(0).getSellAndRentOut();
+
+                                List<SecondLandingResponse.DataEntity> dataEntityList = responseModel.getData();
                                 if (isForLeadUpdate) {
                                     int index = viewPager.getCurrentItem();
                                     ConnectedBrokersFragment fragment = viewPagerAdapter.getFragment(index);
 
-                                    String propertyId = "";
-                                    if (fragment.object instanceof SecondLandingResponseModel.Data.BuyAndRent) {
-                                        propertyId = ((SecondLandingResponseModel.Data.BuyAndRent) fragment.object).getPropertyId();
-                                        for (int i = 0; i < buyAndRents.size(); i++) {
-                                            if (buyAndRents.get(i).getPropertyId().equals(propertyId)) {
-                                                fragment.object = buyAndRents.get(i);
-                                                fragment.setDealGraph();
-                                                break;
-                                            }
-                                        }
-                                    } else if (fragment.object instanceof SecondLandingResponseModel.Data.SellAndRentOut) {
-                                        propertyId = ((SecondLandingResponseModel.Data.SellAndRentOut) fragment.object).getPropertyId();
-                                        for (int i = 0; i < sellAndRentOuts.size(); i++) {
-                                            if (buyAndRents.get(i).getPropertyId().equals(propertyId)) {
-                                                fragment.object = sellAndRentOuts.get(i);
-                                                fragment.setDealGraph();
-                                                break;
-                                            }
-                                        }
-                                    } else {
-                                        Log.e(TAG, "onResponse: Model Not matching with anything");
+                                    for (int i = 0; i < dataEntityList.size(); i++) {
+                                        fragment.object = dataEntityList.get(i);
+                                        fragment.setDealGraph2();
                                     }
                                 } else {
                                     viewPagerArrayList.clear();
-                                    viewPagerArrayList.addAll(buyAndRents);
-                                    viewPagerArrayList.addAll(sellAndRentOuts);
+                                    viewPagerArrayList.addAll(dataEntityList);
                                     viewPagerAdapter.notifyDataSetChanged();
-                                    if (buyAndRents.size() > 0 || sellAndRentOuts.size() > 0) {
+                                    if (dataEntityList.size() > 0) {
                                         pref.edit().putBoolean(AppConstants.PREFS.IS_SECOND, true).commit();
                                         showBrokerList(true);
                                     } else {
@@ -464,7 +445,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
                             JSONObject jObjError = new JSONObject(response.errorBody().string());
                             if ((jObjError.getString("message").equals("Invalid Access Token"))) {
                                 new Utils().getTokenRefresh(context, new TokenInputModel(headerPlatform, headerDeviceId, pref.getString(AppConstants.PREFS.USER_MOBILE_NO, "")));
-                                LoadBrokers(false);
+                                LoadBrokers2(false);
                             } else {
                                 Toast.makeText(context, jObjError.getString("message"), Toast.LENGTH_SHORT).show();
                                 showBrokerList(false);
@@ -478,7 +459,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
                 }
 
                 @Override
-                public void onFailure(Call<SecondLandingResponseModel> call, Throwable t) {
+                public void onFailure(Call<SecondLandingResponse> call, Throwable t) {
                     if (!isForLeadUpdate)
                         AllUtils.LoaderUtils.dismissLoader();
                     Toast.makeText(context, t.getMessage(), Toast.LENGTH_LONG).show();
@@ -556,7 +537,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
         if (isSecondLand) {
             showBrokerList(true);
             if (checkPermissionAllowed()) {
-                LoadBrokers(false);
+                LoadBrokers2(false);
             }
 
         } else {
@@ -654,7 +635,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
                 homePresenter.getChatCount();
                 homePresenter.getNotificationCount();
             } else if (AppConstants.SPECIFIC_PUSH.LEADS_UPDATE.equals(intent.getAction())) {
-                LoadBrokers(true);
+                LoadBrokers2(true);
             }
         }
     };
@@ -668,14 +649,14 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
 
     @Override
     public void ReloadBrokers() {
-        LoadBrokers(false);
+        LoadBrokers2(false);
     }
 
     @Override
     public void onTryReconnect() {
         switch (selectedTask) {
             case LOAD_BROKER: {
-                LoadBrokers(false);
+                LoadBrokers2(false);
                 break;
             }
             case LOAD_QUESTION: {

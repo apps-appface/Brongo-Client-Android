@@ -7,9 +7,17 @@ package com.turnipconsultants.brongo_client.models.RentAProperty;
 public class RentAPropertyCommercial {
     String clientMobileNo,postingType,subPropertyType,
             comments,preferredProjects,avoidProjects,requiredSquareFeet,
-            preferredFloor,propertyType,propertyStatus,reSquareFeetRange1,reSquareFeetRange2;
+            preferredFloor,propertyType,propertyStatus,reSquareFeetRange1,reSquareFeetRange2,microMarketId;
     double budgetRange1,budgetRange2;int commission;
     Area area;
+
+    public String getMicroMarketId() {
+        return microMarketId;
+    }
+
+    public void setMicroMarketId(String microMarketId) {
+        this.microMarketId = microMarketId;
+    }
 
     public String getReSquareFeetRange1() {
         return reSquareFeetRange1;

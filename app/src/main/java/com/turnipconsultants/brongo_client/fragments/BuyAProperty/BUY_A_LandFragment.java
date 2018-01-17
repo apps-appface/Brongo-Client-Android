@@ -17,7 +17,7 @@ public class BUY_A_LandFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v=inflater.inflate(R.layout.buy_a_land_fragment,container,false);
+        View v = inflater.inflate(R.layout.buy_a_land_fragment, container, false);
         return v;
     }
 
