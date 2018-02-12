@@ -3,45 +3,37 @@ package com.turnipconsultants.brongo_client.fragments.SellYourProperty;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.turnipconsultants.brongo_client.R;
+import com.turnipconsultants.brongo_client.adapters.LandRouterPagerAdapter;
 import com.turnipconsultants.brongo_client.fragments.BaseFragment;
+import com.turnipconsultants.brongo_client.others.Constants.AppConstants;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link SELL_Your_LandFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link SELL_Your_LandFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+
 public class SELL_Your_LandFragment extends BaseFragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
+    @BindView(R.id.viewPager)
+    ViewPager viewPager;
+
+    @BindView(R.id.tab_layout)
+    TabLayout tabLayout;
+
+    private LandRouterPagerAdapter adapter;
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    public SELL_Your_LandFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SELL_Your_LandFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static SELL_Your_LandFragment newInstance(String param1, String param2) {
         SELL_Your_LandFragment fragment = new SELL_Your_LandFragment();
         Bundle args = new Bundle();
@@ -63,37 +55,46 @@ public class SELL_Your_LandFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sell__your__land, container, false);
+        View v = inflater.inflate(R.layout.fragment_sell__your__land, container, false);
+        ButterKnife.bind(this, v);
+        setValues();
+        return v;
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-    }
+    private void setValues() {
+        tabLayout.addTab(tabLayout.newTab().setText("Commercial Zone"));
+        tabLayout.addTab(tabLayout.newTab().setText("Residential Zone"));
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        adapter = new LandRouterPagerAdapter(getChildFragmentManager(), AppConstants.PROPERTY.SELL_YOUR_PROPERTY, tabLayout.getTabCount());
+        viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 
     @Override
     public void OnReset() {
-
+        try {
+            BaseFragment fragment = adapter.getFragment(viewPager.getCurrentItem());
+            fragment.OnReset();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
+
 }

@@ -5,6 +5,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
@@ -17,6 +18,8 @@ import android.widget.RelativeLayout;
 
 import com.turnipconsultants.brongo_client.Listener.CommissionListenerFactory;
 import com.turnipconsultants.brongo_client.R;
+import com.turnipconsultants.brongo_client.activities.FeedbackActivity;
+import com.turnipconsultants.brongo_client.responseModels.SecondLandingResponse;
 
 /**
  * Created by Pankaj on 07-12-2017.
@@ -277,6 +280,31 @@ public class CommissionDialogFactory {
         });
 
         ImageView cancel=dialogBlock.findViewById(R.id.cancel);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogBlock.dismiss();
+            }
+        });
+
+        dialogBlock.show();
+    }
+
+    public static void showThankYouDialog(Context context) {
+        final Dialog dialogBlock = new Dialog(context, R.style.DialogTheme);
+        dialogBlock.setContentView(R.layout.thankyou_dialog_places);
+        dialogBlock.setCanceledOnTouchOutside(false);
+        dialogBlock.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
+        Button back = dialogBlock.findViewById(R.id.backbtn);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogBlock.dismiss();
+            }
+        });
+
+        ImageView cancel = dialogBlock.findViewById(R.id.cancel);
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

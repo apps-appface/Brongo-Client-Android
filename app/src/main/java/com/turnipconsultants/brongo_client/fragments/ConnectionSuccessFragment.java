@@ -5,12 +5,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.payu.magicretry.MainActivity;
 import com.turnipconsultants.brongo_client.R;
 import com.turnipconsultants.brongo_client.activities.HomeActivity;
 
@@ -103,6 +106,18 @@ public class ConnectionSuccessFragment extends Fragment {
             e.printStackTrace();
         }
         newGif.setImageDrawable(gifDrawable);
+
+        MediaPlayer ring = MediaPlayer.create(context, R.raw.check_mark);
+        ring.start();
+
+        /*final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                MediaPlayer ring = MediaPlayer.create(context, R.raw.check_mark);
+                ring.start();
+            }
+        }, 1300);*/
 
         return view;
     }

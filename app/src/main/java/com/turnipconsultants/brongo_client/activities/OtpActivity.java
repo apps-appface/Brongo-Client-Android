@@ -226,6 +226,8 @@ public class OtpActivity extends AppCompatActivity implements NoInternetTryConne
                                 pref.edit().putBoolean(AppConstants.PREFS.IS_SECOND, data.get(0).isHavingLeads()).commit();
                                 new Utils().getTokenRefresh(context, new TokenInputModel("android", Utils.getDeviceId(context), pref.getString(AppConstants.PREFS.USER_MOBILE_NO, "")));
                                 pref.edit().putBoolean(AppConstants.PREFS.LOGGED_IN, true).commit();
+                                Intent intent2 = new Intent(context, RegistrationIntentService.class);
+                                startService(intent2);
                                 LoginUsingApplozic();
                             } else {
                                 Toast.makeText(context, responseModel.getMessage(), Toast.LENGTH_SHORT).show();
@@ -346,9 +348,6 @@ public class OtpActivity extends AppCompatActivity implements NoInternetTryConne
             public void onSuccess(RegistrationResponse registrationResponse, final Context context) {
                 mAuthTask = null;
                 AllUtils.LoaderUtils.dismissLoader();
-
-                Intent intent2 = new Intent(context, RegistrationIntentService.class);
-                startService(intent2);
 
                 if (MobiComUserPreference.getInstance(context).isRegistered()) {
 

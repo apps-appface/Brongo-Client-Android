@@ -43,7 +43,8 @@ public class FeedbackActivity extends AppCompatActivity implements FragmentBackL
             float rating = getIntent().getFloatExtra("rating", 0F);
             String pic = getIntent().getStringExtra("pic");
             String brokerMobileNo=getIntent().getStringExtra("brokerMobileNo");
-            FeedbackFragmentStage1 brokersListFragment = FeedbackFragmentStage1.newInstance(name, pic, rating,brokerMobileNo);
+            String propertyId=getIntent().getStringExtra("propertyId");
+            FeedbackFragmentStage1 brokersListFragment = FeedbackFragmentStage1.newInstance(name, pic, rating,brokerMobileNo,propertyId);
             AllUtils.FragmentUtils.addFragment(fm, fragmentContainer.getId(), brokersListFragment, FEEDBACK_STAGE1_FRAGMENT);
         } catch (Exception e) {
             e.printStackTrace();

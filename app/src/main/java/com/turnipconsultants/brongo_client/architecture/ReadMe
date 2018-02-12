@@ -1,0 +1,4 @@
+In architecture components,there is no need of creating viewmodel if we dont have to handle screen orienttion. The pattern can implemented using Livedata and repository. Pleae change all files
+And now the activity context is binded to the viewmodel which is a wrong way. please change it to application context to avoid memory leaks
+
+please try to do the dependency injection using dagger2

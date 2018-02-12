@@ -21,9 +21,11 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -162,6 +164,14 @@ public class MyProfileActivity extends AppCompatActivity implements View.OnClick
         save.setOnClickListener(this);
         scrollView.fullScroll(ScrollView.FOCUS_UP);
         getClientProfile();
+
+        hideProfile.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                save.setVisibility(View.VISIBLE);
+                return false;
+            }
+        });
     }
 
     private void setProfileValues() {

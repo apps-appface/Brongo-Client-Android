@@ -77,10 +77,23 @@
                 zhy:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
 
             <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:id="@+id/different_locations_TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/popular_locations_FL"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Looking for different location?"
+                android:textColor="@color/diff_loc"
+                android:textSize="@dimen/content_size"
+                android:textStyle="normal" />
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
                 android:id="@+id/property_types_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/popular_locations_FL"
+                android:layout_below="@id/different_locations_TV"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:text="Select Property Types"
@@ -367,32 +380,93 @@
 
             </RelativeLayout>
 
-            <ImageView
-                android:id="@+id/img1"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/property_picture_TV"
-                android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_toRightOf="@id/select_picture_RL" />
+                android:layout_toRightOf="@id/select_picture_RL">
 
-            <ImageView
-                android:id="@+id/img2"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_below="@id/property_picture_TV"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_toRightOf="@id/img1" />
+                <FrameLayout
+                    android:id="@+id/fl1"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="20dp">
 
-            <ImageView
-                android:id="@+id/img3"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_below="@id/property_picture_TV"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_toRightOf="@id/img2" />
+                    <ImageView
+                        android:id="@+id/cancel1"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:adjustViewBounds="false"
+                        android:elevation="20dp"
+                        android:visibility="gone"
+                        android:src="@drawable/cancel" />
+
+                    <ImageView
+                        android:id="@+id/img1"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="20dp"
+                        android:scaleType="fitXY" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/fl2"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/fl1">
+
+                    <ImageView
+                        android:id="@+id/cancel2"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:adjustViewBounds="false"
+                        android:elevation="20dp"
+                        android:visibility="gone"
+                        android:src="@drawable/cancel" />
+
+                    <ImageView
+                        android:id="@+id/img2"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="20dp"
+                        android:scaleType="fitXY" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/fl3"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/fl2">
+
+                    <ImageView
+                        android:id="@+id/cancel3"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:adjustViewBounds="false"
+                        android:elevation="20dp"
+                        android:visibility="gone"
+                        android:src="@drawable/cancel" />
+
+                    <ImageView
+                        android:id="@+id/img3"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="20dp"
+                        android:scaleType="fitXY" />
+                </FrameLayout>
+            </RelativeLayout>
 
             <EditText
                 android:id="@+id/other_req_ET"

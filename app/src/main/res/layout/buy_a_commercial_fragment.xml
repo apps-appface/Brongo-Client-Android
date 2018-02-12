@@ -76,10 +76,23 @@
 
             <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
                 android:textStyle="normal"
+                android:id="@+id/different_locations_TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/popular_locations_FL"
+                android:text="Looking for different location?"
+                android:textColor="@color/diff_loc"
+                android:textSize="@dimen/content_size" />
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                android:textStyle="normal"
                 android:id="@+id/property_types_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/popular_locations_FL"
+                android:layout_below="@id/different_locations_TV"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:text="Select Property Types"

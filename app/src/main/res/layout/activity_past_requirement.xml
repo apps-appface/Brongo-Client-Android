@@ -11,18 +11,21 @@
         android:id="@+id/appBar"
         layout="@layout/app_bar_main" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/pastReqRV"
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appBar"
+        android:background="@color/appPrimaryBlue"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:tabIndicatorColor="@color/appYellow"
+        app:tabSelectedTextColor="@color/appYellow"
+        app:tabTextColor="@color/appTabText" />
 
-    <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
-        android:id="@+id/noDataBTV"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="No Past Requirements Available"
-        android:textColor="@color/appPrimaryBlue"
-        android:textStyle="normal"
-        android:visibility="gone" />
+        android:layout_below="@id/tab_layout" />
 </LinearLayout>

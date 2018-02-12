@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
@@ -25,10 +26,12 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView;
 import com.turnipconsultants.brongo_client.CustomWidgets.GifView;
 import com.turnipconsultants.brongo_client.Listener.NoInternetTryConnectListener;
 import com.turnipconsultants.brongo_client.Listener.RetryPaymentListener;
 import com.turnipconsultants.brongo_client.R;
+import com.turnipconsultants.brongo_client.activities.PaymentSubscriptionActivity;
 import com.turnipconsultants.brongo_client.models.BudgetRangeModel;
 
 import java.text.DecimalFormat;
@@ -107,6 +110,7 @@ public class AllUtils {
             GifView check_mark_GV = dialog.findViewById(R.id.check_mark_GV);
             check_mark_GV.setGifResource(R.drawable.loader);
             check_mark_GV.play();
+            Log.e("Loader", context.getClass().getSimpleName());
         }
 
         public static void dismissLoader() {
@@ -166,7 +170,7 @@ public class AllUtils {
             dialogBlock.show();
         }
 
-        public static void PaymentSuccessDialog(final Context context) {
+        public static void PaymentSuccessDialog(final Context context, final RetryPaymentListener retryPaymentListener) {
             final Dialog dialogBlock = new Dialog(context, R.style.DialogTheme);
             dialogBlock.setContentView(R.layout.payment_success);
             dialogBlock.setCanceledOnTouchOutside(false);
@@ -177,7 +181,8 @@ public class AllUtils {
                 @Override
                 public void onClick(View view) {
                     dialogBlock.dismiss();
-
+                    if (retryPaymentListener != null)
+                        retryPaymentListener.paymentSuccess();
                 }
             });
 
@@ -356,5 +361,37 @@ public class AllUtils {
         } catch (PackageManager.NameNotFoundException e) {
             return false;
         }
+    }
+
+    public static void showMaxRequestReached(final Context context, String message, final RequestReachedListener listener) {
+        final Dialog dialogBlock = new Dialog(context, R.style.DialogTheme);
+        dialogBlock.setContentView(R.layout.thankyou_dialog);
+        dialogBlock.setCanceledOnTouchOutside(false);
+        dialogBlock.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        BrongoTextView textView = dialogBlock.findViewById(R.id.thankyoutv);
+        textView.setText(message + " Please Subscribe.");
+        Button back = dialogBlock.findViewById(R.id.backbtn);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogBlock.dismiss();
+                listener.onRequestReached();
+            }
+        });
+
+        ImageView cancel = dialogBlock.findViewById(R.id.cancel);
+        cancel.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialogBlock.dismiss();
+                    }
+                });
+
+        dialogBlock.show();
+    }
+
+    public interface RequestReachedListener {
+        void onRequestReached();
     }
 }

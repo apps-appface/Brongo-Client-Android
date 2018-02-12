@@ -63,7 +63,7 @@ public class RequirementsDetailsActivity extends AppCompatActivity implements Re
     private Object object;
     private DecimalFormat df = new DecimalFormat("#.##");
     private RequirementsPresenterImpl requirementsPresenter;
-    private String propertyId, postingType, propertyType, brokerNo, clientNo;
+    private String propertyId, postingType, propertyType, brokerNo, clientNo,subPropertyType;
     private SharedPreferences pref;
     private String headerToken, headerDeviceId, headerPlatform;
 
@@ -98,12 +98,14 @@ public class RequirementsDetailsActivity extends AppCompatActivity implements Re
         propertyType = getIntent().getStringExtra("propertyType");
         brokerNo = getIntent().getStringExtra("brokerNo");
         clientNo = getIntent().getStringExtra("clientNo");
+        subPropertyType=getIntent().getStringExtra("subPropertyType");
         AcceptedBrokersInputModel model = new AcceptedBrokersInputModel();
         model.setPropertyId(propertyId);
         model.setPostingType(postingType);
         model.setPropertyType(propertyType);
         model.setClientMobileNo(clientNo);
         model.setBrokerMobileNo(brokerNo);
+        model.setSubPropertyType(subPropertyType);
         requirementsPresenter.getAllRequirements(headerToken, headerPlatform, headerDeviceId, model);
     }
 

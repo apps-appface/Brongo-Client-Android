@@ -12,6 +12,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +35,7 @@ import com.payu.india.Model.PaymentParams;
 import com.payu.india.Model.PayuConfig;
 import com.payu.india.Model.PayuHashes;
 import com.payu.india.Payu.PayuConstants;
+import com.payu.magicretry.MainActivity;
 import com.payu.payuui.Activity.PayUBaseActivity;
 import com.turnipconsultants.brongo_client.BrongoClientApplication;
 import com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView;
@@ -80,6 +82,8 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -192,7 +196,25 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
     Button feedbackBTN;
 
     @BindView(R.id.payoffline)
-    Button payoffline;
+    BrongoTextView payoffline;
+
+    @BindView(R.id.noBtn)
+    Button noBtn;
+
+    @BindView(R.id.yesBtn)
+    Button yesBtn;
+
+    @BindView(R.id.message)
+    BrongoTextView dealClosedMessage;
+
+    @BindView(R.id.dealClosedCard)
+    CardView dealClosedCard;
+
+    @BindView(R.id.card_deal_status)
+    CardView cardDealStatus;
+
+    @BindView(R.id.showMap)
+    BrongoTextView showMap;
 
     private DecimalFormat df = new DecimalFormat("#.##");
 
@@ -216,6 +238,17 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
         args.putString(WHICH_PAGE, whichPage);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    private static final String POSITON = "position";
+    private static final String SCALE = "scale";
+
+    public static Fragment newInstance(MainActivity context, int pos, float scale) {
+        Bundle b = new Bundle();
+        b.putInt(POSITON, pos);
+        b.putFloat(SCALE, scale);
+
+        return Fragment.instantiate(context, ConnectedBrokersFragment.class.getName(), b);
     }
 
     @Override
@@ -262,14 +295,19 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
                 case AppConstants.VISIBILITY_PAGE.SECOND_TIME_ACTIVITY:
                     secondTimeLandingLL.setVisibility(View.VISIBLE);
                     getConnectedLL.setVisibility(View.VISIBLE);
-                    if (dataEntity.getMeetingLocation().isEmpty()) {
+                    if (dataEntity.getMeetAt().isEmpty()) {
                         projectLocation.setText("No Meetings Scheduled Yet");
                         date.setText("N/A");
                         time.setText("N/A");
                     } else {
-                        projectLocation.setText(dataEntity.getMeetingLocation());
-                        date.setText(df.format(dataEntity.getDateOfVisit()));
-                        time.setText(df.format(dataEntity.getTimeOfVisit()));
+                        projectLocation.setText(dataEntity.getMeetAt());
+                        date.setText(dataEntity.getDateOfVisit());
+                        time.setText(dataEntity.getTimeOfVisit());
+                        if (dataEntity.getLatLong().size() != 0) {
+                            showMap.setVisibility(View.VISIBLE);
+                        } else {
+                            showMap.setVisibility(View.GONE);
+                        }
                     }
                     break;
             }
@@ -329,45 +367,87 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
             List<String> completedStatus = dataEntity.getCompletedStatus();
             List<String> pendingStatus = dataEntity.getRemainingStatus();
             ArrayList<Object> allList = new ArrayList<>();
-            if (completedStatus.size() == 0) {                                                          // Show Only Pending
-                allList.addAll(dataEntity.getRemainingStatus());
-                dealStatusList.addView(TimeLineUtil.getRedOne(context, allList));
-            } else if (pendingStatus.size() == 0) {                                                     // Show Only Completed
+
+            if (completedStatus.size() != 0) {                                                                              // Show Both Merged
+                for (int i = 0; i < completedStatus.size(); i++) {
+                    allList.add(new DealStatusCompleted(completedStatus.get(i), dataEntity.getStatusUpdatedTimes().get(i)));
+                }
+                challengeStatus.setVisibility(View.VISIBLE);
+            } else {
+                challengeStatus.setVisibility(View.GONE);
+            }
+
+            if (pendingStatus.size() > 1) {
+                allList.add(new DealStatusCompleted(dataEntity.getRemainingStatus().get(0), dataEntity.getStatusUpdatedTimes().get(0)));
+                for (int i = 1; i < pendingStatus.size(); i++) {
+                    allList.add(dataEntity.getRemainingStatus().get(i));
+                }
+                dealStatusList.addView(TimeLineUtil.getMergedOne(context, allList));
+            } else if (pendingStatus.size() == 1) {
+                allList.add(new DealStatusCompleted(dataEntity.getRemainingStatus().get(0), dataEntity.getStatusUpdatedTimes().get(0)));
+                dealStatusList.addView(TimeLineUtil.getGreenOne(context, allList));
+
+            } else {
                 for (int i = 0; i < completedStatus.size(); i++) {
                     allList.add(new DealStatusCompleted(completedStatus.get(i), dataEntity.getStatusUpdatedTimes().get(i)));
                 }
                 dealStatusList.addView(TimeLineUtil.getGreenOne(context, allList));
-            } else {                                                                                    // Show Both Merged
-                for (int i = 0; i < completedStatus.size(); i++) {
-                    allList.add(new DealStatusCompleted(completedStatus.get(i), dataEntity.getStatusUpdatedTimes().get(i)));
-                }
-                allList.addAll(dataEntity.getRemainingStatus());
-                dealStatusList.addView(TimeLineUtil.getMergedOne(context, allList));
             }
 
-            if (pendingStatus.size() == 1) {
-                dealClosedRL.setVisibility(View.VISIBLE);
-                feedbackBTN.setVisibility(View.VISIBLE);
-                if (dataEntity.getPostingType().equals("BUY") || dataEntity.getPostingType().equals("SELL")) {
-                    payoffline.setVisibility(View.VISIBLE);
-                    paymentBTN.setVisibility(View.GONE);
+            paymentBTN.setVisibility(View.GONE);
+            dealClosedCard.setVisibility(View.GONE);
+            cardDealStatus.setVisibility(View.VISIBLE);
+            dealClosedRL.setVisibility(View.VISIBLE);
+
+            if (pendingStatus.size() < 3) {
+                dropDeal.setVisibility(View.GONE);
+                if (!dataEntity.isClientRated()) {
+                    feedbackBTN.setVisibility(View.VISIBLE);
                 } else {
-                    payoffline.setVisibility(View.GONE);
-                    paymentBTN.setVisibility(View.VISIBLE);
+                    feedbackBTN.setVisibility(View.GONE);
                 }
+
+                if (dataEntity.getPostingType().equals("RENT") || dataEntity.getPostingType().equals("RENT_OUT")) {
+                    if (!dataEntity.isPayed() || !dataEntity.isClientRated()) {
+                        dealClosedCard.setVisibility(View.VISIBLE);
+                        dealClosedMessage.setText("Your broker " + dataEntity.getBrokerName() + " has claimed that thedeal is closed.");
+                        cardDealStatus.setVisibility(View.GONE);
+                    }
+                    if (!dataEntity.isPayed()) {
+                        paymentBTN.setVisibility(View.VISIBLE);
+                    }
+
+                } else {
+                    if (pendingStatus.size() < 2 && !dataEntity.isClientRated()) {
+                        dealClosedCard.setVisibility(View.VISIBLE);
+                        cardDealStatus.setVisibility(View.GONE);
+                    }
+                }
+
             } else {
-                dealClosedRL.setVisibility(View.VISIBLE);
-                feedbackBTN.setVisibility(View.INVISIBLE);
-                if (dataEntity.getPostingType().equals("BUY") || dataEntity.getPostingType().equals("SELL")) {
-                    payoffline.setVisibility(View.VISIBLE);
-                    paymentBTN.setVisibility(View.GONE);
-                } else {
-                    payoffline.setVisibility(View.GONE);
-                    paymentBTN.setVisibility(View.VISIBLE);
-                }
+                dropDeal.setVisibility(View.VISIBLE);
             }
+
+            if (dataEntity.getPostingType().equals("BUY") || dataEntity.getPostingType().equals("SELL")) {
+                payoffline.setVisibility(View.VISIBLE);
+                paymentBTN.setVisibility(View.GONE);
+            } else {
+                payoffline.setVisibility(View.GONE);
+            }
+
         }
 
+    }
+
+    @OnClick(R.id.showMap)
+    public void openLocMap() {
+        SecondLandingResponse.DataEntity obj = (SecondLandingResponse.DataEntity) object;
+        if (obj.getLatLong().size() != 0) {
+            Uri gmmIntentUri = Uri.parse("geo:" + obj.getLatLong().get(0) + "," + obj.getLatLong().get(1) + "?q=" + obj.getLatLong().get(0) + "," + obj.getLatLong().get(1));
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+            mapIntent.setPackage("com.google.android.apps.maps");
+            startActivity(mapIntent);
+        }
     }
 
     @OnClick(R.id.detailstv)
@@ -379,11 +459,22 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
         intent.putExtra("postingType", obj.getPostingType());
         intent.putExtra("propertyId", obj.getPropertyId());
         intent.putExtra("propertyType", obj.getPropertyType());
+        intent.putExtra("subPropertyType", obj.getSubPropertyType());
         startActivity(intent);
     }
 
+    @OnClick(R.id.yesBtn)
+    public void closedDealYes() {
+        SecondLandingResponse.DataEntity dataEntity = (SecondLandingResponse.DataEntity) object;
+        if (!dataEntity.isPayed()) {
+            MakePayment();
+        } else {
+            GiveFeedBack();
+        }
+    }
+
     @OnClick(R.id.make_payment_BTN)
-    public void MakePayment(Button button) {
+    public void MakePayment() {
         selectedTask = TASK.MAKE_PAYMENT;
         if (InternetConnection.isNetworkAvailable(context)) {
             final String baseUrl = "http://13.59.8.173:8080/QuickBroker/client";
@@ -406,12 +497,14 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
             PaymentHashModel paymentHashModel = new PaymentHashModel();
             paymentHashModel.setAmount("1");
             paymentHashModel.setFirstname(firstName);
-            paymentHashModel.setProductInfo(postingType);
+            paymentHashModel.setProductInfo("Brongo_Client");
             paymentHashModel.setEmail(email);
             paymentHashModel.setMobileNo(userMobileNo);
-            paymentHashModel.setPropertyId(propertyId);
+            paymentHashModel.setPaymentId(propertyId);
             paymentHashModel.setBrokerMobileNo(brokerNo);
-            paymentHashModel.setPaymentMode("Development");
+            paymentHashModel.setPaymentMode("DEAL");
+            paymentHashModel.setIsDevelopment(1);
+            paymentHashModel.setUserType("CLIENT");
 
             AllUtils.LoaderUtils.showLoader(context);
             RetrofitAPIs apiInstance = RetrofitBuilders.getInstance().getAPIService(RetrofitBuilders.getBaseUrl());
@@ -433,19 +526,19 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
                         paymentParams.setTxnId(data.get(0).getTxnid());
 
                         paymentParams.setAmount("1");
-                        paymentParams.setProductInfo(finalPostingType);
+                        paymentParams.setProductInfo("Brongo_Client");
                         paymentParams.setFirstName(firstName);
                         //paymentParams.setVpa(data.get(0).getVapsHash());
                         paymentParams.setEmail(email);
-                        paymentParams.setUdf1("");
-                        paymentParams.setUdf2("");
-                        paymentParams.setUdf3(finalBrokerNo);
-                        paymentParams.setUdf4(finalPropertyId);
+                        paymentParams.setUdf1(finalBrokerNo);
+                        paymentParams.setUdf2(finalPropertyId);
+                        paymentParams.setUdf3("DEAL");
+                        paymentParams.setUdf4("CLIENT");
                         paymentParams.setUdf5("");
                         paymentParams.setPhone(userMobileNo);
 
-                        paymentParams.setSurl(baseUrl + "/paymentStatus");
-                        paymentParams.setFurl(baseUrl + "/paymentStatus");
+                        paymentParams.setSurl(RetrofitBuilders.getBaseUrl() + "/paymentStatus");
+                        paymentParams.setFurl(RetrofitBuilders.getBaseUrl() + "/paymentStatus");
 
                         PayuHashes payuHashes = new PayuHashes();
                         payuHashes.setPaymentHash(data.get(0).getSha512());
@@ -458,8 +551,9 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
                         paymentParams.setUserCredentials(userMobileNo + ":Brongo_Client");
 
                         PayuConfig payuConfig = new PayuConfig();
-                        payuConfig.setEnvironment(PayuConstants.MOBILE_STAGING_ENV);
-                        //payuConfig.setEnvironment(PayuConstants.PRODUCTION_ENV);
+//                        payuConfig.setEnvironment(PayuConstants.MOBILE_STAGING_ENV);
+//                        payuConfig.setEnvironment(PayuConstants.PRODUCTION_ENV);
+                        payuConfig.setEnvironment(PayuConstants.STAGING_ENV);
 
                         Intent intent = new Intent(getActivity(), PayUBaseActivity.class);
                         intent.putExtra(PayuConstants.PAYU_CONFIG, payuConfig);
@@ -484,8 +578,8 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
     }
 
     @OnClick(R.id.give_feedback_BTN)
-    public void GiveFeedBack(Button button) {
-        String name = "", pic = "", brokerMobileNo = "";
+    public void GiveFeedBack() {
+        String name = "", pic = "", brokerMobileNo = "", propertyId = "";
         float rating = 0;
 
         if (object instanceof SecondLandingResponse.DataEntity) {
@@ -494,6 +588,7 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
             rating = (float) dataEntity.getRating();
             pic = dataEntity.getBrokerImage();
             brokerMobileNo = dataEntity.getBrokerMobileNo();
+            propertyId = dataEntity.getPropertyId();
         }
 
 
@@ -502,7 +597,8 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
         intent.putExtra("rating", rating);
         intent.putExtra("pic", pic);
         intent.putExtra("brokerMobileNo", brokerMobileNo);
-        startActivity(intent);
+        intent.putExtra("propertyId", propertyId);
+        startActivityForResult(intent, 110);
     }
 
     @OnClick(R.id.chatIV)
@@ -806,7 +902,7 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
             public void onClick(View view) {
                 dialogBlock.dismiss();
                 brokerListener.ReloadBrokers();
-                String brokerName = "", brokerImage = "", brokerMobileNo = "";
+                String brokerName = "", brokerImage = "", brokerMobileNo = "", propertyId = "";
                 float brokerRating = 0.0F;
 
                 if (object instanceof SecondLandingResponse.DataEntity) {
@@ -815,26 +911,123 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
                     brokerImage = dataEntity.getBrokerImage();
                     brokerRating = (float) dataEntity.getRating();
                     brokerMobileNo = dataEntity.getBrokerMobileNo();
+                    propertyId = dataEntity.getPropertyId();
                 }
 
+                AllUtils.LoaderUtils.dismissLoader();
                 Intent intent = new Intent(context, FeedbackActivity.class);
                 intent.putExtra("name", brokerName);
                 intent.putExtra("rating", brokerRating);
                 intent.putExtra("pic", brokerImage);
                 intent.putExtra("brokerMobileNo", brokerMobileNo);
-                startActivity(intent);
+                intent.putExtra("propertyId", propertyId);
+                startActivityForResult(intent, 110);
             }
         });
 
         ImageView cancel = dialogBlock.findViewById(R.id.cancel);
-        cancel.setOnClickListener(new View.OnClickListener() {
+        cancel.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialogBlock.dismiss();
+                    }
+                });
+
+        dialogBlock.show();
+    }
+
+    private void showConnectToNewBrokerDialog() {
+        final Dialog dialogBlock = new Dialog(context, R.style.DialogTheme);
+        dialogBlock.setContentView(R.layout.popup_dialog_two_btn);
+        dialogBlock.setCanceledOnTouchOutside(false);
+        dialogBlock.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        TextView message = dialogBlock.findViewById(R.id.thankyoutv);
+        message.setText("Would you like to work with new broker ?");
+        Button yes = dialogBlock.findViewById(R.id.yes);
+        yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dialogBlock.dismiss();
+                connectToNewBrok();
             }
         });
 
+        Button no = dialogBlock.findViewById(R.id.no);
+        no.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogBlock.dismiss();
+                brokerListener.ReloadBrokers();
+            }
+        });
+
+        ImageView cancel = dialogBlock.findViewById(R.id.cancel);
+        cancel.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialogBlock.dismiss();
+                        brokerListener.ReloadBrokers();
+                    }
+                });
+
         dialogBlock.show();
+    }
+
+    private void connectToNewBrok() {
+        headerDeviceId = Utils.getDeviceId(context);
+        headerPlatform = "android";
+        headerToken = pref.getString("token", "");
+        if (InternetConnection.isNetworkAvailable(context)) {
+            AllUtils.LoaderUtils.showLoader(context);
+            RetrofitAPIs apiInstance = RetrofitBuilders.getInstance().getAPIService(RetrofitBuilders.getBaseUrl());
+            Call<GeneralApiResponseModel> call = apiInstance.connectToNewBroker(headerToken, headerPlatform, headerDeviceId, getModel());
+            call.enqueue(new Callback<GeneralApiResponseModel>() {
+                @Override
+                public void onResponse(Call<GeneralApiResponseModel> call, Response<GeneralApiResponseModel> response) {
+                    AllUtils.LoaderUtils.dismissLoader();
+                    if (response != null && response.isSuccessful()) {
+                        GeneralApiResponseModel responseModel = response.body();
+                        if (responseModel.getStatusCode() == 200) {
+                            Toast.makeText(context, responseModel.getMessage(), Toast.LENGTH_SHORT).show();
+                            brokerListener.ReloadBrokers();
+                        }
+                    } else {
+                        try {
+                            JSONObject jObjError = new JSONObject(response.errorBody().string());
+                            if ((jObjError.getString("message").equals("Invalid Access Token"))) {
+                                new Utils().getTokenRefresh(context, new TokenInputModel(headerPlatform, headerDeviceId, pref.getString(AppConstants.PREFS.USER_MOBILE_NO, "")));
+                                connectToNewBrok();
+                            } else {
+                                Toast.makeText(context, "Please Try Again", Toast.LENGTH_SHORT).show();
+                            }
+                            Log.e("error", response.errorBody().string());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<GeneralApiResponseModel> call, Throwable t) {
+                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_LONG).show();
+                    AllUtils.LoaderUtils.dismissLoader();
+                }
+            });
+        } else {
+            AllUtils.DialogUtils.NoInternetDialog(context, (NoInternetTryConnectListener) context);
+        }
+    }
+
+    private AcceptedBrokersInputModel getModel() {
+        SecondLandingResponse.DataEntity dataEntity = (SecondLandingResponse.DataEntity) object;
+        AcceptedBrokersInputModel model = new AcceptedBrokersInputModel();
+        model.setPropertyId(dataEntity.getPropertyId());
+        model.setPostingType(dataEntity.getPostingType());
+        model.setClientMobileNo(pref.getString(AppConstants.PREFS.USER_MOBILE_NO, ""));
+        model.setBrokerMobileNo(dataEntity.getBrokerMobileNo());
+        return model;
     }
 
     private void getBrongoQuestionsApi(final String propertyId, final String brokerNo, final String postingType) {
@@ -1024,6 +1217,11 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
     }
 
     @Override
+    public void paymentSuccess() {
+        brokerListener.ReloadBrokers();
+    }
+
+    @Override
     public void onTryReconnect() {
 
         switch (selectedTask) {
@@ -1058,7 +1256,6 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
         }
     }
 
-    
 
     public interface BrokerListener {
         void ReloadBrokers();
@@ -1081,7 +1278,7 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
                     if (result != null) {
                         switch (result) {
                             case "success":
-                                AllUtils.DialogUtils.PaymentSuccessDialog(context);
+                                AllUtils.DialogUtils.PaymentSuccessDialog(context, this);
                                 break;
                             case "failure":
                                 AllUtils.DialogUtils.PaymentFailedDialog(context, this);
@@ -1096,8 +1293,15 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
             } else {
                 AllUtils.DialogUtils.PaymentErrorDialog(context, this);
             }
-        } else {
+        } else if (requestCode != 110) {
             AllUtils.DialogUtils.PaymentErrorDialog(context, this);
+        }
+
+        if (requestCode == 110 && resultCode == RESULT_OK) {
+            if (data.getIntExtra("statusCode", 0) == 200) {
+//                brokerListener.ReloadBrokers();
+                showConnectToNewBrokerDialog();
+            }
         }
     }
 }

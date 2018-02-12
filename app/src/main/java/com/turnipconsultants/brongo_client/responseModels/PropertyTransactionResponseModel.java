@@ -2,9 +2,12 @@ package com.turnipconsultants.brongo_client.responseModels;
 
 import java.util.List;
 
+import javax.inject.Singleton;
+
 /**
  * Created by mohit on 27-09-2017.
  */
+
 
 public class PropertyTransactionResponseModel {
     private String message;
@@ -35,10 +38,10 @@ public class PropertyTransactionResponseModel {
         this.data = data;
     }
 
-    public class DataEntity {
-        private String clientMobileNo;
-        private String propertyId;
-        private String postingType;
+    public static class DataEntity {
+         String clientMobileNo;
+        String propertyId;
+         String postingType;
 
         public String getClientMobileNo() {
             return clientMobileNo;

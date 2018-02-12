@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 
 import com.applozic.mobicomkit.api.conversation.database.MessageDatabaseService;
 import com.turnipconsultants.brongo_client.BrongoClientApplication;
+import com.turnipconsultants.brongo_client.others.AllUtils.AllUtils;
 import com.turnipconsultants.brongo_client.responseModels.FetchMicroMarketResponse;
 import com.turnipconsultants.brongo_client.responseModels.ProfileResponseModel;
 import com.turnipconsultants.brongo_client.others.Constants.AppConstants;
@@ -22,6 +23,7 @@ import retrofit2.Response;
  */
 
 public class HomePresenterImpl implements HomePresenter {
+
     private HomeView homeView;
     private Context context;
 
@@ -68,6 +70,7 @@ public class HomePresenterImpl implements HomePresenter {
                 public void onResponse(Call<ProfileResponseModel> call, Response<ProfileResponseModel> response) {
 
                     try {
+
                         if (response != null && response.isSuccessful()) {
                             ProfileResponseModel dataEntity = response.body();
                             homeView.setNotificationCount(dataEntity.getData().get(0).getNotificationBadge());

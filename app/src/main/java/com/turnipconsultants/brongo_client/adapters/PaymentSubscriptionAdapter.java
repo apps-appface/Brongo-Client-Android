@@ -29,6 +29,7 @@ public class PaymentSubscriptionAdapter extends RecyclerView.Adapter<RecyclerVie
 
     private List<SubscriptionModel> arrayList;
     private Context context;
+    private BuyClickListener listener;
 
     public class Type1Holder extends RecyclerView.ViewHolder {
         @BindView(R.id.line1)
@@ -69,6 +70,7 @@ public class PaymentSubscriptionAdapter extends RecyclerView.Adapter<RecyclerVie
     public PaymentSubscriptionAdapter(Context context, List<SubscriptionModel> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
+        listener = (BuyClickListener) context;
     }
 
     @Override
@@ -87,7 +89,7 @@ public class PaymentSubscriptionAdapter extends RecyclerView.Adapter<RecyclerVie
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         final SubscriptionModel subscriptionModel = arrayList.get(position);
         switch (arrayList.get(position).getType()) {
             case SINGLE_TYPE:
@@ -97,7 +99,8 @@ public class PaymentSubscriptionAdapter extends RecyclerView.Adapter<RecyclerVie
                 type1Holder.buyNow.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        AllUtils.ToastUtils.showToast(context, "You Clicked " + subscriptionModel.getLine2());
+//                        AllUtils.ToastUtils.showToast(context, "You Clicked " + subscriptionModel.getLine2());
+                        listener.onBuyClick(position);
                     }
                 });
 
@@ -113,7 +116,8 @@ public class PaymentSubscriptionAdapter extends RecyclerView.Adapter<RecyclerVie
                 type2Holder.buyNow.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        AllUtils.ToastUtils.showToast(context, "You Clicked " + subscriptionModel.getLine22());
+//                        AllUtils.ToastUtils.showToast(context, "You Clicked " + subscriptionModel.getLine22());
+                        listener.onBuyClick(position);
                     }
                 });
                 break;
@@ -142,5 +146,8 @@ public class PaymentSubscriptionAdapter extends RecyclerView.Adapter<RecyclerVie
         }
     }
 
+    public interface BuyClickListener {
+        void onBuyClick(int position);
+    }
 
 }

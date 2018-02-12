@@ -151,7 +151,8 @@
                 app:cardCornerRadius="5dp"
                 app:cardElevation="6dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp">
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp">
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -174,6 +175,18 @@
                         android:layout_marginRight="15dp"
                         android:layout_marginTop="10dp"
                         zhy:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
+
+                    <EditText
+                        android:id="@+id/other_comm_ET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/well_FL"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="20dp"
+                        android:hint="Any other comments"
+                        android:textColorHint="@color/appPrimaryFont"
+                        android:textSize="15sp" />
                 </RelativeLayout>
 
 

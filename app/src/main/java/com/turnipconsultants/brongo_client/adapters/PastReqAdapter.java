@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.turnipconsultants.brongo_client.BrongoClientApplication;
 import com.turnipconsultants.brongo_client.CustomWidgets.BrongoButton;
 import com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView;
 import com.turnipconsultants.brongo_client.R;
@@ -22,6 +24,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by Pankaj on 26-12-2017.
@@ -47,8 +50,17 @@ public class PastReqAdapter extends RecyclerView.Adapter<PastReqAdapter.PastReqV
         @BindView(R.id.property_detail_FL)
         TagFlowLayout propertyDetailFL;
 
-        @BindView(R.id.restartSearchBTN)
-        BrongoButton restartSearchBTN;
+//        @BindView(R.id.restartSearchBTN)
+//        BrongoButton restartSearchBTN;
+
+        @BindView(R.id.circImage)
+        CircleImageView circImage;
+
+        @BindView(R.id.time)
+        BrongoTextView date;
+
+        @BindView(R.id.property_Id)
+        BrongoTextView propertyId;
 
         public PastReqViewHolder(View view) {
             super(view);
@@ -74,29 +86,71 @@ public class PastReqAdapter extends RecyclerView.Adapter<PastReqAdapter.PastReqV
     @Override
     public void onBindViewHolder(final PastReqViewHolder holder, final int position) {
         PastRequirementResponse.DataEntity item = pastRequirementList.get(position);
-        holder.nameBTV.setText(item.getStatus().toUpperCase());
-        holder.postTypeBTV.setText(item.getPostingType() + "/" + AllUtils.StringUtilsBrongo.toCamelCase(item.getPropertyType()));
-        holder.commissionBTV.setText(item.getCommission() + "");
-        ArrayList<String> flowList = new ArrayList<>();
-        flowList.addAll(item.getProperty());
-
-        holder.propertyDetailFL.setAdapter(new TagAdapter<String>(flowList) {
-
-            @Override
-            public View getView(FlowLayout parent, int position, String s) {
-                TextView tv = (TextView) LayoutInflater.from(context).inflate(R.layout.second_tv,
-                        holder.propertyDetailFL, false);
-                tv.setText(s);
-                return tv;
+        if (item.getStatus().equals("Deal Closed")) {
+            holder.circImage.setVisibility(View.VISIBLE);
+            Glide.with(context)
+                    .load(item.getBrokerImage())
+                    .apply(BrongoClientApplication.getRequestOption(true))
+                    .into(holder.circImage);
+            holder.nameBTV.setText(item.getBrokerName().toUpperCase());
+            if (item.getPostingType().equals("BUY")) {
+                holder.postTypeBTV.setBackground(context.getResources().getDrawable(R.drawable.lead_type_buy));
+            } else if (item.getPostingType().equals("RENT")) {
+                holder.postTypeBTV.setBackground(context.getResources().getDrawable(R.drawable.lead_type_rent));
+            } else if (item.getPostingType().equals("SELL")) {
+                holder.postTypeBTV.setBackground(context.getResources().getDrawable(R.drawable.lead_type_sell));
+            } else if (item.getPostingType().equals("RENT_OUT")) {
+                holder.postTypeBTV.setBackground(context.getResources().getDrawable(R.drawable.lead_type_rentout));
             }
+            holder.postTypeBTV.setText(item.getPostingType() + "/" + AllUtils.StringUtilsBrongo.toCamelCase(item.getPropertyType()));
+            holder.commissionBTV.setText(item.getCommission() + "%");
+            holder.date.setText(item.getAddedTime());
 
-        });
-        holder.restartSearchBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AllUtils.ToastUtils.showToast(context, "" + position);
+            ArrayList<String> flowList = new ArrayList<>();
+            flowList.addAll(item.getProperty());
+
+            holder.propertyDetailFL.setAdapter(new TagAdapter<String>(flowList) {
+
+                @Override
+                public View getView(FlowLayout parent, int position, String s) {
+                    TextView tv = (TextView) LayoutInflater.from(context).inflate(R.layout.second_tv,
+                            holder.propertyDetailFL, false);
+                    tv.setText(s);
+                    return tv;
+                }
+
+            });
+        } else {
+            holder.circImage.setVisibility(View.GONE);
+            holder.nameBTV.setText(item.getStatus().toUpperCase());
+            if (item.getPostingType().equals("BUY")) {
+                holder.postTypeBTV.setBackground(context.getResources().getDrawable(R.drawable.lead_type_buy));
+            } else if (item.getPostingType().equals("RENT")) {
+                holder.postTypeBTV.setBackground(context.getResources().getDrawable(R.drawable.lead_type_rent));
+            } else if (item.getPostingType().equals("SELL")) {
+                holder.postTypeBTV.setBackground(context.getResources().getDrawable(R.drawable.lead_type_sell));
+            } else if (item.getPostingType().equals("RENT_OUT")) {
+                holder.postTypeBTV.setBackground(context.getResources().getDrawable(R.drawable.lead_type_rentout));
             }
-        });
+            holder.postTypeBTV.setText(item.getPostingType() + "/" + AllUtils.StringUtilsBrongo.toCamelCase(item.getPropertyType()));
+            holder.commissionBTV.setText(item.getCommission() + "%");
+            holder.date.setText(item.getAddedTime());
+
+            ArrayList<String> flowList = new ArrayList<>();
+            flowList.addAll(item.getProperty());
+
+            holder.propertyDetailFL.setAdapter(new TagAdapter<String>(flowList) {
+
+                @Override
+                public View getView(FlowLayout parent, int position, String s) {
+                    TextView tv = (TextView) LayoutInflater.from(context).inflate(R.layout.second_tv,
+                            holder.propertyDetailFL, false);
+                    tv.setText(s);
+                    return tv;
+                }
+
+            });
+        }
 
     }
 

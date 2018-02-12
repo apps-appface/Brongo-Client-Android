@@ -1,5 +1,6 @@
 package com.turnipconsultants.brongo_client.activities;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,17 +19,26 @@ import com.turnipconsultants.brongo_client.fragments.BaseFragment;
 import com.turnipconsultants.brongo_client.others.AllUtils.AllUtils;
 import com.turnipconsultants.brongo_client.others.Constants.AppConstants;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import dagger.android.AndroidInjection;
+import dagger.android.AndroidInjector;
+import dagger.android.DaggerActivity;
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.HasFragmentInjector;
+import dagger.android.support.DaggerAppCompatActivity;
+import dagger.android.support.HasSupportFragmentInjector;
 
 
 /**
  * Created by mohit on 18-09-2017.
  */
 
-public class PropertyRouterActivity extends AppCompatActivity {
+public class PropertyRouterActivity extends AppCompatActivity implements HasFragmentInjector,HasSupportFragmentInjector {
     @BindView(R.id.back)
     ImageView back;
     @BindView(R.id.title)
@@ -51,6 +61,7 @@ public class PropertyRouterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buyproperty);
         unbinder = ButterKnife.bind(this);
@@ -68,7 +79,7 @@ public class PropertyRouterActivity extends AppCompatActivity {
                 toolBarTitle.setText("RENT A PROPERTY");
                 tabLayout.addTab(tabLayout.newTab().setText("Residential"));
                 tabLayout.addTab(tabLayout.newTab().setText("Commercial"));
-                tabLayout.addTab(tabLayout.newTab().setText("Land"));
+//                tabLayout.addTab(tabLayout.newTab().setText("Land"));
                 break;
             case AppConstants.PROPERTY.SELL_YOUR_PROPERTY:
                 toolBarTitle.setText("SELL YOUR PROPERTY");
@@ -80,7 +91,7 @@ public class PropertyRouterActivity extends AppCompatActivity {
                 toolBarTitle.setText("RENT YOUR PROPERTY");
                 tabLayout.addTab(tabLayout.newTab().setText("Residential"));
                 tabLayout.addTab(tabLayout.newTab().setText("Commercial"));
-                tabLayout.addTab(tabLayout.newTab().setText("Land"));
+//                tabLayout.addTab(tabLayout.newTab().setText("Land"));
                 break;
         }
 
@@ -132,5 +143,19 @@ public class PropertyRouterActivity extends AppCompatActivity {
         super.onDestroy();
         if (unbinder != null)
             unbinder.unbind();
+    }
+
+    @Inject
+    DispatchingAndroidInjector<Fragment> fragmentInjector;
+    @Inject
+    DispatchingAndroidInjector<android.support.v4.app.Fragment> frameworkFragmentInjector;
+    @Override
+    public AndroidInjector<Fragment> fragmentInjector() {
+        return fragmentInjector;
+    }
+
+    @Override
+    public AndroidInjector<android.support.v4.app.Fragment> supportFragmentInjector() {
+        return frameworkFragmentInjector;
     }
 }

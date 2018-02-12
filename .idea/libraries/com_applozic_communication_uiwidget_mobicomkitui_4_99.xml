@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="com.applozic.communication.uiwidget:mobicomkitui-4.99">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/mobicomkitui-4.99.aar/bbc96402bd13e5b67f0664b958f3ecbd/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/mobicomkitui-4.99.aar/bbc96402bd13e5b67f0664b958f3ecbd/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/mobicomkitui-4.99.aar/7efb35a68e0f112f9f1627b4840b1fd3/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/mobicomkitui-4.99.aar/7efb35a68e0f112f9f1627b4840b1fd3/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

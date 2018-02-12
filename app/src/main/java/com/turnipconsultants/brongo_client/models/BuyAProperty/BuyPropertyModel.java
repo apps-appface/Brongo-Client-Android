@@ -8,11 +8,61 @@ public class BuyPropertyModel {
     String clientMobileNo, subPropertyType,
             plotSize, budget, orientation, comments, propertyType, propertyStatus,
             requiredSquareFeet, preferredFloors, bedRoomType, postingType,
-            reSquareFeetRange1, reSquareFeetRange2, amenities,carParking,microMarketId;
+            reSquareFeetRange1, reSquareFeetRange2, amenities,carParking,microMarketId,landType,plotType;
+    private String uRoadFacing;
+    private String wRoadFacing,plotSizeRange1,plotSizeRange2;
     double budgetRange1,
             budgetRange2;
     float commission;
     Area area;
+
+    public String getLandType() {
+        return landType;
+    }
+
+    public void setLandType(String landType) {
+        this.landType = landType;
+    }
+
+    public String getPlotType() {
+        return plotType;
+    }
+
+    public void setPlotType(String plotType) {
+        this.plotType = plotType;
+    }
+
+    public String getPlotSizeRange1() {
+        return plotSizeRange1;
+    }
+
+    public void setPlotSizeRange1(String plotSizeRange1) {
+        this.plotSizeRange1 = plotSizeRange1;
+    }
+
+    public String getPlotSizeRange2() {
+        return plotSizeRange2;
+    }
+
+    public void setPlotSizeRange2(String plotSizeRange2) {
+        this.plotSizeRange2 = plotSizeRange2;
+    }
+
+    public String getuRoadFacing() {
+        return uRoadFacing;
+    }
+
+    public void setuRoadFacing(String uRoadFacing) {
+        this.uRoadFacing = uRoadFacing;
+    }
+
+    public String getwRoadFacing() {
+        return wRoadFacing;
+    }
+
+    public void setwRoadFacing(String wRoadFacing) {
+        this.wRoadFacing = wRoadFacing;
+    }
 
     public String getMicroMarketId() {
         return microMarketId;

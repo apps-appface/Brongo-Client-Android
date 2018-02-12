@@ -1,5 +1,6 @@
 package com.turnipconsultants.brongo_client.others;
 
+import com.turnipconsultants.brongo_client.responseModels.FeedBackQueResponse;
 import com.turnipconsultants.brongo_client.responseModels.PastRequirementResponse;
 import com.turnipconsultants.brongo_client.models.AcceptedBrokersInputModel;
 import com.turnipconsultants.brongo_client.models.DeviceInfoInputModel;
@@ -13,6 +14,7 @@ import com.turnipconsultants.brongo_client.responseModels.AllRequirementsRespons
 import com.turnipconsultants.brongo_client.responseModels.BrokerRatingResponseModel;
 import com.turnipconsultants.brongo_client.responseModels.BrokersCountModel;
 import com.turnipconsultants.brongo_client.responseModels.FetchMicroMarketResponse;
+import com.turnipconsultants.brongo_client.responseModels.PaymentSubscriptionResponse;
 import com.turnipconsultants.brongo_client.responseModels.PropertyTransactionResponseModel;
 import com.turnipconsultants.brongo_client.responseModels.DeviceInfo;
 import com.turnipconsultants.brongo_client.responseModels.GeneralApiResponseModel;
@@ -113,14 +115,20 @@ public interface RetrofitAPIs {
     @GET("/Brongo/client/call")
     Call<KnowlarityApiResponseModel> getKnowlarityCall(@Query("from") String from, @Query("to") String to);
 
-    @GET("/Brongo/client/activeLeads")
-    Call<PastRequirementResponse> getPastRequirementData(@Header("accessToken") String accessToken, @Header("platform") String platform, @Header("deviceId") String deviceId, @Query("mobileNo") String mobileNo, @Query("onlyConnected") boolean onlyConnected);
+//    @GET("/Brongo/client/activeLeads")
+//    Call<PastRequirementResponse> getPastRequirementData(@Header("accessToken") String accessToken, @Header("platform") String platform, @Header("deviceId") String deviceId, @Query("mobileNo") String mobileNo, @Query("onlyConnected") boolean onlyConnected);
 
-    @GET("/Brongo/client/activeLeads")
-    Call<SecondLandingResponseModel> getPostedLeadsData(@Header("accessToken") String accessToken, @Header("platform") String platform, @Header("deviceId") String deviceId, @Query("mobileNo") String mobileNo, @Query("onlyConnected") String onlyConnected);
+    @GET("/Brongo/client/activeDeals")
+    Call<PastRequirementResponse> getPastRequirementData(@Header("accessToken") String accessToken, @Header("platform") String platform, @Header("deviceId") String deviceId, @Query("mobileNo") String mobileNo, @Query("dealType") String dealType);
 
-    @GET("/Brongo/client/activeLeads")
-    Call<SecondLandingResponse> getPostedLeadsData2(@Header("accessToken") String accessToken, @Header("platform") String platform, @Header("deviceId") String deviceId, @Query("mobileNo") String mobileNo, @Query("onlyConnected") String onlyConnected);
+//    @GET("/Brongo/client/activeLeads")
+//    Call<SecondLandingResponseModel> getPostedLeadsData(@Header("accessToken") String accessToken, @Header("platform") String platform, @Header("deviceId") String deviceId, @Query("mobileNo") String mobileNo, @Query("onlyConnected") String onlyConnected);
+
+//    @GET("/Brongo/client/activeLeads")
+//    Call<SecondLandingResponse> getPostedLeadsData2(@Header("accessToken") String accessToken, @Header("platform") String platform, @Header("deviceId") String deviceId, @Query("mobileNo") String mobileNo, @Query("onlyConnected") String onlyConnected);
+
+    @GET("/Brongo/client/activeDeals")
+    Call<SecondLandingResponse> getPostedLeadsData2(@Header("accessToken") String accessToken, @Header("platform") String platform, @Header("deviceId") String deviceId, @Query("mobileNo") String mobileNo, @Query("dealType") String dealType);
 
 
     @Headers({"Accept: application/json"})
@@ -184,6 +192,23 @@ public interface RetrofitAPIs {
     @POST("/Brongo/client/fetchProperty")
     Call<AllRequirementsResponse> getAllRequirementDetails(@Header("accessToken") String accessToken, @Header("platform") String platform, @Header("deviceId") String deviceId, @Body AcceptedBrokersInputModel inputModel);
 
+    @GET("/Brongo/client/feedbackQue")
+    Call<FeedBackQueResponse> getFeedBackQue(@Header("accessToken") String accessToken, @Header("platform") String platform, @Header("deviceId") String deviceId, @Query("mobileNo") String mobileNo);
+
+    @Headers({"Accept: application/json"})
+    @POST("/Brongo/client/addMicroMarket")
+    Call<GeneralApiResponseModel> postMicroMarketGoogle(@Header("accessToken") String accessToken, @Header("platform") String platform, @Header("deviceId") String deviceId, @Body Object buyLandModel);
+
+    @GET("/Brongo/client/getMyPlan")
+    Call<PaymentSubscriptionResponse> getMyPlanSubscription(@Header("accessToken") String accessToken, @Header("platform") String platform, @Header("deviceId") String deviceId, @Query("mobileNo") String mobileNo);
+
+    @Headers({"Accept: application/json"})
+    @POST("/Brongo/client/connectToNewBroker")
+    Call<GeneralApiResponseModel> connectToNewBroker(@Header("accessToken") String accessToken, @Header("platform") String platform, @Header("deviceId") String deviceId, @Body Object inputModel);
+
+    @Headers({"Accept: application/json"})
+    @POST("/Brongo/client/unSubscribe")
+    Call<GeneralApiResponseModel> unsubscribeCall(@Header("accessToken") String accessToken, @Header("platform") String platform, @Header("deviceId") String deviceId, @Body Object inputModel);
 
 }
 

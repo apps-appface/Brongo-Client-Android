@@ -1,6 +1,8 @@
 package com.turnipconsultants.brongo_client.fragments.RentAProperty;
 
 import android.Manifest;
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.Observer;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,20 +25,29 @@ import com.bigkoo.pickerview.OptionsPickerView;
 import com.bigkoo.pickerview.listener.CustomListener;
 import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarChangeListener;
 import com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.AutocompleteFilter;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.turnipconsultants.brongo_client.BrongoClientApplication;
 import com.turnipconsultants.brongo_client.CustomWidgets.BrongoButton;
+import com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView;
 import com.turnipconsultants.brongo_client.Listener.CommissionListenerFactory;
 import com.turnipconsultants.brongo_client.Listener.NoInternetTryConnectListener;
 import com.turnipconsultants.brongo_client.ProvinceBean;
 import com.turnipconsultants.brongo_client.R;
 import com.turnipconsultants.brongo_client.activities.BrokersMapActivity;
 import com.turnipconsultants.brongo_client.fragments.BaseFragment;
+import com.turnipconsultants.brongo_client.models.GooglePlacesModel;
 import com.turnipconsultants.brongo_client.models.RentAProperty.RentAPropertyCommercial;
 import com.turnipconsultants.brongo_client.models.TokenInputModel;
 import com.turnipconsultants.brongo_client.others.AllUtils.AllUtils;
 import com.turnipconsultants.brongo_client.others.CommissionDialogFactory;
+import com.turnipconsultants.brongo_client.others.CommonApiUtils;
 import com.turnipconsultants.brongo_client.others.Constants.AppConstants;
 import com.turnipconsultants.brongo_client.others.InternetConnection;
 import com.turnipconsultants.brongo_client.others.RetrofitAPIs;
@@ -44,6 +55,7 @@ import com.turnipconsultants.brongo_client.others.RetrofitBuilders;
 import com.turnipconsultants.brongo_client.others.Utils;
 import com.turnipconsultants.brongo_client.responseModels.BrokersCountModel;
 import com.turnipconsultants.brongo_client.responseModels.FetchMicroMarketResponse;
+import com.turnipconsultants.brongo_client.responseModels.GeneralApiResponseModel;
 import com.turnipconsultants.brongo_client.responseModels.PropertyTransactionResponseModel;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
@@ -64,6 +76,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.app.Activity.RESULT_CANCELED;
+import static android.app.Activity.RESULT_OK;
 import static com.turnipconsultants.brongo_client.others.Constants.AppConstants.POPULAR_LOCATIONS.BANGALORE;
 
 /**
@@ -80,6 +94,8 @@ public class RENT_A_CommercialFragment extends BaseFragment implements Commissio
     private static final float MIN_SQFT = 500F;
     private static final float MAX_SQFT = 15000F;
     private static final float DIFF_SQFT = 500F;
+
+    private static final int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
 
     @BindView(R.id.connect_BTN)
     BrongoButton connectBrokersBTN;
@@ -120,12 +136,15 @@ public class RENT_A_CommercialFragment extends BaseFragment implements Commissio
     @BindView(R.id.other_req_ET)
     EditText commentsET;
 
+    @BindView(R.id.different_locations_TV)
+    BrongoTextView diffLocation;
+
     Unbinder unbinder;
 
     private LayoutInflater mInflater;
 
     private String[] popularLocArray = BANGALORE;
-    private String[] propertyTypesArray = new String[]{"Office Space", "Co-working space", "Shop/Showroom", "Warehouse/Godawn", "Industrial Building", "Industrial Shed"};
+    private String[] propertyTypesArray = new String[]{"Office Space", "Co-working space", "Shop/Showroom", "Warehouse/Godawn", "Industrial Building", "Industrial Shed","Any"};
     private String[] floorArray = new String[]{"1st", "2nd", "3rd", "4th", "4th+"};
     private String headerToken, headerDeviceId, headerPlatform;
 
@@ -596,5 +615,87 @@ public class RENT_A_CommercialFragment extends BaseFragment implements Commissio
             BudgetOptions.setPicker(options1Items, options2Items);
             Log.i(TAG, "onPostExecute: ");
         }
+    }
+
+    @OnClick(R.id.different_locations_TV)
+    public void showGooglePlaces() {
+        try {
+            getApiResponseModel().observeForever(modelObserver);
+            AutocompleteFilter autocompleteFilter = new AutocompleteFilter.Builder()
+                    .setTypeFilter(Place.TYPE_COUNTRY)
+                    .setCountry("IN")
+                    .build();
+
+            Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
+                    .setFilter(autocompleteFilter)
+                    .build(getActivity());
+            startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
+        } catch (GooglePlayServicesRepairableException e) {
+            e.printStackTrace();
+        } catch (GooglePlayServicesNotAvailableException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                Place place = PlaceAutocomplete.getPlace(getActivity(), data);
+                String[] plaecsStr = place.getAddress().toString().split(",");
+                GooglePlacesModel model = new GooglePlacesModel();
+                model.setAddress(place.getAddress().toString());
+                model.setMobileNo(pref.getString(AppConstants.PREFS.USER_MOBILE_NO, ""));
+                model.setName(place.getName().toString());
+                model.setCity(plaecsStr[0]);
+                model.setState(plaecsStr[1]);
+                headerDeviceId = Utils.getDeviceId(context);
+                headerPlatform = "android";
+                headerToken = pref.getString("token", "");
+                AllUtils.LoaderUtils.showLoader(context);
+                CommonApiUtils.getFeedBackTags(context, headerDeviceId, headerPlatform, headerToken, model, getApiResponseModel());
+
+            } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
+                Status status = PlaceAutocomplete.getStatus(getActivity(), data);
+                Log.i(TAG, status.getStatusMessage());
+
+            } else if (resultCode == RESULT_CANCELED) {
+
+            }
+        }
+    }
+
+    private MutableLiveData<GeneralApiResponseModel> apiResponseModel;
+
+    public MutableLiveData<GeneralApiResponseModel> getApiResponseModel() {
+        if (apiResponseModel == null) {
+            apiResponseModel = new MutableLiveData<>();
+        }
+        return apiResponseModel;
+    }
+
+    final Observer<GeneralApiResponseModel> modelObserver = new Observer<GeneralApiResponseModel>() {
+        @Override
+        public void onChanged(@Nullable final GeneralApiResponseModel newValue) {
+            if (newValue != null) {
+                AllUtils.LoaderUtils.dismissLoader();
+                if (newValue.getStatusCode() == 200) {
+//                    Toast.makeText(context, newValue.getMessage(), Toast.LENGTH_LONG).show();
+                    CommissionDialogFactory.showThankYouDialog(context);
+                } else {
+                    Toast.makeText(context, newValue.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                AllUtils.LoaderUtils.dismissLoader();
+                Toast.makeText(context, "Please Try Again", Toast.LENGTH_LONG).show();
+            }
+        }
+    };
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        getApiResponseModel().removeObserver(modelObserver);
     }
 }

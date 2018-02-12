@@ -23,9 +23,9 @@ public class PastRequirementResponse {
     public class DataEntity {
         private String postingType;
 
-        private float reviews;
-
         private String addedTime;
+
+        private int reviews;
 
         private String status;
 
@@ -35,6 +35,8 @@ public class PastRequirementResponse {
 
         private String brokerImage;
 
+        private boolean isClientRated;
+
         private String planType;
 
         private String propertyId;
@@ -43,122 +45,16 @@ public class PastRequirementResponse {
 
         private String brokerMobileNo;
 
+        private boolean isPayed;
+
         private String brokerName;
 
-        private float rating;
+        private double rating;
 
-        private float commission;
+        private double commission;
 
-        public String getPostingType() {
-            return postingType;
-        }
+        private boolean isBrokerRated;
 
-        public void setPostingType(String postingType) {
-            this.postingType = postingType;
-        }
 
-        public float getReviews() {
-            return reviews;
-        }
-
-        public void setReviews(float reviews) {
-            this.reviews = reviews;
-        }
-
-        public String getAddedTime() {
-            return addedTime;
-        }
-
-        public void setAddedTime(String addedTime) {
-            this.addedTime = addedTime;
-        }
-
-        public String getStatus() {
-            return status;
-        }
-
-        public void setStatus(String status) {
-            this.status = status;
-        }
-
-        public String getSubPropertyType() {
-            return subPropertyType;
-        }
-
-        public void setSubPropertyType(String subPropertyType) {
-            this.subPropertyType = subPropertyType;
-        }
-
-        public List<String> getProperty() {
-            return property;
-        }
-
-        public void setProperty(List<String> property) {
-            this.property = property;
-        }
-
-        public String getBrokerImage() {
-            return brokerImage;
-        }
-
-        public void setBrokerImage(String brokerImage) {
-            this.brokerImage = brokerImage;
-        }
-
-        public String getPlanType() {
-            return planType;
-        }
-
-        public void setPlanType(String planType) {
-            this.planType = planType;
-        }
-
-        public String getPropertyId() {
-            return propertyId;
-        }
-
-        public void setPropertyId(String propertyId) {
-            this.propertyId = propertyId;
-        }
-
-        public String getPropertyType() {
-            return propertyType;
-        }
-
-        public void setPropertyType(String propertyType) {
-            this.propertyType = propertyType;
-        }
-
-        public String getBrokerMobileNo() {
-            return brokerMobileNo;
-        }
-
-        public void setBrokerMobileNo(String brokerMobileNo) {
-            this.brokerMobileNo = brokerMobileNo;
-        }
-
-        public String getBrokerName() {
-            return brokerName;
-        }
-
-        public void setBrokerName(String brokerName) {
-            this.brokerName = brokerName;
-        }
-
-        public float getRating() {
-            return rating;
-        }
-
-        public void setRating(float rating) {
-            this.rating = rating;
-        }
-
-        public float getCommission() {
-            return commission;
-        }
-
-        public void setCommission(float commission) {
-            this.commission = commission;
-        }
     }
 }

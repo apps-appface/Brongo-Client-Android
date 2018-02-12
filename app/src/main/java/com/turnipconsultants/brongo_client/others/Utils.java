@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.turnipconsultants.brongo_client.BuildConfig;
 import com.turnipconsultants.brongo_client.ProvinceBean;
 import com.turnipconsultants.brongo_client.R;
 import com.turnipconsultants.brongo_client.models.BudgetRangeModel;
@@ -64,6 +65,7 @@ public class Utils {
     }
 
     public String getTokenRefresh(final Context context, TokenInputModel model) {
+        model.setVersion(BuildConfig.VERSION_NAME);
         pref = context.getSharedPreferences(AppConstants.PREF_NAME, 0);
         if (InternetConnection.isNetworkAvailable(context)) {
             RetrofitAPIs apiInstance = RetrofitBuilders.getInstance().getAPIService(RetrofitBuilders.getBaseUrl());

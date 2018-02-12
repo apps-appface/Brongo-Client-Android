@@ -81,9 +81,9 @@ public class MainRouterPagerAdapter extends FragmentPagerAdapter {
             case 1:
                 RENT_A_CommercialFragment tab2 = new RENT_A_CommercialFragment();
                 return tab2;
-            case 2:
-                RENT_A_LandFragment tab3 = new RENT_A_LandFragment();
-                return tab3;
+//            case 2:
+//                RENT_A_LandFragment tab3 = new RENT_A_LandFragment();
+//                return tab3;
             default:
                 return null;
         }
@@ -113,9 +113,9 @@ public class MainRouterPagerAdapter extends FragmentPagerAdapter {
             case 1:
                 RENT_Your_CommercialFragment tab2 = new RENT_Your_CommercialFragment();
                 return tab2;
-            case 2:
-                RENT_Your_LandFragment tab3 = new RENT_Your_LandFragment();
-                return tab3;
+//            case 2:
+//                RENT_Your_LandFragment tab3 = new RENT_Your_LandFragment();
+//                return tab3;
             default:
                 return null;
         }

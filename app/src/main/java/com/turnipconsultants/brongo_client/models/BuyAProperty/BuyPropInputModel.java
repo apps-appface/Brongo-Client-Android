@@ -43,6 +43,33 @@ public class BuyPropInputModel {
     private String reSquareFeetRange1;
     private String reSquareFeetRange2;
     private String amenities;
+    private String uRoadFacing;
+    private String wRoadFacing;
+    private String microMarketId;
+
+    public String getMicroMarketId() {
+        return microMarketId;
+    }
+
+    public void setMicroMarketId(String microMarketId) {
+        this.microMarketId = microMarketId;
+    }
+
+    public String getuRoadFacing() {
+        return uRoadFacing;
+    }
+
+    public void setuRoadFacing(String uRoadFacing) {
+        this.uRoadFacing = uRoadFacing;
+    }
+
+    public String getwRoadFacing() {
+        return wRoadFacing;
+    }
+
+    public void setwRoadFacing(String wRoadFacing) {
+        this.wRoadFacing = wRoadFacing;
+    }
 
     public String getPostingType() {
         return postingType;

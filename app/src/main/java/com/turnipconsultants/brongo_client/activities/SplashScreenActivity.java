@@ -65,7 +65,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                     intent.putExtra(AppConstants.PROPERTY.PROPERTY_TYPE, 2);
                     startActivity(intent);*/
                 } else {
-                    Intent i = new Intent(SplashScreenActivity.this, SplashPagerActivity.class);
+                    Intent i = new Intent(SplashScreenActivity.this, TermsAndConditionsActivity.class);
                     startActivity(i);
                 }
                 finish();

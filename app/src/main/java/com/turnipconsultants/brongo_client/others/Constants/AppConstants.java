@@ -9,7 +9,7 @@ public class AppConstants {
     public static final String DB_NAME = "greendao_brongo.db";
     public static final String FIREBASE_TOKEN = "firebase_token";
     public static final String APPLOZIC_PASSWORD = "Brongo_Client";
-    public static final String BOT_ID="BrongoChatBot";
+    public static final String BOT_ID = "BrongoChatBot";
 
     public static class POPULAR_LOCATIONS {
         public static final String BANGALORE[] = {"Marathahalli", "Hennur", "Whitefield", "Thanisandra", "Sarjapur Outer Ring Rd"};
@@ -21,6 +21,12 @@ public class AppConstants {
         public static final int RENT_A_PROPERTY = 2;
         public static final int SELL_YOUR_PROPERTY = 3;
         public static final int RENT_YOUR_PROPERTY = 4;
+    }
+
+    public static class SUBPROPERTY {
+        public static final String SUB_PROPERTY_TYPE = "SUB_PROPERTY_TYPE";
+        public static final int BUY_A_LAND_PROPERTY = 1;
+        public static final int SELL_A_LAND_PROPERTY = 2;
     }
 
     public static class PREFS {
@@ -44,6 +50,12 @@ public class AppConstants {
         public static final String RENT_A_PROPERTY = "RENT";
         public static final String SELL_A_PROPERTY = "SELL";
         public static final String RENT_YOUR_PROPERTY = "RENT_OUT";
+    }
+
+
+    public static class SUB_PROPERTY_TYPE {
+        public static final String COMMERCIAL = "COMMERCIAL_ZONE";
+        public static final String RESIDENTIAL = "RESIDENTIAL_ZONE";
     }
 
     public static class VISIBILITY_PAGE {

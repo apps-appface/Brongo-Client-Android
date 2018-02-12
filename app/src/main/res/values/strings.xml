@@ -4,7 +4,7 @@
     <array name="side_menu">
         <item>ABOUT BRONGO</item>
         <item>SUBSCRIPTION</item>
-        <item>PAST\nREQUIREMENTS</item>
+        <item>PAST DEALS</item>
         <item>HELP</item>
         <item>CONTACT US</item>
         <item>RATE US</item>
@@ -27,7 +27,7 @@
 
     <string name="no_Internet">No internet connection</string>
     <string name="default_media_location_folder">Brongo</string>
-    <string name="terms_conditions">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget lectus tincidunt, suscipit est et, ultrices nulla. Vestibulum lorem ante, laoreet a vehicula.</string>
+    <string name="terms_conditions">In furtherance of the Terms of Use, I hereby consent to pay the Commission agreed to herein directly to the assigned Broker or to Brongo(for Rental Deals), on the conclusion of the transaction. I acknowledge and agree the failure on my part to make such payment shall provide the assigned Broker or Brongo(as the case may be) rights of a legal claim against me.</string>
     <string name="privacy_popup">In order to protect your privacy and serve you better, please ensure you use the Brongo app to call or chat with the broker.</string>
     <string name="title_activity_splash_pager">SplashPagerActivity</string>
 
@@ -75,7 +75,7 @@ Version 4.4.6</string>
     <string name="fb_login_protocol_scheme">fb177478546172657</string>
 
     <!--Applozic Key-->
-    <string name="applozic_key">appface271d7cc074baaaa06cb23b78124dc4f8a</string>
+    <string name="applozic_key">brongo1ef8fd6eda7d86d86a5a94e9e682647e5</string>
     <string name="applozic_module_name">Brongo_Client</string>
     <string name="title_activity_past_requirement">PastRequirementActivity</string>
 

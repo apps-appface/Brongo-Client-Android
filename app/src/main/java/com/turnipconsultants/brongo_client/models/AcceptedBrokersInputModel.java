@@ -20,6 +20,15 @@ public class AcceptedBrokersInputModel {
     private List<String> review;
     private String comment;
     private String propertyType;
+    private String subPropertyType;
+
+    public String getSubPropertyType() {
+        return subPropertyType;
+    }
+
+    public void setSubPropertyType(String subPropertyType) {
+        this.subPropertyType = subPropertyType;
+    }
 
     public String getPropertyType() {
         return propertyType;

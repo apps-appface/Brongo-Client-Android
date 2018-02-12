@@ -7,15 +7,16 @@
     android:background="@color/appBGWhite">
 
     <com.turnipconsultants.brongo_client.CustomWidgets.BrongoButton
-        android:textAllCaps="true"
-        android:textColor="@color/white"
         android:id="@+id/connect_BTN"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/appButton"
         android:text="Connect to the best Local brokers"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
         android:textSize="@dimen/content_size" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -54,7 +55,6 @@
                 android:textSize="@dimen/content_size" />-->
 
             <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
-                android:textStyle="normal"
                 android:id="@+id/popular_locations_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -62,7 +62,8 @@
                 android:layout_marginTop="20dp"
                 android:text="Popular Locations"
                 android:textColor="@color/black"
-                android:textSize="@dimen/content_size" />
+                android:textSize="@dimen/content_size"
+                android:textStyle="normal" />
 
             <com.zhy.view.flowlayout.TagFlowLayout
                 android:id="@+id/popular_locations_FL"
@@ -75,16 +76,29 @@
                 zhy:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
 
             <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
-                android:textStyle="normal"
+                android:id="@+id/different_locations_TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/popular_locations_FL"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Looking for different location?"
+                android:textColor="@color/diff_loc"
+                android:textSize="@dimen/content_size"
+                android:textStyle="normal" />
+
+            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
                 android:id="@+id/property_types_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/popular_locations_FL"
+                android:layout_below="@id/different_locations_TV"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:text="Select Property Types"
                 android:textColor="@color/black"
-                android:textSize="@dimen/content_size" />
+                android:textSize="@dimen/content_size"
+                android:textStyle="normal" />
 
             <com.zhy.view.flowlayout.TagFlowLayout
                 android:id="@+id/property_types_FL"
@@ -97,7 +111,6 @@
                 zhy:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
 
             <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
-                android:textStyle="normal"
                 android:id="@+id/bedroom_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -106,7 +119,8 @@
                 android:layout_marginTop="20dp"
                 android:text="Bedroom"
                 android:textColor="@color/black"
-                android:textSize="@dimen/content_size" />
+                android:textSize="@dimen/content_size"
+                android:textStyle="normal" />
 
             <com.zhy.view.flowlayout.TagFlowLayout
                 android:id="@+id/bedroom_FL"
@@ -119,7 +133,6 @@
                 zhy:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
 
             <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
-                android:textStyle="normal"
                 android:id="@+id/budget_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -128,16 +141,19 @@
                 android:layout_marginTop="20dp"
                 android:text="Budget"
                 android:textColor="@color/black"
-                android:textSize="@dimen/content_size" />
+                android:textSize="@dimen/content_size"
+                android:textStyle="normal" />
+
             <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
                 android:id="@+id/selectBudgetTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Select Budget"
                 android:layout_below="@id/budget_TV"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
-                android:textColor="@color/primaryBuleAlpha1"/>
+                android:text="Select Budget"
+                android:textColor="@color/primaryBuleAlpha1" />
+
             <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
                 android:id="@+id/budget_SB"
                 android:layout_width="match_parent"
@@ -166,9 +182,9 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:textColor="@color/black"
+                    android:background="@drawable/bottom_broder_rectangle"
                     android:editable="false"
-                    android:background="@drawable/bottom_broder_rectangle"/>
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/budget_max_TV"
@@ -177,14 +193,13 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="20dp"
                     android:layout_weight="1"
-                    android:textColor="@color/black"
+                    android:background="@drawable/bottom_broder_rectangle"
                     android:editable="false"
-                    android:background="@drawable/bottom_broder_rectangle" />
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 
             <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
-                android:textStyle="normal"
                 android:id="@+id/marital_status_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -193,7 +208,8 @@
                 android:layout_marginTop="20dp"
                 android:text="Tenant Type"
                 android:textColor="@color/black"
-                android:textSize="@dimen/content_size" />
+                android:textSize="@dimen/content_size"
+                android:textStyle="normal" />
 
             <com.zhy.view.flowlayout.TagFlowLayout
                 android:id="@+id/tenant_type_FL"
@@ -207,7 +223,6 @@
 
 
             <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
-                android:textStyle="normal"
                 android:id="@+id/preferred_project_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -216,7 +231,8 @@
                 android:layout_marginTop="20dp"
                 android:text="Preferred Project"
                 android:textColor="@color/black"
-                android:textSize="@dimen/content_size" />
+                android:textSize="@dimen/content_size"
+                android:textStyle="normal" />
 
             <EditText
                 android:id="@+id/preferred_project_ET"
@@ -230,7 +246,6 @@
                 android:textSize="15sp" />
 
             <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
-                android:textStyle="normal"
                 android:id="@+id/avoid_project_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -239,7 +254,8 @@
                 android:layout_marginTop="20dp"
                 android:text="Avoid project"
                 android:textColor="@color/black"
-                android:textSize="@dimen/content_size" />
+                android:textSize="@dimen/content_size"
+                android:textStyle="normal" />
 
             <EditText
                 android:id="@+id/avoid_project_ET"
@@ -253,7 +269,6 @@
                 android:textSize="15sp" />
 
             <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
-                android:textStyle="normal"
                 android:id="@+id/housing_orientation_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -262,7 +277,8 @@
                 android:layout_marginTop="20dp"
                 android:text="House Orientation"
                 android:textColor="@color/black"
-                android:textSize="@dimen/content_size" />
+                android:textSize="@dimen/content_size"
+                android:textStyle="normal" />
 
             <com.zhy.view.flowlayout.TagFlowLayout
                 android:id="@+id/housing_orientation_FL"
@@ -275,7 +291,6 @@
                 zhy:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
 
             <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
-                android:textStyle="normal"
                 android:id="@+id/furnishing_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -284,7 +299,8 @@
                 android:layout_marginTop="20dp"
                 android:text="Furnishing"
                 android:textColor="@color/black"
-                android:textSize="@dimen/content_size" />
+                android:textSize="@dimen/content_size"
+                android:textStyle="normal" />
 
             <com.zhy.view.flowlayout.TagFlowLayout
                 android:id="@+id/furnishing_FL"

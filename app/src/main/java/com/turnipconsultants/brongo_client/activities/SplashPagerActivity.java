@@ -36,6 +36,7 @@ public class SplashPagerActivity extends AppCompatActivity implements ViewPager.
     Context context;
     private int dotsCount;
     private ImageView[] dots;
+    private boolean isHelp = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,7 @@ public class SplashPagerActivity extends AppCompatActivity implements ViewPager.
         pager.addOnPageChangeListener(this);
         setUiPageViewController();
         pager.setCurrentItem(0);
-
+        isHelp = getIntent().getBooleanExtra("help", false);
     }
 
     private List<Fragment> getFragments() {
@@ -93,7 +94,11 @@ public class SplashPagerActivity extends AppCompatActivity implements ViewPager.
 
     @OnClick(R.id.skip)
     void Skip(TextView skipTV) {
-        openSignUp();
+        if (isHelp) {
+            finish();
+        } else {
+            openSignUp();
+        }
     }
 
     @Override

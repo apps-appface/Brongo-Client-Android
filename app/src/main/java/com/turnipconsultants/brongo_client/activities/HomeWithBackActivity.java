@@ -75,7 +75,7 @@ public class HomeWithBackActivity extends AppCompatActivity implements HomeView 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second_home_with_back_button);
-        unbinder = ButterKnife.bind(this);
+        ButterKnife.bind(this);
         initPage();
         SaveBrokerCount();
     }

@@ -123,6 +123,7 @@
                             android:src="@drawable/green_tick_icon" />
 
                         <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                            android:id="@+id/condition1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text=" 3 requests for all requirements are "
@@ -153,6 +154,7 @@
                             android:src="@drawable/green_tick_icon" />
 
                         <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                            android:id="@+id/condition2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text=" Lifetime subscription for buy and rent is  "

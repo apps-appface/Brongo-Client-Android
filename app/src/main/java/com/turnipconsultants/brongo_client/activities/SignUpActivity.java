@@ -134,6 +134,10 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 }
                 break;
             case R.id.policy2:
+                Intent i = new Intent(context, TermsAndConditionsActivity.class);
+                i.putExtra("isSignUpPage", true);
+                startActivity(i);
+
                 break;
             case R.id.reset:
                 nameET.setText("");

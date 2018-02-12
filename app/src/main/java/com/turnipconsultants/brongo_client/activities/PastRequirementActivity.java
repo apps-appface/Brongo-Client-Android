@@ -3,6 +3,8 @@ package com.turnipconsultants.brongo_client.activities;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,7 +16,9 @@ import android.widget.Toast;
 import com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView;
 import com.turnipconsultants.brongo_client.Listener.NoInternetTryConnectListener;
 import com.turnipconsultants.brongo_client.R;
+import com.turnipconsultants.brongo_client.adapters.LandRouterPagerAdapter;
 import com.turnipconsultants.brongo_client.adapters.PastReqAdapter;
+import com.turnipconsultants.brongo_client.adapters.PastRequirementsPagerAdapter;
 import com.turnipconsultants.brongo_client.models.TokenInputModel;
 import com.turnipconsultants.brongo_client.others.AllUtils.AllUtils;
 import com.turnipconsultants.brongo_client.others.Constants.AppConstants;
@@ -44,112 +48,61 @@ public class PastRequirementActivity extends AppCompatActivity implements NoInte
     @BindView(R.id.title)
     BrongoTextView title;
 
-    @BindView(R.id.noDataBTV)
-    BrongoTextView noDataBTV;
-
     @BindView(R.id.reset)
     BrongoTextView reset;
 
-    @BindView(R.id.pastReqRV)
-    RecyclerView pastReqRV;
+    @BindView(R.id.viewpager)
+    ViewPager viewPager;
 
-    private ArrayList<PastRequirementResponse.DataEntity> droppedArrayList;
-    private PastReqAdapter pastReqAdapter;
-    private Unbinder unbinder;
+    @BindView(R.id.tab_layout)
+    TabLayout tabLayout;
+
     private Context context;
-    private String headerDeviceId, headerPlatform, headerToken;
-    private SharedPreferences prefs;
+    private PastRequirementsPagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_past_requirement);
-        unbinder = ButterKnife.bind(this);
+        ButterKnife.bind(this);
         initPage();
-        LoadBrokers();
-
+        setValues();
     }
 
     private void initPage() {
         context = this;
-        prefs = getSharedPreferences(AppConstants.PREF_NAME, MODE_PRIVATE);
-        title.setText("PAST REQUIREMENTS");
+        title.setText("PAST DEALS");
         reset.setVisibility(View.INVISIBLE);
-        headerDeviceId = Utils.getDeviceId(context);
-        headerPlatform = "android";
-        headerToken = prefs.getString("token", "");
-
-
-        droppedArrayList = new ArrayList<>();
-        pastReqAdapter = new PastReqAdapter(context,droppedArrayList);
-        LinearLayoutManager manager = new LinearLayoutManager(context);
-        manager.setOrientation(LinearLayoutManager.VERTICAL);
-        pastReqRV.setLayoutManager(manager);
-        pastReqRV.setAdapter(pastReqAdapter);
     }
 
+    private void setValues() {
+        tabLayout.addTab(tabLayout.newTab().setText("Closed"));
+        tabLayout.addTab(tabLayout.newTab().setText("Dropped / Not Connected"));
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        adapter = new PastRequirementsPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
 
-    private void LoadBrokers() {
-        if (InternetConnection.isNetworkAvailable(context)) {
-            AllUtils.LoaderUtils.showLoader(context);
-            RetrofitAPIs apiInstance = RetrofitBuilders.getInstance().getAPIService(RetrofitBuilders.getBaseUrl());
-            Call<PastRequirementResponse> call = apiInstance.getPastRequirementData(headerToken, headerPlatform, headerDeviceId, prefs.getString(AppConstants.PREFS.USER_MOBILE_NO, ""), false);
-            call.enqueue(new Callback<PastRequirementResponse>() {
-                @Override
-                public void onResponse(Call<PastRequirementResponse> call, Response<PastRequirementResponse> response) {
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
 
-                    try {
-                        AllUtils.LoaderUtils.dismissLoader();
-                        if (response != null && response.isSuccessful()) {
-                            PastRequirementResponse responseModel = response.body();
-                            if (responseModel.getStatusCode() == 200) {
-                                List<PastRequirementResponse.DataEntity> dataEntityList=responseModel.getData();
-                                /*if (responseModel.getData()) {
-                                    noDataBTV.setVisibility(View.VISIBLE);
-                                    pastReqRV.setVisibility(View.GONE);
-                                } else {
-                                    noDataBTV.setVisibility(View.GONE);
-                                    pastReqRV.setVisibility(View.VISIBLE);
-                                    droppedArrayList.addAll(responseModel.getData().get(0).getDropped());
-                                }*/
-                                droppedArrayList.addAll(dataEntityList);
-                                pastReqAdapter.notifyDataSetChanged();
-                            } else {
-                                Toast.makeText(context, responseModel.getMessage(), Toast.LENGTH_SHORT).show();
+            }
 
-                            }
-                        } else {
-                            JSONObject jObjError = new JSONObject(response.errorBody().string());
-                            if ((jObjError.getString("message").equals("Invalid Access Token"))) {
-                                new Utils().getTokenRefresh(context, new TokenInputModel(headerPlatform, headerDeviceId, prefs.getString(AppConstants.PREFS.USER_MOBILE_NO, "")));
-                                LoadBrokers();
-                            } else {
-                                Toast.makeText(context, jObjError.getString("message"), Toast.LENGTH_SHORT).show();
-                            }
-                            Log.e("error", response.errorBody().string());
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
 
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<PastRequirementResponse> call, Throwable t) {
-                    AllUtils.LoaderUtils.dismissLoader();
-                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_LONG).show();
-                }
-            });
-        } else {
-            AllUtils.DialogUtils.NoInternetDialog(context, this);
-        }
+            }
+        });
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (unbinder != null)
-            unbinder.unbind();
     }
 
 
@@ -159,6 +112,6 @@ public class PastRequirementActivity extends AppCompatActivity implements NoInte
 
     @Override
     public void onTryReconnect() {
-        LoadBrokers();
+
     }
 }

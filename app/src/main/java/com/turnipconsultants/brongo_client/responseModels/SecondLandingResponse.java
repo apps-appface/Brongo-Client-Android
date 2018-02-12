@@ -49,7 +49,7 @@ public class SecondLandingResponse {
 
         private String brokerImage;
 
-        private List<SiteVisit> siteVisit;
+        private List<String> siteVisit;
 
         private String planType;
 
@@ -69,64 +69,14 @@ public class SecondLandingResponse {
 
         private List<String> completedStatus;
 
-        private String meetingLocation;
-
         private String dateOfVisit;
+        private boolean isClientRated;
+        private boolean isPayed;
+        private String note;
+        private String addedTime;
+        private boolean isBrokerRated;
+        private List<Double> latLong;
 
-        @Data
-        public class SiteVisit implements Parcelable {
-            private String propertyName;
-
-            private String meetAt;
-
-            private String propertyId;
-
-            private String timeOfVisit;
-
-            private String siteVisitName;
-
-            private String updatedTime;
-
-            private String dateOfVisit;
-
-            @Override
-            public int describeContents() {
-                return 0;
-            }
-
-            @Override
-            public void writeToParcel(Parcel dest, int flags) {
-                dest.writeString(this.propertyName);
-                dest.writeString(this.meetAt);
-                dest.writeString(this.propertyId);
-                dest.writeString(this.timeOfVisit);
-                dest.writeString(this.siteVisitName);
-                dest.writeString(this.updatedTime);
-                dest.writeString(this.dateOfVisit);
-            }
-
-            protected SiteVisit(Parcel in) {
-                this.propertyName = in.readString();
-                this.meetAt = in.readString();
-                this.propertyId = in.readString();
-                this.timeOfVisit = in.readString();
-                this.siteVisitName = in.readString();
-                this.updatedTime = in.readString();
-                this.dateOfVisit = in.readString();
-            }
-
-            public  final Creator<SiteVisit> CREATOR = new Creator<SiteVisit>() {
-                @Override
-                public SiteVisit createFromParcel(Parcel source) {
-                    return new SiteVisit(source);
-                }
-
-                @Override
-                public SiteVisit[] newArray(int size) {
-                    return new SiteVisit[size];
-                }
-            };
-        }
 
         @Override
         public int describeContents() {
@@ -135,34 +85,35 @@ public class SecondLandingResponse {
 
         @Override
         public void writeToParcel(Parcel dest, int flags) {
-            try {
-                dest.writeString(this.reminder);
-                dest.writeString(this.postingType);
-                dest.writeStringList(this.statusUpdatedTimes);
-                dest.writeInt(this.reviews);
-                dest.writeString(this.payment);
-                dest.writeString(this.status);
-                dest.writeString(this.dealClosedTime);
-                dest.writeString(this.timeOfVisit);
-                dest.writeStringList(this.remainingStatus);
-                dest.writeString(this.subPropertyType);
-                dest.writeStringList(this.property);
-                dest.writeString(this.brokerImage);
-                dest.writeList(this.siteVisit);
-                dest.writeString(this.planType);
-                dest.writeString(this.meetAt);
-                dest.writeString(this.propertyId);
-                dest.writeString(this.propertyType);
-                dest.writeString(this.brokerMobileNo);
-                dest.writeString(this.brokerName);
-                dest.writeDouble(this.rating);
-                dest.writeDouble(this.commission);
-                dest.writeStringList(this.completedStatus);
-                dest.writeString(this.meetingLocation);
-                dest.writeString(this.dateOfVisit);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            dest.writeString(this.reminder);
+            dest.writeString(this.postingType);
+            dest.writeStringList(this.statusUpdatedTimes);
+            dest.writeInt(this.reviews);
+            dest.writeString(this.payment);
+            dest.writeString(this.status);
+            dest.writeString(this.dealClosedTime);
+            dest.writeString(this.timeOfVisit);
+            dest.writeStringList(this.remainingStatus);
+            dest.writeString(this.subPropertyType);
+            dest.writeStringList(this.property);
+            dest.writeString(this.brokerImage);
+            dest.writeStringList(this.siteVisit);
+            dest.writeString(this.planType);
+            dest.writeString(this.meetAt);
+            dest.writeString(this.propertyId);
+            dest.writeString(this.propertyType);
+            dest.writeString(this.brokerMobileNo);
+            dest.writeString(this.brokerName);
+            dest.writeDouble(this.rating);
+            dest.writeDouble(this.commission);
+            dest.writeStringList(this.completedStatus);
+            dest.writeString(this.dateOfVisit);
+            dest.writeByte(this.isClientRated ? (byte) 1 : (byte) 0);
+            dest.writeByte(this.isPayed ? (byte) 1 : (byte) 0);
+            dest.writeString(this.note);
+            dest.writeString(this.addedTime);
+            dest.writeByte(this.isBrokerRated ? (byte) 1 : (byte) 0);
+            dest.writeList(this.latLong);
         }
 
         protected DataEntity(Parcel in) {
@@ -178,8 +129,7 @@ public class SecondLandingResponse {
             this.subPropertyType = in.readString();
             this.property = in.createStringArrayList();
             this.brokerImage = in.readString();
-            this.siteVisit = new ArrayList<SiteVisit>();
-            in.readList(this.siteVisit, SiteVisit.class.getClassLoader());
+            this.siteVisit = in.createStringArrayList();
             this.planType = in.readString();
             this.meetAt = in.readString();
             this.propertyId = in.readString();
@@ -189,8 +139,14 @@ public class SecondLandingResponse {
             this.rating = in.readDouble();
             this.commission = in.readDouble();
             this.completedStatus = in.createStringArrayList();
-            this.meetingLocation = in.readString();
             this.dateOfVisit = in.readString();
+            this.isClientRated = in.readByte() != 0;
+            this.isPayed = in.readByte() != 0;
+            this.note = in.readString();
+            this.addedTime = in.readString();
+            this.isBrokerRated = in.readByte() != 0;
+            this.latLong = new ArrayList<Double>();
+            in.readList(this.latLong, Double.class.getClassLoader());
         }
 
         public static final Parcelable.Creator<DataEntity> CREATOR = new Parcelable.Creator<DataEntity>() {

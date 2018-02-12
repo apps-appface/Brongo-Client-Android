@@ -3,6 +3,9 @@ package com.turnipconsultants.brongo_client.fragments.SellYourProperty;
 import android.Manifest;
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.Observer;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -21,6 +24,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -32,17 +36,28 @@ import android.widget.Toast;
 import com.applozic.mobicommons.file.FileUtils;
 import com.bigkoo.pickerview.OptionsPickerView;
 import com.bigkoo.pickerview.listener.CustomListener;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.AutocompleteFilter;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.turnipconsultants.brongo_client.BrongoClientApplication;
 import com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView;
 import com.turnipconsultants.brongo_client.Listener.CommissionListenerFactory;
 import com.turnipconsultants.brongo_client.Listener.NoInternetTryConnectListener;
 import com.turnipconsultants.brongo_client.R;
 import com.turnipconsultants.brongo_client.activities.BrokersMapActivity;
+import com.turnipconsultants.brongo_client.activities.FeedbackActivity;
+import com.turnipconsultants.brongo_client.activities.PaymentSubscriptionActivity;
 import com.turnipconsultants.brongo_client.fragments.BaseFragment;
+import com.turnipconsultants.brongo_client.models.GooglePlacesModel;
 import com.turnipconsultants.brongo_client.models.TokenInputModel;
 import com.turnipconsultants.brongo_client.others.AllUtils.AllUtils;
 import com.turnipconsultants.brongo_client.others.AllUtils.NumToWords;
+import com.turnipconsultants.brongo_client.others.CommonApiUtils;
 import com.turnipconsultants.brongo_client.responseModels.FetchMicroMarketResponse;
+import com.turnipconsultants.brongo_client.responseModels.GeneralApiResponseModel;
 import com.turnipconsultants.brongo_client.responseModels.PropertyTransactionResponseModel;
 import com.turnipconsultants.brongo_client.others.Constants.AppConstants;
 import com.turnipconsultants.brongo_client.others.CommissionDialogFactory;
@@ -51,6 +66,7 @@ import com.turnipconsultants.brongo_client.others.InternetConnection;
 import com.turnipconsultants.brongo_client.others.RetrofitAPIs;
 import com.turnipconsultants.brongo_client.others.RetrofitBuilders;
 import com.turnipconsultants.brongo_client.others.Utils;
+import com.turnipconsultants.brongo_client.responseModels.SecondLandingResponse;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
@@ -77,19 +93,22 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.app.Activity.RESULT_CANCELED;
+import static android.app.Activity.RESULT_OK;
 import static com.turnipconsultants.brongo_client.others.Constants.AppConstants.POPULAR_LOCATIONS.BANGALORE;
 
 /**
  * Created by mohit on 18-09-2017.
  */
 
-public class SELL_Your_CommercialFragment extends BaseFragment implements CommissionListenerFactory.SellCommissionListener, NoInternetTryConnectListener, CustomListener {
+public class SELL_Your_CommercialFragment extends BaseFragment implements CommissionListenerFactory.SellCommissionListener, NoInternetTryConnectListener, CustomListener,AllUtils.RequestReachedListener {
 
     private static final String TAG = "SELL_Your_CommercialFra";
     public static final int REQUEST_CAMERA_AND_WRITABLE_PERMISSIONS = 111;
     public static final int REQUEST_DEVICE_ID_PERMISSIONS = 112;
     private static final int REQUEST_CAMERA = 200;
     private static final int SELECT_FILE = 201;
+    private static final int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
 
     @BindView(R.id.popular_locations_FL)
     TagFlowLayout popularLocationsFL;
@@ -142,6 +161,18 @@ public class SELL_Your_CommercialFragment extends BaseFragment implements Commis
     @BindView(R.id.expected_amount_text)
     BrongoTextView expected_amount_text;
 
+    @BindView(R.id.different_locations_TV)
+    BrongoTextView diffLocation;
+
+    @BindView(R.id.cancel1)
+    ImageView cancel1;
+
+    @BindView(R.id.cancel2)
+    ImageView cancel2;
+
+    @BindView(R.id.cancel3)
+    ImageView cancel3;
+
     Unbinder unbinder;
 
 
@@ -149,7 +180,7 @@ public class SELL_Your_CommercialFragment extends BaseFragment implements Commis
 
     private TagAdapter<String> mAdapter;
     private String[] popularLocArray = BANGALORE;
-    private String[] propTypesArray = new String[]{"Office Space", "Showroom/Retail space", "Food & Beverage", "Any other"};
+    private String[] propTypesArray = new String[]{"Office Space", "Showroom/Retail space", "Food & Beverage", "Any"};
     private String[] propertyStatusArray = new String[]{"Ready to move-in", "Under Construction", "Resale-Tenated", "Redale-Nontenanted"};
     private String[] floorArray = new String[]{"1st", "2nd", "3rd", "4th", "4th+"};
     private String[] currentStatusArray = new String[]{"Tenated", "Non-tenated"};
@@ -201,7 +232,6 @@ public class SELL_Your_CommercialFragment extends BaseFragment implements Commis
         setTodayDate();
         numToWords = new NumToWords();
         expectedRentAmount = 0;
-
         marketId = new ArrayList<>();
         marketName = new ArrayList<>();
         brokersCountList = new ArrayList<>();
@@ -412,6 +442,10 @@ public class SELL_Your_CommercialFragment extends BaseFragment implements Commis
     @OnClick(R.id.select_picture_RL)
     void OnSelectPictureClick() {
         if (checkCameraAndWritablePermission()) {
+            if (uriImg1 != null && uriImg2 != null && uriImg3 != null) {
+                AllUtils.ToastUtils.showToast(context, "Maximum 3 images are allowed.");
+                return;
+            }
             ImageCaptureUtils.selectImageAlert(context, this, REQUEST_CAMERA, SELECT_FILE);
         } else {
             requestCameraAndWritablePermission();
@@ -485,12 +519,15 @@ public class SELL_Your_CommercialFragment extends BaseFragment implements Commis
                         } else {
                             Toast.makeText(context, responseModel.getMessage(), Toast.LENGTH_SHORT).show();
                         }
+
                     } else {
                         try {
                             JSONObject jObjError = new JSONObject(response.errorBody().string());
                             if ((jObjError.getString("message").equals("Invalid Access Token"))) {
                                 new Utils().getTokenRefresh(context, new TokenInputModel(headerPlatform, headerDeviceId, pref.getString(AppConstants.PREFS.USER_MOBILE_NO, "")));
                                 SellProperty();
+                            } else if (jObjError.getString("statusCode").equals("412")) {
+                                AllUtils.showMaxRequestReached(context,jObjError.getString("message"),SELL_Your_CommercialFragment.this);
                             } else {
                                 Toast.makeText(context, "Please Try Again", Toast.LENGTH_SHORT).show();
                             }
@@ -510,6 +547,13 @@ public class SELL_Your_CommercialFragment extends BaseFragment implements Commis
         } else {
             AllUtils.DialogUtils.NoInternetDialog(context, this);
         }
+    }
+
+    @Override
+    public void onRequestReached() {
+        Intent intent = new Intent(context, PaymentSubscriptionActivity.class);
+        startActivity(intent);
+        getActivity().finish();
     }
 
     @NonNull
@@ -560,6 +604,31 @@ public class SELL_Your_CommercialFragment extends BaseFragment implements Commis
                 else if (requestCode == REQUEST_CAMERA)
                     onCaptureImageResult(data);
             }
+
+            if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE) {
+                if (resultCode == RESULT_OK) {
+                    Place place = PlaceAutocomplete.getPlace(getActivity(), data);
+                    String[] plaecsStr = place.getAddress().toString().split(",");
+                    GooglePlacesModel model = new GooglePlacesModel();
+                    model.setAddress(place.getAddress().toString());
+                    model.setMobileNo(pref.getString(AppConstants.PREFS.USER_MOBILE_NO, ""));
+                    model.setName(place.getName().toString());
+                    model.setCity(plaecsStr[0]);
+                    model.setState(plaecsStr[1]);
+                    headerDeviceId = Utils.getDeviceId(context);
+                    headerPlatform = "android";
+                    headerToken = pref.getString("token", "");
+                    AllUtils.LoaderUtils.showLoader(context);
+                    CommonApiUtils.getFeedBackTags(context, headerDeviceId, headerPlatform, headerToken, model, getApiResponseModel());
+
+                } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
+                    Status status = PlaceAutocomplete.getStatus(getActivity(), data);
+                    Log.i(TAG, status.getStatusMessage());
+
+                } else if (resultCode == RESULT_CANCELED) {
+
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -576,34 +645,69 @@ public class SELL_Your_CommercialFragment extends BaseFragment implements Commis
                     e.printStackTrace();
                 }
             }
-            addToList(selectedImgUri);
-            if (uriImg1 != null && uriImg2 == null && uriImg3 == null)
-                IV1.setImageBitmap(bm);
-            else if (uriImg2 != null && uriImg1 != null && uriImg3 == null)
-                IV2.setImageBitmap(bm);
-            else if (uriImg3 != null && uriImg1 != null && uriImg2 != null)
-                IV3.setImageBitmap(bm);
+            addToList(selectedImgUri, bm);
+
         } catch (Exception e) {
             throw e;
         }
     }
 
-    private void addToList(Uri file) {
-        if (uriImg1 == null)
+    private void addToList(Uri file, Bitmap bitmap) {
+        if (uriImg1 == null) {
             uriImg1 = file;
-        else if (uriImg2 == null)
+            setInImageView(bitmap, 1);
+        } else if (uriImg2 == null) {
             uriImg2 = file;
-        else if (uriImg3 == null)
+            setInImageView(bitmap, 2);
+        } else if (uriImg3 == null) {
             uriImg3 = file;
+            setInImageView(bitmap, 3);
+        }
+
     }
+
+    private void setInImageView(Bitmap bitmap, int num) {
+        if (uriImg1 != null && num == 1) {
+            IV1.setImageBitmap(bitmap);
+            cancel1.setVisibility(View.VISIBLE);
+        } else if (uriImg2 != null && num == 2) {
+            IV2.setImageBitmap(bitmap);
+            cancel2.setVisibility(View.VISIBLE);
+        } else if (uriImg3 != null && num == 3) {
+            IV3.setImageBitmap(bitmap);
+            cancel3.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @OnClick(R.id.cancel1)
+    public void cancelimg1() {
+        IV1.setImageBitmap(null);
+        cancel1.setVisibility(View.GONE);
+        uriImg1 = null;
+    }
+
+    @OnClick(R.id.cancel2)
+    public void cancelimg2() {
+        IV2.setImageBitmap(null);
+        cancel2.setVisibility(View.GONE);
+        uriImg2 = null;
+    }
+
+    @OnClick(R.id.cancel3)
+    public void cancelimg3() {
+        IV3.setImageBitmap(null);
+        cancel3.setVisibility(View.GONE);
+        uriImg3 = null;
+    }
+
 
     private void onCaptureImageResult(Intent data) {
         try {
             Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
-            IV1.setImageBitmap(thumbnail);
+//            IV1.setImageBitmap(thumbnail);
             ImageCaptureUtils.CreateNewFileForPicture();
             Uri tempUri = ImageCaptureUtils.getImageUri(context, thumbnail);
-            addToList(tempUri);
+            addToList(tempUri, thumbnail);
         } catch (Exception e) {
             throw e;
         }
@@ -716,6 +820,8 @@ public class SELL_Your_CommercialFragment extends BaseFragment implements Commis
         });
     }
 
+
+
     private class BudgetTask extends AsyncTask {
         private OptionsPickerView.Builder builder;
 
@@ -749,7 +855,7 @@ public class SELL_Your_CommercialFragment extends BaseFragment implements Commis
                             lakh = lakh.length() == 1 ? "0" + lakh : lakh;
                             thousand = thousand.length() == 1 ? "0" + thousand : thousand;
 
-                            expectedRentAmount = Double.parseDouble(crore + lakh + thousand);
+                            expectedRentAmount = Double.parseDouble(crore + lakh + thousand + "000");
                             expected_amount_text.setText(String.valueOf(numToWords.convert(Integer.parseInt(crore + lakh + thousand + "000"))));
                             expected_amount_TV.setText(rupeeSymbol + " " + crore + "," + lakh + "," + thousand + "," + "000");
                         } catch (Exception e) {
@@ -771,5 +877,58 @@ public class SELL_Your_CommercialFragment extends BaseFragment implements Commis
             RentOptions.setNPicker(options1Items, options2Items, options3Items);
             Log.i(TAG, "onPostExecute: ");
         }
+    }
+
+    @OnClick(R.id.different_locations_TV)
+    public void showGooglePlaces() {
+        try {
+            getApiResponseModel().observeForever(modelObserver);
+            AutocompleteFilter autocompleteFilter = new AutocompleteFilter.Builder()
+                    .setTypeFilter(Place.TYPE_COUNTRY)
+                    .setCountry("IN")
+                    .build();
+
+            Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
+                    .setFilter(autocompleteFilter)
+                    .build(getActivity());
+            startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
+        } catch (GooglePlayServicesRepairableException e) {
+            e.printStackTrace();
+        } catch (GooglePlayServicesNotAvailableException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private MutableLiveData<GeneralApiResponseModel> apiResponseModel;
+
+    public MutableLiveData<GeneralApiResponseModel> getApiResponseModel() {
+        if (apiResponseModel == null) {
+            apiResponseModel = new MutableLiveData<>();
+        }
+        return apiResponseModel;
+    }
+
+    final Observer<GeneralApiResponseModel> modelObserver = new Observer<GeneralApiResponseModel>() {
+        @Override
+        public void onChanged(@Nullable final GeneralApiResponseModel newValue) {
+            if (newValue != null) {
+                AllUtils.LoaderUtils.dismissLoader();
+                if (newValue.getStatusCode() == 200) {
+//                    Toast.makeText(context, newValue.getMessage(), Toast.LENGTH_LONG).show();
+                    CommissionDialogFactory.showThankYouDialog(context);
+                } else {
+                    Toast.makeText(context, newValue.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                AllUtils.LoaderUtils.dismissLoader();
+                Toast.makeText(context, "Please Try Again", Toast.LENGTH_LONG).show();
+            }
+        }
+    };
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        getApiResponseModel().removeObserver(modelObserver);
     }
 }

@@ -31,7 +31,6 @@ import android.widget.Toast;
 
 import com.applozic.mobicomkit.api.MobiComKitConstants;
 import com.applozic.mobicomkit.api.account.user.UserLogoutTask;
-import com.applozic.mobicomkit.uiwidgets.conversation.ConversationUIService;
 import com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.Auth;
@@ -40,8 +39,6 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.payu.india.Payu.Payu;
 import com.special.ResideMenu.ResideMenu;
@@ -56,10 +53,8 @@ import com.turnipconsultants.brongo_client.mvp.HomePresenter;
 import com.turnipconsultants.brongo_client.mvp.HomePresenterImpl;
 import com.turnipconsultants.brongo_client.mvp.HomeView;
 import com.turnipconsultants.brongo_client.others.AllUtils.AllUtils;
-import com.turnipconsultants.brongo_client.responseModels.FetchMicroMarketResponse;
 import com.turnipconsultants.brongo_client.responseModels.QuestionsResponseModel;
 import com.turnipconsultants.brongo_client.responseModels.SecondLandingResponse;
-import com.turnipconsultants.brongo_client.responseModels.SecondLandingResponseModel;
 import com.turnipconsultants.brongo_client.others.Constants.AppConstants;
 import com.turnipconsultants.brongo_client.others.InternetConnection;
 import com.turnipconsultants.brongo_client.others.RetrofitAPIs;
@@ -105,7 +100,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
     @BindView(R.id.not_num)
     TextView notiCountTV;
 
-    @BindView(R.id.second_view_pager)
+   @BindView(R.id.second_view_pager)
     ViewPager viewPager;
 
     @BindView(R.id.foruiconrl)
@@ -124,7 +119,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
     private ConnectedBrokersAdapter viewPagerAdapter;
     private Context context;
     private ArrayList<Object> viewPagerArrayList;
-    private String isOnlyConnected = "true";
+    private String isOnlyConnected = "OPEN";
     private String headerToken, headerDeviceId, headerPlatform, clientMobileNo;
     private boolean isSecondLand = false;
 
@@ -135,6 +130,11 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
     private GoogleApiClient mGoogleApiClient;
     private FirebaseAuth mAuth;
     private TASK selectedTask;
+
+
+//    public final static int LOOPS = 1000;
+//    public CarouselPagerAdapter adapter;
+//    public static int FIRST_PAGE = 10;
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
@@ -599,13 +599,13 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
     @Override
     protected void onResume() {
         super.onResume();
+        Log.e("onresume","on");
         IntentFilter filter = new IntentFilter();
         filter.addAction(MobiComKitConstants.APPLOZIC_UNREAD_COUNT);
         filter.addAction(AppConstants.SPECIFIC_PUSH.LEADS_UPDATE);
         LocalBroadcastManager.getInstance(this).registerReceiver(chatReceiver, filter);
         homePresenter.getChatCount();
         homePresenter.getNotificationCount();
-
         try {
             String profilePicFilePath = pref.getString(AppConstants.PREFS.USER_PROFILE_PIC_FILE, "");
             if (!profilePicFilePath.isEmpty() && new File(profilePicFilePath).exists()) {

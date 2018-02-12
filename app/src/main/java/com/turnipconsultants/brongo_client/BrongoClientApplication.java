@@ -1,5 +1,6 @@
 package com.turnipconsultants.brongo_client;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -15,6 +16,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.turnipconsultants.brongo_client.DBTables.DaoMaster;
 import com.turnipconsultants.brongo_client.DBTables.DaoSession;
+import com.turnipconsultants.brongo_client.architecture.AppComponent;
+import com.turnipconsultants.brongo_client.architecture.DaggerAppComponent;
 import com.turnipconsultants.brongo_client.models.TokenInputModel;
 import com.turnipconsultants.brongo_client.others.AllUtils.AllUtils;
 import com.turnipconsultants.brongo_client.others.Constants.AppConstants;
@@ -31,6 +34,12 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjector;
+import dagger.android.DaggerApplication;
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.HasActivityInjector;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -39,13 +48,16 @@ import retrofit2.Response;
  * Created by Pankaj on 07-12-2017.
  */
 
-public class BrongoClientApplication extends Application {
+public class BrongoClientApplication extends DaggerApplication {
     private static final String TAG = "BrongoClientApplication";
     private static RequestOptions requestOptions;
     private DaoSession daoSession;
     private Context context;
     private FetchMicroMarketResponse microMarketResponse;
     private boolean isSuccess;
+    @Inject
+    DispatchingAndroidInjector<Activity> activityInjector;
+
 
     public FetchMicroMarketResponse getMicroMarketResponse() {
         return microMarketResponse;
@@ -104,6 +116,7 @@ public class BrongoClientApplication extends Application {
         //getHashForFacebook();
         MultiDex.install(this);
     }
+
 
     private void getHashForFacebook() {
         // Add code to print out the key hash
@@ -178,4 +191,10 @@ public class BrongoClientApplication extends Application {
         }
     }
 
+    @Override
+    protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
+        AppComponent appComponent = DaggerAppComponent.builder().application(this).build();
+        appComponent.inject(this);
+        return appComponent;
+    }
 }

@@ -20,10 +20,29 @@ public class PaymentHashModel {
     private String mobileNo;
     @SerializedName("brokerMobileNo")
     private String brokerMobileNo;
-    @SerializedName("propertyId")
-    private String propertyId;
+    @SerializedName("paymentId")
+    private String paymentId;
     @SerializedName("paymentMode")
     private String paymentMode;
+    private String userType;
+    private int isDevelopment;
+
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
+    public int getIsDevelopment() {
+        return isDevelopment;
+    }
+
+    public void setIsDevelopment(int isDevelopment) {
+        this.isDevelopment = isDevelopment;
+    }
 
     public String getAmount() {
         return amount;
@@ -65,12 +84,12 @@ public class PaymentHashModel {
         this.mobileNo = mobileNo;
     }
 
-    public String getPropertyId() {
-        return propertyId;
+    public String getPaymentId() {
+        return paymentId;
     }
 
-    public void setPropertyId(String propertyId) {
-        this.propertyId = propertyId;
+    public void setPaymentId(String paymentId) {
+        this.paymentId = paymentId;
     }
 
     public String getBrokerMobileNo() {

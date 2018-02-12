@@ -6,4 +6,5 @@ package com.turnipconsultants.brongo_client.Listener;
 
 public interface RetryPaymentListener {
     void RetryPayment();
+    void paymentSuccess();
 }

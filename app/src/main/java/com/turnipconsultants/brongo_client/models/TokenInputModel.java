@@ -10,11 +10,21 @@ public class TokenInputModel {
     private String deviceId;
 
     private String mobileNo;
+    private String version;
+
 
     public TokenInputModel(String platform, String deviceId, String mobileNo) {
         this.platform = platform;
         this.deviceId = deviceId;
         this.mobileNo = mobileNo;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
     }
 
     public String getPlatform() {
