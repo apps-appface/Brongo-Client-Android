@@ -55,15 +55,14 @@ public class CheckIfForeground {
             LeadBroadcastOnScreen();
             Log.i(TAG, "Application onScreen...push Received");
 
-        } else {
-            //if not foreground
-            NotificationCompat.Builder builder = buildNotification();
-            NotificationManager notificationManager = (android.app.NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
-            notificationManager.notify(getRandomNotificationID(), builder.build());
-            foreground = false;
-            Log.i(TAG, "Application offScreen...push Received");
-
         }
+        //if not foreground
+        NotificationCompat.Builder builder = buildNotification();
+        NotificationManager notificationManager = (android.app.NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.notify(getRandomNotificationID(), builder.build());
+        foreground = false;
+        Log.i(TAG, "Application offScreen...push Received"+message);
+
 
     }
 
@@ -75,7 +74,7 @@ public class CheckIfForeground {
                 PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
-                .setSmallIcon(R.drawable.settings)
+                .setSmallIcon(R.drawable.brongo_logo_push)
                 .setTicker(message)
                 .setAutoCancel(true)
                 .setContentIntent(pIntent);

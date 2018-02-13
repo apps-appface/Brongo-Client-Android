@@ -82,6 +82,10 @@ public class AppConstants {
 
         public static final String ACCEPTED_BROKERS = "BROKER_ACCEPT";
         public static final String LEADS_UPDATE = "LEADS_UPDATE";
+        public static final String NEW_BROKER = "NEW_BROKER";
+        public static final String DROP_DEAL = "DROP_DEAL";
+        public static final String ASSIGN_NEW_BROKER = "ASSIGN_NEW_BROKER";
+        public static final String SCHEDULE_MEETING = "SCHEDULE_MEETING";
     }
 
     public static class NOTIFICATION_TYPE {

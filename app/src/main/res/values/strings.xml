@@ -71,8 +71,8 @@ Version 4.4.6</string>
     <string name="back_to_broker_list">&lt;  Back to the broker list</string>
 
     <!--Facebook-->
-    <string name="facebook_app_id">177478546172657</string>
-    <string name="fb_login_protocol_scheme">fb177478546172657</string>
+    <string name="facebook_app_id">1201675136601649</string>
+    <string name="fb_login_protocol_scheme">fb1201675136601649</string>
 
     <!--Applozic Key-->
     <string name="applozic_key">brongo1ef8fd6eda7d86d86a5a94e9e682647e5</string>

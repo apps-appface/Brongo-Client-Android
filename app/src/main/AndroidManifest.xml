@@ -74,7 +74,7 @@
             android:value="@string/applozic_module_name" />
         <meta-data
             android:name="com.applozic.mobicomkit.notification.smallIcon"
-            android:resource="@drawable/settings" /> <!-- Launcher white Icon -->
+            android:resource="@drawable/brongo_logo_push" /> <!-- Launcher white Icon -->
 
         <meta-data
             android:name="main_folder_name"

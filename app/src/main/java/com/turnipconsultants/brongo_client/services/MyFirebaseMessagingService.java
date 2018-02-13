@@ -44,7 +44,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                         context.sendBroadcast(intent);
                         break;
                     case AppConstants.SPECIFIC_PUSH.LEADS_UPDATE:
+                    case AppConstants.SPECIFIC_PUSH.NEW_BROKER:
+                    case AppConstants.SPECIFIC_PUSH.DROP_DEAL:
+                    case AppConstants.SPECIFIC_PUSH.ASSIGN_NEW_BROKER:
+                    case AppConstants.SPECIFIC_PUSH.SCHEDULE_MEETING:
                         new CheckIfForeground(context, remoteMessage.getData().get("message")).IsInForeground();
+                        Log.i(TAG, "NOitiType" + remoteMessage.getData().get("NotiType"));
                         break;
                 }
 
