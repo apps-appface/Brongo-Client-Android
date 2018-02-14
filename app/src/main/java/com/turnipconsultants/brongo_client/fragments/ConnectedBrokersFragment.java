@@ -216,6 +216,9 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
     @BindView(R.id.showMap)
     BrongoTextView showMap;
 
+    @BindView(R.id.connect_broker)
+    BrongoTextView connect_broker;
+
     private DecimalFormat df = new DecimalFormat("#.##");
 
     public ConnectedBrokersFragment() {
@@ -295,6 +298,7 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
                 case AppConstants.VISIBILITY_PAGE.SECOND_TIME_ACTIVITY:
                     secondTimeLandingLL.setVisibility(View.VISIBLE);
                     getConnectedLL.setVisibility(View.VISIBLE);
+                    connect_broker.setText("Contact "+dataEntity.getBrokerName());
                     if (dataEntity.getMeetAt().isEmpty()) {
                         projectLocation.setText("No Meetings Scheduled Yet");
                         date.setText("N/A");

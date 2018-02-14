@@ -102,7 +102,7 @@ public class LoginSignUpActivity extends AppCompatActivity implements GoogleApiC
         callbackManager = CallbackManager.Factory.create();
         mAuth = FirebaseAuth.getInstance();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("383710251265-jl8g4u8rn612poibv5ue9q00l2b03tqa.apps.googleusercontent.com")
+                .requestIdToken(getResources().getString(R.string.requestId_token_google))
                 .requestEmail()
                 .build();
         mGoogleApiClient = new GoogleApiClient.Builder(this)

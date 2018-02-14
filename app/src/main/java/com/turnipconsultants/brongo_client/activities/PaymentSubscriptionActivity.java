@@ -277,7 +277,7 @@ public class PaymentSubscriptionActivity extends AppCompatActivity implements Re
     private void callMakePayment(int position) {
         AllUtils.LoaderUtils.showLoader(context);
         if (InternetConnection.isNetworkAvailable(context)) {
-            SubscriptionRepository.MakePayment(pref, headerDeviceId, headerPlatform, headerToken, subPlansList.get(position).getSubId(), getPayuModel());
+            SubscriptionRepository.MakePayment(pref, headerDeviceId, headerPlatform, headerToken, subPlansList.get(position).getSubId(),subPlansList.get(position).getAmoutToPay(), getPayuModel());
         } else {
             AllUtils.DialogUtils.NoInternetDialog(context, (NoInternetTryConnectListener) context);
         }

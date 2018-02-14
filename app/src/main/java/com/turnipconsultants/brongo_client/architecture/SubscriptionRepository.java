@@ -82,14 +82,14 @@ public class SubscriptionRepository {
     }
 
 
-    public static void MakePayment(SharedPreferences pref, final String headerDeviceId, final String headerPlatform, final String headerToken, final String subscrId, final MutableLiveData<PayuConfigModel> liveData) {
+    public static void MakePayment(SharedPreferences pref, final String headerDeviceId, final String headerPlatform, final String headerToken, final String subscrId, final double amountTopay, final MutableLiveData<PayuConfigModel> liveData) {
 
         final String userMobileNo = pref.getString(AppConstants.PREFS.USER_MOBILE_NO, "");
         final String firstName = pref.getString(AppConstants.PREFS.USER_FIRST_NAME, "");
         final String email = pref.getString(AppConstants.PREFS.USER_EMAIL, "");
 
         PaymentHashModel paymentHashModel = new PaymentHashModel();
-        paymentHashModel.setAmount("1");
+        paymentHashModel.setAmount(String.valueOf(amountTopay));
         paymentHashModel.setFirstname(firstName);
         paymentHashModel.setProductInfo("Brongo_Client");
         paymentHashModel.setEmail(email);
@@ -115,7 +115,7 @@ public class SubscriptionRepository {
                     //paymentParams.setKey("FHOPnO");               //PRODUCTION
                     paymentParams.setTxnId(data.get(0).getTxnid());
 
-                    paymentParams.setAmount("1");
+                    paymentParams.setAmount(String.valueOf(amountTopay));
                     paymentParams.setProductInfo("Brongo_Client");
                     paymentParams.setFirstName(firstName);
                     //paymentParams.setVpa(data.get(0).getVapsHash());

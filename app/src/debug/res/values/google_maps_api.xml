@@ -21,6 +21,8 @@
     string in this file.
     -->
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
-       AIzaSyC4P28Kth2JwtYMlFHJ6WtLjviXCTTtWeA
+       AIzaSyAGn39tpNmOSz3v26c9KEMoVT_THxj3ynY
     </string>
+
+    <!--https://stackoverflow.com/questions/39790084/google-map-not-show-in-release-apk-using-android-studio-->
 </resources>

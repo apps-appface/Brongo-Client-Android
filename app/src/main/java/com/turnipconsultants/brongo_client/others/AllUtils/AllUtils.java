@@ -108,7 +108,7 @@ public class AllUtils {
             dialog.setCanceledOnTouchOutside(false);
             dialog.show();
             GifView check_mark_GV = dialog.findViewById(R.id.check_mark_GV);
-            check_mark_GV.setGifResource(R.drawable.loader);
+            check_mark_GV.setGifResource(R.drawable.loader_new_ugly);
             check_mark_GV.play();
             Log.e("Loader", context.getClass().getSimpleName());
         }

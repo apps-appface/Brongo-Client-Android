@@ -1,0 +1,84 @@
+<resources>
+    <string name="app_name">Brongo</string>
+
+    <array name="side_menu">
+        <item>ABOUT BRONGO</item>
+        <item>SUBSCRIPTION</item>
+        <item>PAST DEALS</item>
+        <item>HELP</item>
+        <item>CONTACT US</item>
+        <item>RATE US</item>
+        <item>LOGOUT</item>
+    </array>
+    <string name="splash_activity">Splash Activity</string>
+    <string name="splash_text1">Already have an account ?</string>
+    <string name="splash_login">&#160; Login</string>
+    <string name="splash_signup">Sign Up</string>
+
+    <string name="signup_generate">Generate Otp</string>
+    <string name="policy1">By signing up,you agree to our</string>
+    <string name="policy2">Terms of service &amp; Privacy Policy</string>
+    <string name="policyText">By signing up you agree to our <a href="actual url">this link</a></string>
+
+    <string name="login_send_otp">Send Otp</string>
+    <string name="login_please">Please enter your registered mobile number to receive the 4 digit OTP</string>
+
+    <string name="title_activity_maps">Map</string>
+
+    <string name="no_Internet">No internet connection</string>
+    <string name="default_media_location_folder">Brongo</string>
+    <string name="terms_conditions">In furtherance of the Terms of Use, I hereby consent to pay the Commission agreed to herein directly to the assigned Broker or to Brongo(for Rental Deals), on the conclusion of the transaction. I acknowledge and agree the failure on my part to make such payment shall provide the assigned Broker or Brongo(as the case may be) rights of a legal claim against me.</string>
+    <string name="privacy_popup">In order to protect your privacy and serve you better, please ensure you use the Brongo app to call or chat with the broker.</string>
+    <string name="title_activity_splash_pager">SplashPagerActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="rupee">\u20B9</string>
+    <string name="sale">SALE</string>
+
+
+    <string name="chat_dialog_line1">Your identity will not be revealed  to \n the broker</string>
+    <string name="title_activity_notification">NotificationActivity</string>
+    <string name="title_activity_rating">RatingActivity</string>
+    <string name="second_time_activity">HomeActivity</string>
+
+
+    <!-- Rating Page Content-->
+    <string name="understand_your_rating">Ratings allow us to ensure a great experience with Brongo for both broker and client. Just like you rate Broker, broker can rate clients on scale of 1-5 Stars after each connection.</string>
+    <string name="how_your_rating">Your rating is an average of the rating you’ve received from brokers, and is measure out of 5 stars. Ratings are anonymous, so neither you nor your broker will ever see an individual rating you’ve received.\nVery few people have a perfect rating. So don’t despair if your average isn’t 5.0. Things that seem small to you can matter to your broker – it’s easy to accidentally be late for a meeting. Knowing a little more about the things that affect a broker’s happiness can help you be a 5-start client.</string>
+    <string name="clear_with_requirement">Brokers love when clients are clear with their requirements. Client should know what they want, When they want and where they want</string>
+    <string name="qualities">Brokers appreciate those clients who carry below qualities:\n \u2022   Always on time\n \u2022   Great attitude\n \u2022   Organised\n \u2022   Professionalism\n \u2022   Clear about requirement\n \u2022   Open for suggestions\n \u2022   Pay commission on time</string>
+    <string name="courtesy">Simple but true – It’s important that client treat broker and their service the way they‘d would expect to be treated themselves. A positive attitude and considerate use of the service go a long way.</string>
+    <string name="why_your_rating_matters">Ratings foster mutual respect between brokers and clients. This strengthens our community and helps everyone get the most from Brongo. Just as you expect brokers to treat you with respect, brokers hope to feel the same acknowledgement from clients. A high rating is about more than bragging right among your friends; it’s a sign that people enjoyed their time with you. Keep up the good work.</string>
+
+
+    <!-- About Page Content-->
+    <string name="title_activity_about_us">AboutUsActivity</string>
+    <string name="about_1">A product of Turnip Technologies pvt. ltd
+Version 4.4.6</string>
+    <string name="about_2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lectus turpis, vulputate quis sodales vulputate, imperdiet at erat. Nam scelerisque eu quam eu volutpat. Nunc id dolor metus. Suspendisse et egestas felis.</string>
+
+    <string name="about_3">Lorem ipsum dolor sit amet, consectetur adipiscing elit metus. Suspendisse et egestas felis.</string>
+    <string name="title_activity_payment_and_subscription">PaymentAndSubscriptionActivity</string>
+    <string name="title_activity_help_faq">HelpFAQActivity</string>
+    <string name="title_activity_contact_us">ContactUsActivity</string>
+    <string name="title_activity_feedback">FeedbackActivity</string>
+
+    <!--Notification Page-->
+    <string name="zero_notification">No Notification available</string>
+
+    <!--Broker Review Page-->
+    <string name="back_to_broker_list">&lt;  Back to the broker list</string>
+
+    <!--Facebook-->
+    <string name="facebook_app_id">1201675136601649</string>
+    <string name="fb_login_protocol_scheme">fb1201675136601649</string>
+
+    <!--Applozic Key-->
+    <string name="applozic_key">brongo1ef8fd6eda7d86d86a5a94e9e682647e5</string>
+    <string name="applozic_module_name">Brongo_Client</string>
+    <string name="title_activity_past_requirement">PastRequirementActivity</string>
+
+    <string name="view_all_requirments">View All Requirements</string>
+    <string name="requestId_token_google">383710251265-jl8g4u8rn612poibv5ue9q00l2b03tqa.apps.googleusercontent.com</string>
+</resources>
