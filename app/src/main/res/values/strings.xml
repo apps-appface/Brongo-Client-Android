@@ -78,7 +78,6 @@ Version 4.4.6</string>
     <string name="applozic_key">brongo1ef8fd6eda7d86d86a5a94e9e682647e5</string>
     <string name="applozic_module_name">Brongo_Client</string>
     <string name="title_activity_past_requirement">PastRequirementActivity</string>
-
     <string name="view_all_requirments">View All Requirements</string>
     <string name="requestId_token_google">82210785096-aj5ed60di4mklv6ifb6nl4952ouaehbu.apps.googleusercontent.com</string>
     <!--<string name="requestId_token_google">383710251265-jl8g4u8rn612poibv5ue9q00l2b03tqa.apps.googleusercontent.com</string>--> <!--debug-->
