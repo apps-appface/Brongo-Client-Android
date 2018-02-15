@@ -188,7 +188,6 @@ public class OtpActivity extends AppCompatActivity implements NoInternetTryConne
         timer = (TextView) findViewById(R.id.timerTV);
         resendotpTV = (TextView) findViewById(R.id.resendotpTV);
         mobileStr = pref.getString(AppConstants.PREFS.USER_MOBILE_NO, "");
-
         mobileNoTV.setText("We have sent you an OTP to number +91 " + mobileStr);
         resendotpTV.setVisibility(View.INVISIBLE);
     }

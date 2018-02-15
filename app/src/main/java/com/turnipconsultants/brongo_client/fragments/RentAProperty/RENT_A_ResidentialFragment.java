@@ -86,9 +86,9 @@ import static com.turnipconsultants.brongo_client.others.Constants.AppConstants.
 
 public class RENT_A_ResidentialFragment extends BaseFragment implements CommissionListenerFactory.RentCommissionListener, NoInternetTryConnectListener, CustomListener {
     private static final String TAG = "RENT_A_ResidentialFragm";
-    private static final double MIN_BUDGET = 5000D;
-    private static final double MAX_BUDGET = 1000000D;
-    private static final double DIFF_BUDGET = 5000D;
+    private static final double MIN_BUDGET = 0D;
+    private static final double MAX_BUDGET = 50000000D;
+    private static final double DIFF_BUDGET = 500000D;
 
     private static final int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
 
@@ -591,7 +591,7 @@ public class RENT_A_ResidentialFragment extends BaseFragment implements Commissi
         budgetMax = MAX_BUDGET;
         budgetSB.setMinValue((float) budgetMin);
         budgetSB.setMaxValue((float) budgetMax);
-        budgetSB.setGap((float) DIFF_BUDGET);
+        budgetSB.setSteps((float) DIFF_BUDGET);
         budgetSB.setMinStartValue((float) budgetMin);
         budgetSB.setMaxStartValue((float) budgetMax).apply();
         budgetMinTV.setText("\u20B9 " + Utils.Budget(df, String.valueOf(budgetMin)));

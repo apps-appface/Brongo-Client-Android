@@ -87,12 +87,12 @@ import static com.turnipconsultants.brongo_client.others.Constants.AppConstants.
 public class RENT_A_CommercialFragment extends BaseFragment implements CommissionListenerFactory.RentCommissionListener, NoInternetTryConnectListener, CustomListener {
     private static final String TAG = "RENT_A_CommercialFragme";
 
-    private static final double MIN_BUDGET = 5000D;
-    private static final double MAX_BUDGET = 1000000D;
-    private static final double DIFF_BUDGET = 5000D;
+    private static final double MIN_BUDGET = 0D;
+    private static final double MAX_BUDGET = 50000000D;
+    private static final double DIFF_BUDGET = 500000D;
 
-    private static final float MIN_SQFT = 500F;
-    private static final float MAX_SQFT = 15000F;
+    private static final float MIN_SQFT = 0F;
+    private static final float MAX_SQFT = 20000F;
     private static final float DIFF_SQFT = 500F;
 
     private static final int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
@@ -144,8 +144,8 @@ public class RENT_A_CommercialFragment extends BaseFragment implements Commissio
     private LayoutInflater mInflater;
 
     private String[] popularLocArray = BANGALORE;
-    private String[] propertyTypesArray = new String[]{"Office Space", "Co-working space", "Shop/Showroom", "Warehouse/Godawn", "Industrial Building", "Industrial Shed","Any"};
-    private String[] floorArray = new String[]{"1st", "2nd", "3rd", "4th", "4th+"};
+    private String[] propertyTypesArray = new String[]{"Office Space", "Co-working space", "Shop/Showroom", "Warehouse/Godown", "Industrial Building", "Industrial Shed","Any"};
+    private String[] floorArray = new String[]{"Ground floor","1st", "2nd", "3rd", "4th", "4th+"};
     private String headerToken, headerDeviceId, headerPlatform;
 
     private Context context;
@@ -499,7 +499,7 @@ public class RENT_A_CommercialFragment extends BaseFragment implements Commissio
         reqSizeMax = MAX_SQFT;
         reqSizeSB.setMinValue((float) reqSizeMin);
         reqSizeSB.setMaxValue((float) reqSizeMax);
-        reqSizeSB.setGap(DIFF_SQFT);
+        reqSizeSB.setSteps(DIFF_SQFT);
         reqSizeSB.setMinStartValue((float) reqSizeMin);
         reqSizeSB.setMaxStartValue((float) reqSizeMax).apply();
         reqSizeMinTV.setText(String.valueOf(reqSizeMin) + " Sqft");
@@ -511,7 +511,7 @@ public class RENT_A_CommercialFragment extends BaseFragment implements Commissio
         budgetMax = MAX_BUDGET;
         budgetSB.setMinValue((float) budgetMin);
         budgetSB.setMaxValue((float) budgetMax);
-        budgetSB.setGap((float) DIFF_BUDGET);
+        budgetSB.setSteps((float) DIFF_BUDGET);
         budgetSB.setMinStartValue((float) budgetMin);
         budgetSB.setMaxStartValue((float) budgetMax).apply();
         budgetMinTV.setText("\u20B9 " + Utils.Budget(df, String.valueOf(budgetMin)));

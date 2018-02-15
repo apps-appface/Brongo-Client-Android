@@ -101,7 +101,7 @@ public class HelpFAQFragment extends Fragment {
         arrayList = new ArrayList<>();
         arrayList.add("Help & Support");
         arrayList.add("FAQ");
-        arrayList.add("Your Rating");
+//        arrayList.add("Your Rating");
     }
 
     @Override

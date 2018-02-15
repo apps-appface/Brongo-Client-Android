@@ -88,7 +88,7 @@ import static android.app.Activity.RESULT_OK;
  * Created by mohit on 23-01-2018.
  */
 
-public class SELL_Your_Land_ResidentialFragment extends BaseFragment implements CommissionListenerFactory.SellCommissionListener, NoInternetTryConnectListener, CustomListener, AllUtils.RequestReachedListener {
+public class  SELL_Your_Land_ResidentialFragment extends BaseFragment implements CommissionListenerFactory.SellCommissionListener, NoInternetTryConnectListener, CustomListener, AllUtils.RequestReachedListener {
     private static final String TAG = BUY_Land_CommercialFragment.class.getSimpleName();
     public static final int REQUEST_CAMERA_AND_WRITABLE_PERMISSIONS = 111;
     public static final int REQUEST_DEVICE_ID_PERMISSIONS = 112;

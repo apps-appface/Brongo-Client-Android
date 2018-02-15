@@ -48,10 +48,12 @@
     <color name="simple_back_color">#f9f9f9</color>
 
     <color name="noti_read">#E4E9EF</color>
-    <color name="noti_unread">#F9F9F9</color>
+    <color name="noti_unread">#3420518f</color>
     <color name="deal_status_green">#2bb442</color>
     <color name="deal_status_red">#E52A1F</color>
     <color name="divider_color">#d4848484</color>
     <color name="tab_bg">#1920518f</color>
     <color name="diff_loc">#20518f</color>
+    <color name="free_green">#e4e4</color>
+    <color name="free_red">#d60023</color>
 </resources>

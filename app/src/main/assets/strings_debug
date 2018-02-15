@@ -54,9 +54,9 @@
 
     <!-- About Page Content-->
     <string name="title_activity_about_us">AboutUsActivity</string>
-    <string name="about_1">A product of Turnip Technologies pvt. ltd
-Version 4.4.6</string>
-    <string name="about_2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lectus turpis, vulputate quis sodales vulputate, imperdiet at erat. Nam scelerisque eu quam eu volutpat. Nunc id dolor metus. Suspendisse et egestas felis.</string>
+    <string name="about_1">A product of Turnip Technologies pvt. ltd \n Version 4.4.6</string>
+    <string name="about_2">Indian real estate takes a digital step forward. We bring real estate closer to you with an app dedicated to put you in touch with real estate brokers in the shortest time possible. Now, no more running around to find the right broker, because we give it all to you in your phone. Now find expert help for your real estate needs using the Brongo app.</string>
+
 
     <string name="about_3">Lorem ipsum dolor sit amet, consectetur adipiscing elit metus. Suspendisse et egestas felis.</string>
     <string name="title_activity_payment_and_subscription">PaymentAndSubscriptionActivity</string>

@@ -15,7 +15,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
             android:layout_marginBottom="10dp"
             app:contentInsetLeft="0dp"
@@ -41,8 +41,9 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:layout_marginLeft="10dp"
+                    android:layout_toLeftOf="@+id/cancel"
+                    android:layout_marginRight="10dp"
                     android:layout_toRightOf="@+id/back">
 
                     <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView

@@ -2,6 +2,7 @@ package com.turnipconsultants.brongo_client.activities;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -23,6 +24,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -100,7 +103,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
     @BindView(R.id.not_num)
     TextView notiCountTV;
 
-   @BindView(R.id.second_view_pager)
+    @BindView(R.id.second_view_pager)
     ViewPager viewPager;
 
     @BindView(R.id.foruiconrl)
@@ -294,10 +297,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
             Intent intent = new Intent(this, ContactUsActivity.class);
             startActivity(intent);
         } else if (view == itemLogout) {
-            AllUtils.LoaderUtils.showLoader(context);
-            pref.edit().putBoolean(AppConstants.PREFS.LOGGED_IN, false).commit();
-            resideMenu.closeMenu();
-            ClearUserInfo();
+            showLogoutDialog();
         } else if (view == chatRL) {
             Intent intent = new Intent(this, ConversationActivity.class);
             startActivity(intent);
@@ -305,6 +305,45 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
             Intent intent = new Intent(this, NotificationActivity.class);
             startActivity(intent);
         }
+    }
+
+    private void showLogoutDialog() {
+        final Dialog dialogBlock = new Dialog(context, R.style.DialogTheme);
+        dialogBlock.setContentView(R.layout.popup_dialog_two_btn);
+        dialogBlock.setCanceledOnTouchOutside(false);
+        dialogBlock.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        TextView message = dialogBlock.findViewById(R.id.thankyoutv);
+        message.setText("Do you really want to logout ?");
+        Button yes = dialogBlock.findViewById(R.id.yes);
+        yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogBlock.dismiss();
+                AllUtils.LoaderUtils.showLoader(context);
+                pref.edit().putBoolean(AppConstants.PREFS.LOGGED_IN, false).commit();
+                resideMenu.closeMenu();
+                ClearUserInfo();
+            }
+        });
+
+        Button no = dialogBlock.findViewById(R.id.no);
+        no.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogBlock.dismiss();
+            }
+        });
+
+        ImageView cancel = dialogBlock.findViewById(R.id.cancel);
+        cancel.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialogBlock.dismiss();
+                    }
+                });
+
+        dialogBlock.show();
     }
 
     private void ClearUserInfo() {
@@ -599,7 +638,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
     @Override
     protected void onResume() {
         super.onResume();
-        Log.e("onresume","on");
+        Log.e("onresume", "on");
         IntentFilter filter = new IntentFilter();
         filter.addAction(MobiComKitConstants.APPLOZIC_UNREAD_COUNT);
         filter.addAction(AppConstants.SPECIFIC_PUSH.LEADS_UPDATE);

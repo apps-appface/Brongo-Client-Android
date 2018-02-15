@@ -177,7 +177,7 @@ public class RENT_Your_CommercialFragment extends BaseFragment implements Commis
     private DatePickerDialog datePickerDialog;
     private String[] popularLocArray = BANGALORE;
     private String[] propTypesArray = new String[]{"Office Space", "Showroom/Retail space", "Food & Beverage", "Any"};
-    private String[] floorArray = new String[]{"1st", "2nd", "3rd", "4th", "4th+", "Terrance"};
+    private String[] floorArray = new String[]{"Ground floor","1st", "2nd", "3rd", "4th", "4th+", "Terrance"};
     private String[] immediatelyArray = new String[]{"Immediately"};
 
 

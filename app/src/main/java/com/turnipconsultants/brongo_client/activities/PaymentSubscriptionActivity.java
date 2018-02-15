@@ -161,6 +161,11 @@ public class PaymentSubscriptionActivity extends AppCompatActivity implements Re
             userRB.setRating(dataEntity.getRating());
             condition1.setText(" " + dataEntity.getConditions().get(0));
             condition2.setText(" " + dataEntity.getConditions().get(1));
+            if (dataEntity.getRequestsLeft() > 1) {
+                line1.setTextColor(getResources().getColor(R.color.free_green));
+            } else {
+                line1.setTextColor(getResources().getColor(R.color.free_red));
+            }
             line1.setText("You have " + dataEntity.getRequestsLeft() + " free request left");
         } catch (Exception e) {
             e.printStackTrace();
@@ -277,7 +282,7 @@ public class PaymentSubscriptionActivity extends AppCompatActivity implements Re
     private void callMakePayment(int position) {
         AllUtils.LoaderUtils.showLoader(context);
         if (InternetConnection.isNetworkAvailable(context)) {
-            SubscriptionRepository.MakePayment(pref, headerDeviceId, headerPlatform, headerToken, subPlansList.get(position).getSubId(),subPlansList.get(position).getAmoutToPay(), getPayuModel());
+            SubscriptionRepository.MakePayment(pref, headerDeviceId, headerPlatform, headerToken, subPlansList.get(position).getSubId(), subPlansList.get(position).getAmoutToPay(), getPayuModel());
         } else {
             AllUtils.DialogUtils.NoInternetDialog(context, (NoInternetTryConnectListener) context);
         }

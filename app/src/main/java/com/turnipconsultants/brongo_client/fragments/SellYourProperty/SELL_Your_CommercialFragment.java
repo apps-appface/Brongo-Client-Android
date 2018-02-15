@@ -181,8 +181,8 @@ public class SELL_Your_CommercialFragment extends BaseFragment implements Commis
     private TagAdapter<String> mAdapter;
     private String[] popularLocArray = BANGALORE;
     private String[] propTypesArray = new String[]{"Office Space", "Showroom/Retail space", "Food & Beverage", "Any"};
-    private String[] propertyStatusArray = new String[]{"Ready to move-in", "Under Construction", "Resale-Tenated", "Redale-Nontenanted"};
-    private String[] floorArray = new String[]{"1st", "2nd", "3rd", "4th", "4th+"};
+    private String[] propertyStatusArray = new String[]{"Ready to move-in", "Under Construction", "Resale Tenanted", "Resale non-tenanted"};
+    private String[] floorArray = new String[]{"Ground floor","1st", "2nd", "3rd", "4th", "4th+"};
     private String[] currentStatusArray = new String[]{"Tenated", "Non-tenated"};
 
 

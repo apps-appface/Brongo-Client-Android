@@ -88,8 +88,8 @@ import static com.turnipconsultants.brongo_client.others.Constants.AppConstants.
 public class BUY_A_ResidentialFragment extends BaseFragment implements CommissionListenerFactory.BuyCommissionListener, NoInternetTryConnectListener, CustomListener {
 
     private static final String TAG = "BUY_A_ResidentialFragme";
-    private static final double MIN_BUDGET = 2500000D;
-    private static final double MAX_BUDGET = 250000000D;
+    private static final double MIN_BUDGET = 0D;
+    private static final double MAX_BUDGET = 50000000D;
     private static final double DIFF_BUDGET = 500000D;
     private static final int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
 
@@ -137,6 +137,7 @@ public class BUY_A_ResidentialFragment extends BaseFragment implements Commissio
     private String popLocStr = "", propTypeStr = "", propStatusStr = "", bedroomStr = "", mobileStr, commission = "", microMarketId = "";
     private double budgetMin, budgetMax;
     private DecimalFormat df = new DecimalFormat("#.##");
+    private static DecimalFormat df2 = new DecimalFormat("#.#");
     private String brokerCountJSON;
     private Gson gson;
     private List<BrokersCountModel.Data> arrayList;
@@ -522,7 +523,7 @@ public class BUY_A_ResidentialFragment extends BaseFragment implements Commissio
         budgetMinTV.setText("\u20B9 " + Utils.Budget(df, String.valueOf(budgetMin)));
         budgetMaxTV.setText("\u20B9 " + Utils.Budget(df, String.valueOf(budgetMax)));
         budgetSB.setDataType(CrystalRangeSeekbar.DataType.DOUBLE);
-        budgetSB.setGap((float) DIFF_BUDGET);
+        budgetSB.setSteps((float) DIFF_BUDGET);
         budgetSB.setMinValue((float) budgetMin);
         budgetSB.setMaxValue((float) budgetMax);
         budgetSB.setMinStartValue((float) budgetMin);

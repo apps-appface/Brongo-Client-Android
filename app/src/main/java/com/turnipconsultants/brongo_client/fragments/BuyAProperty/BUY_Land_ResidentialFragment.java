@@ -77,12 +77,12 @@ import static android.app.Activity.RESULT_OK;
 public class BUY_Land_ResidentialFragment extends BaseFragment implements CustomListener, NoInternetTryConnectListener, CommissionListenerFactory.BuyCommissionListener {
     private static final String TAG = BUY_Land_ResidentialFragment.class.getSimpleName();
 
-    private static final double MIN_BUDGET = 1000000D;
-    private static final double MAX_BUDGET = 250000000D;
+    private static final double MIN_BUDGET = 0D;
+    private static final double MAX_BUDGET = 50000000D;
     private static final double DIFF_BUDGET = 500000D;
 
-    private static final float MIN_SQFT = 500F;
-    private static final float MAX_SQFT = 15000F;
+    private static final float MIN_SQFT = 0F;
+    private static final float MAX_SQFT = 20000F;
     private static final float DIFF_SQFT = 500F;
     private static final int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
 
@@ -430,7 +430,7 @@ public class BUY_Land_ResidentialFragment extends BaseFragment implements Custom
         reqSizeMax = MAX_SQFT;
         requiredSizeSB.setMinValue(reqSizeMin);
         requiredSizeSB.setMaxValue(reqSizeMax);
-        requiredSizeSB.setGap(DIFF_SQFT);
+        requiredSizeSB.setSteps(DIFF_SQFT);
         requiredSizeSB.setMinStartValue(reqSizeMin);
         requiredSizeSB.setMaxStartValue(reqSizeMax).apply();
         reqSizeMinET.setText(String.valueOf(reqSizeMin) + " Sqft");
@@ -442,7 +442,7 @@ public class BUY_Land_ResidentialFragment extends BaseFragment implements Custom
         budgetMax = MAX_BUDGET;
         budgetSB.setMinValue((float) budgetMin);
         budgetSB.setMaxValue((float) budgetMax);
-        budgetSB.setGap((float) DIFF_BUDGET);
+        budgetSB.setSteps((float) DIFF_BUDGET);
         budgetSB.setMinStartValue((float) budgetMin);
         budgetSB.setMaxStartValue((float) budgetMax).apply();
         budgetMinET.setText("\u20B9 " + Utils.Budget(df, String.valueOf(budgetMin)));

@@ -172,7 +172,7 @@ public class SELL_Your_ResidentialFragment extends BaseFragment implements Commi
     private String[] propertyStatusArray = new String[]{"Pre launch", "Under Construction", "Ready to move-in-Old", "Ready to move-in(new)"};
     private String[] bedroomArray = new String[]{"1 BHK", "2 BHK", "3 BHK", "4 BHK", "4 BHK+"};
     private String[] furnishingArray = new String[]{"Fully Furnished", "Semi Furnished", "Unfurnished", "Any"};
-    private String[] floorArray = new String[]{"1st", "2nd", "3rd", "4th", "Any"};
+    private String[] floorArray = new String[]{"Ground floor","1st", "2nd", "3rd", "4th", "Any"};
     private String[] houseOrientationArray = new String[]{"East", "West", "North", "South", "North-East", "South-East", "North-West", "South-West", "Any"};
 
     private Context context;

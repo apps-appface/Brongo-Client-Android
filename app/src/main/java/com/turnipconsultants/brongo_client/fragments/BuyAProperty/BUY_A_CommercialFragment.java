@@ -88,12 +88,12 @@ import static com.turnipconsultants.brongo_client.others.Constants.AppConstants.
 public class BUY_A_CommercialFragment extends BaseFragment implements CommissionListenerFactory.BuyCommissionListener, NoInternetTryConnectListener, CustomListener {
     private static final String TAG = BUY_A_CommercialFragment.class.getSimpleName();
 
-    private static final double MIN_BUDGET = 1000000D;
-    private static final double MAX_BUDGET = 250000000D;
+    private static final double MIN_BUDGET = 0D;
+    private static final double MAX_BUDGET = 50000000D;
     private static final double DIFF_BUDGET = 500000D;
 
-    private static final float MIN_SQFT = 500F;
-    private static final float MAX_SQFT = 15000F;
+    private static final float MIN_SQFT = 0F;
+    private static final float MAX_SQFT = 20000F;
     private static final float DIFF_SQFT = 500F;
     private static final int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
 
@@ -142,7 +142,7 @@ public class BUY_A_CommercialFragment extends BaseFragment implements Commission
 
     private LayoutInflater mInflater;
     private String[] popularLoc = BANGALORE;
-    private String[] propertyTypes = new String[]{"Office Space", "Co-working Space", "Shop/Showroom", "Warehouse/Godawn", "Industrial Building", "Industrial Shed", "Any"};
+    private String[] propertyTypes = new String[]{"Office Space", "Co-working Space", "Shop/Showroom", "Warehouse/Godown", "Industrial Building", "Industrial Shed", "Any"};
     private String[] propertyStatus = new String[]{"Pre launch", "Under construction", "Ready to move-in(New)", "Ready to move-in(Old)"};
     private String[] floorArray = new String[]{"Ground floor", "1st", "2nd", "3rd", "4th", "4th+"};
     private String[] carParkingArray = new String[]{"1-5", "5-10", "10-15", "15+"};
@@ -155,6 +155,7 @@ public class BUY_A_CommercialFragment extends BaseFragment implements Commission
     private double budgetMin, budgetMax;
 
     private DecimalFormat df = new DecimalFormat("#.##");
+    private static DecimalFormat df2 = new DecimalFormat("#.#");
 
     private OptionsPickerView BudgetOptions;
     private String brokerCountJSON;
@@ -598,7 +599,7 @@ public class BUY_A_CommercialFragment extends BaseFragment implements Commission
         reqSizeMax = MAX_SQFT;
         requiredSizeSB.setMinValue(reqSizeMin);
         requiredSizeSB.setMaxValue(reqSizeMax);
-        requiredSizeSB.setGap(DIFF_SQFT);
+        requiredSizeSB.setSteps(DIFF_SQFT);
         requiredSizeSB.setMinStartValue(reqSizeMin);
         requiredSizeSB.setMaxStartValue(reqSizeMax).apply();
         reqSizeMinET.setText(String.valueOf(reqSizeMin) + " Sqft");
@@ -610,7 +611,7 @@ public class BUY_A_CommercialFragment extends BaseFragment implements Commission
         budgetMax = MAX_BUDGET;
         budgetSB.setMinValue((float) budgetMin);
         budgetSB.setMaxValue((float) budgetMax);
-        budgetSB.setGap((float) DIFF_BUDGET);
+        budgetSB.setSteps((float) DIFF_BUDGET);
         budgetSB.setMinStartValue((float) budgetMin);
         budgetSB.setMaxStartValue((float) budgetMax).apply();
         budgetMinET.setText("\u20B9 " + Utils.Budget(df, String.valueOf(budgetMin)));

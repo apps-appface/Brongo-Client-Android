@@ -102,6 +102,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         toolBar = (Toolbar) findViewById(R.id.toolbar);
         toolBarTitle = (TextView) findViewById(R.id.title);
         toolBarReset = (TextView) findViewById(R.id.reset);
+        toolBarReset.setVisibility(View.GONE);
         privacyPolicy = (TextView) findViewById(R.id.policy2);
         nameET = (EditText) findViewById(R.id.nameET);
         mobileET = (EditText) findViewById(R.id.mobileET);
@@ -166,7 +167,11 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                                 SaveValuesToPrefs();
                                 RegisterOnApplozic();
                             } else if (responseModel.getMessage().equals("Client Updated Successfully")) {
-                                Toast.makeText(context, "User already exists", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "User already exists. Please Login", Toast.LENGTH_SHORT).show();
+                                pref.edit().putString(AppConstants.PREFS.USER_MOBILE_NO, mobileET.getText().toString()).commit();
+                                Intent intent = new Intent(context, OtpActivity.class);
+                                startActivity(intent);
+                                finish();
                             }
                         } else {
                             Toast.makeText(context, "Please Try Again After Sometime", Toast.LENGTH_SHORT).show();
