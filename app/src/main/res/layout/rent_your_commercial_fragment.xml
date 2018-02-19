@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
-                android:text="Popular Locations"
+                android:text="Live Locations"
                 android:textColor="@color/black"
                 android:textSize="@dimen/content_size" />
 
@@ -319,7 +319,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/property_picture_TV"
+                android:layout_below="@id/select_picture_TV"
                 android:layout_marginTop="20dp"
                 android:layout_toRightOf="@id/select_picture_RL">
 
@@ -327,7 +327,7 @@
                     android:id="@+id/fl1"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:layout_marginLeft="20dp">
+                    android:layout_marginLeft="5dp">
 
                     <ImageView
                         android:id="@+id/cancel1"

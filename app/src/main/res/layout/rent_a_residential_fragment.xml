@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
-                android:text="Popular Locations"
+                android:text="Live Locations"
                 android:textColor="@color/black"
                 android:textSize="@dimen/content_size"
                 android:textStyle="normal" />

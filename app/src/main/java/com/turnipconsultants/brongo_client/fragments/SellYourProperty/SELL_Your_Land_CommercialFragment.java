@@ -164,7 +164,7 @@ public class SELL_Your_Land_CommercialFragment extends BaseFragment implements C
     private String headerToken, headerDeviceId, headerPlatform;
     private SharedPreferences pref;
     private ArrayAdapter unitAdapter;
-    private String[] unitsArray = new String[]{"Sqft", "Acre"};
+    private String[] unitsArray = new String[]{"Ft", "Mtrs"};
     private MultipartBody.Part img1, img2, img3;
     private HashMap<String, RequestBody> map;
     private Uri selectedImgUri, uriImg1, uriImg2, uriImg3;

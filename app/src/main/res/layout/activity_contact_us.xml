@@ -159,11 +159,46 @@
                     android:layout_marginTop="8dp"
                     android:background="@color/light_black" />
 
+                <RelativeLayout
+                    android:id="@+id/rl3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/divider2"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="12dp">
+
+
+                    <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Whatsapp Us"
+                        android:textStyle="normal" />
+
+
+                    <ImageView
+                        android:id="@+id/whatsappim1"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/whatsapp_logo" />
+                </RelativeLayout>
+
+                <View
+                    android:id="@+id/divider3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/rl3"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/light_black" />
+
                 <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
                     android:id="@+id/social_TV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/divider2"
+                    android:layout_below="@id/divider3"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="4dp"
                     android:text="Connect on social media"
@@ -291,8 +326,8 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
-                        android:padding="5dp"
                         android:background="@drawable/circle_chat_icon"
+                        android:padding="5dp"
                         android:src="@drawable/bot" />
                 </RelativeLayout>
             </RelativeLayout>

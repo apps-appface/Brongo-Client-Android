@@ -129,7 +129,7 @@ public class ResideMenu extends FrameLayout {
                 e.printStackTrace();
                 appVersion = "";
             }
-            versionTV.setText("Version " + appVersion + " | Turnip Technologies Pvt. Ltd. Patent Pending for 201741031339");
+            versionTV.setText("Version " + appVersion + " | Turnip Technologies Pvt. Ltd.\nPatent Pending for 201741031339");
         }
 
         if (customRightMenuId >= 0) {

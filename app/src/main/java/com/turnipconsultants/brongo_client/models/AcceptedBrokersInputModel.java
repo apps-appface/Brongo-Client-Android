@@ -21,6 +21,34 @@ public class AcceptedBrokersInputModel {
     private String comment;
     private String propertyType;
     private String subPropertyType;
+    private String from;
+    private String to;
+    private String dealId;
+
+
+    public String getFrom() {
+        return from;
+    }
+
+    public void setFrom(String from) {
+        this.from = from;
+    }
+
+    public String getTo() {
+        return to;
+    }
+
+    public void setTo(String to) {
+        this.to = to;
+    }
+
+    public String getDealId() {
+        return dealId;
+    }
+
+    public void setDealId(String dealId) {
+        this.dealId = dealId;
+    }
 
     public String getSubPropertyType() {
         return subPropertyType;

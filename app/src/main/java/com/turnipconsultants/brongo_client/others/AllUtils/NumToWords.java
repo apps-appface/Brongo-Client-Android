@@ -10,9 +10,9 @@ public class NumToWords {
             "Eight", "Nine",};
     String st2[] = {"Hundred", "Thousand", "Lakh", "Crore"};
     String st3[] = {"Ten", "Eleven", "Twelve", "Thirteen", "Fourteen",
-            "Fifteen", "Sxteen", "Seventeen", "Eighteen", "Ninteen",};
-    String st4[] = {"Twenty", "Thirty", "Fourty", "Fifty", "Sixty", "Seventy",
-            "Eighty", "Ninty"};
+            "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen",};
+    String st4[] = {"Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy",
+            "Eighty", "Ninety"};
 
     public String convert(int number) {
         int n = 1;
@@ -55,7 +55,11 @@ public class NumToWords {
                     word = number % 100;
                     if (word != 0) {
                         show(" ");
-                        show(st2[2]);
+                        if(word>1) {
+                            show(st2[2]+"s");
+                        }else{
+                            show(st2[2]);
+                        }
                         show(" ");
                         pass(word);
                     }

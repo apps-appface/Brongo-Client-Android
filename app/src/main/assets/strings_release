@@ -75,7 +75,7 @@
     <string name="fb_login_protocol_scheme">fb1201675136601649</string>
 
     <!--Applozic Key-->
-    <string name="applozic_key">brongo1ef8fd6eda7d86d86a5a94e9e682647e5</string>
+    <string name="applozic_key">32379970215f70dcb6a6e150693b60026</string>
     <string name="applozic_module_name">Brongo_Client</string>
     <string name="title_activity_past_requirement">PastRequirementActivity</string>
 

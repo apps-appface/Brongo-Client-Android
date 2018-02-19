@@ -18,9 +18,8 @@
         android:indeterminateDrawable="@drawable/circular_progress_view"/>-->
     <com.turnipconsultants.brongo_client.CustomWidgets.GifView
         android:id="@+id/check_mark_GV"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
         android:layout_centerInParent="true"/>
 </RelativeLayout>

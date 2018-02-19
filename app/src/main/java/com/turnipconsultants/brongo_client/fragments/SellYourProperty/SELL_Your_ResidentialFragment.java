@@ -172,7 +172,7 @@ public class SELL_Your_ResidentialFragment extends BaseFragment implements Commi
     private String[] propertyStatusArray = new String[]{"Pre launch", "Under Construction", "Ready to move-in-Old", "Ready to move-in(new)"};
     private String[] bedroomArray = new String[]{"1 BHK", "2 BHK", "3 BHK", "4 BHK", "4 BHK+"};
     private String[] furnishingArray = new String[]{"Fully Furnished", "Semi Furnished", "Unfurnished", "Any"};
-    private String[] floorArray = new String[]{"Ground floor","1st", "2nd", "3rd", "4th", "Any"};
+    private String[] floorArray = new String[]{"Ground floor", "1st", "2nd", "3rd", "4th", "Any"};
     private String[] houseOrientationArray = new String[]{"East", "West", "North", "South", "North-East", "South-East", "North-West", "South-West", "Any"};
 
     private Context context;
@@ -513,9 +513,9 @@ public class SELL_Your_ResidentialFragment extends BaseFragment implements Commi
                             if ((jObjError.getString("message").equals("Invalid Access Token"))) {
                                 new Utils().getTokenRefresh(context, new TokenInputModel(headerPlatform, headerDeviceId, pref.getString(AppConstants.PREFS.USER_MOBILE_NO, "")));
                                 SellProperty();
-                            }  else if (jObjError.getString("statusCode").equals("412")) {
-                                AllUtils.showMaxRequestReached(context,jObjError.getString("message"),SELL_Your_ResidentialFragment.this);
-                            }else {
+                            } else if (jObjError.getString("statusCode").equals("412")) {
+                                AllUtils.showMaxRequestReached(context, jObjError.getString("message"), SELL_Your_ResidentialFragment.this);
+                            } else {
                                 Toast.makeText(context, "Please Try Again", Toast.LENGTH_SHORT).show();
                             }
                             Log.e("error", response.errorBody().string());
@@ -879,8 +879,6 @@ public class SELL_Your_ResidentialFragment extends BaseFragment implements Commi
     }
 
 
-
-
     private class BudgetTask extends AsyncTask {
         private OptionsPickerView.Builder builder;
 
@@ -917,6 +915,8 @@ public class SELL_Your_ResidentialFragment extends BaseFragment implements Commi
                             expectedRentAmount = Double.parseDouble(crore + lakh + thousand + "000");
                             budgetWordTV.setText(String.valueOf(numToWords.convert(Integer.parseInt(crore + lakh + thousand + "000"))));
                             expectedRentTV.setText(rupeeSymbol + " " + crore + "," + lakh + "," + thousand + "," + "000");
+                            TextView price = v.findViewById(R.id.priceTv);
+                            price.setText(rupeeSymbol + " " + crore + "," + lakh + "," + thousand + "," + "000");
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

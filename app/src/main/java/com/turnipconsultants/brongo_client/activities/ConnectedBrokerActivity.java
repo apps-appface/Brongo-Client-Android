@@ -169,43 +169,43 @@ public class ConnectedBrokerActivity extends AppCompatActivity implements View.O
         return model;
     }
 
-    private void getKnowalarityCall() {
-        selectedTask = TASK.GET_CALL;
-        if (InternetConnection.isNetworkAvailable(context)) {
-            AllUtils.LoaderUtils.showLoader(context);
-            RetrofitAPIs apiInstance = RetrofitBuilders.getInstance().getAPIService(RetrofitBuilders.getBaseUrl());
-            Call<KnowlarityApiResponseModel> call = apiInstance.getKnowlarityCall("+91" + pref.getString(AppConstants.PREFS.USER_MOBILE_NO, ""), "+91" + brokerMobileNo);
-            call.enqueue(new Callback<KnowlarityApiResponseModel>() {
-                @Override
-                public void onResponse(Call<KnowlarityApiResponseModel> call, Response<KnowlarityApiResponseModel> response) {
-                    AllUtils.LoaderUtils.dismissLoader();
-                    if (response != null && response.isSuccessful()) {
-                        KnowlarityApiResponseModel responseModel = response.body();
-                        if (responseModel.getStatusCode() == 200) {
-
-                        } else {
-                            Toast.makeText(context, responseModel.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    } else {
-                        Toast.makeText(context, "Please Try Again After Sometime", Toast.LENGTH_SHORT).show();
-                        try {
-                            Log.e("error", response.errorBody().string());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<KnowlarityApiResponseModel> call, Throwable t) {
-                    AllUtils.LoaderUtils.dismissLoader();
-                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_LONG).show();
-                }
-            });
-        } else {
-            AllUtils.DialogUtils.NoInternetDialog(context, this);
-        }
-    }
+//    private void getKnowalarityCall() {
+//        selectedTask = TASK.GET_CALL;
+//        if (InternetConnection.isNetworkAvailable(context)) {
+//            AllUtils.LoaderUtils.showLoader(context);
+//            RetrofitAPIs apiInstance = RetrofitBuilders.getInstance().getAPIService(RetrofitBuilders.getBaseUrl());
+//            Call<KnowlarityApiResponseModel> call = apiInstance.getKnowlarityCall("+91" + pref.getString(AppConstants.PREFS.USER_MOBILE_NO, ""), "+91" + brokerMobileNo);
+//            call.enqueue(new Callback<KnowlarityApiResponseModel>() {
+//                @Override
+//                public void onResponse(Call<KnowlarityApiResponseModel> call, Response<KnowlarityApiResponseModel> response) {
+//                    AllUtils.LoaderUtils.dismissLoader();
+//                    if (response != null && response.isSuccessful()) {
+//                        KnowlarityApiResponseModel responseModel = response.body();
+//                        if (responseModel.getStatusCode() == 200) {
+//
+//                        } else {
+//                            Toast.makeText(context, responseModel.getMessage(), Toast.LENGTH_SHORT).show();
+//                        }
+//                    } else {
+//                        Toast.makeText(context, "Please Try Again After Sometime", Toast.LENGTH_SHORT).show();
+//                        try {
+//                            Log.e("error", response.errorBody().string());
+//                        } catch (IOException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                }
+//
+//                @Override
+//                public void onFailure(Call<KnowlarityApiResponseModel> call, Throwable t) {
+//                    AllUtils.LoaderUtils.dismissLoader();
+//                    Toast.makeText(context, t.getMessage(), Toast.LENGTH_LONG).show();
+//                }
+//            });
+//        } else {
+//            AllUtils.DialogUtils.NoInternetDialog(context, this);
+//        }
+//    }
 
     private boolean checkPermissionAllowed() {
         if (Build.VERSION.SDK_INT >= 23) {
@@ -248,7 +248,7 @@ public class ConnectedBrokerActivity extends AppCompatActivity implements View.O
                 startActivity(intent);
                 break;
             case R.id.call:
-                getKnowalarityCall();
+//                getKnowalarityCall();
                 break;
             case R.id.backRl:
                 Intent intent2 = new Intent(context, HomeActivity.class);
@@ -270,7 +270,7 @@ public class ConnectedBrokerActivity extends AppCompatActivity implements View.O
                 break;
             }
             case GET_CALL: {
-                getKnowalarityCall();
+//                getKnowalarityCall();
                 break;
             }
 

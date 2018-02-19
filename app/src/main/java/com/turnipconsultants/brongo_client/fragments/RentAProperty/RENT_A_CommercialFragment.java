@@ -324,13 +324,13 @@ public class RENT_A_CommercialFragment extends BaseFragment implements Commissio
                 budgetMin = minValue.doubleValue();
                 budgetMax = maxValue.doubleValue();
 
-                if (budgetMin >= 0 && budgetMax < 10000000) {
+               /* if (budgetMin >= 0 && budgetMax < 10000000) {
                     budgetSB.setSteps(500000);
                 } else if (budgetMin >= 10000000 && budgetMax < 30000000) {
                     budgetSB.setSteps(1000000);
                 }else if (budgetMin >= 30000000 && budgetMax <= 50000000) {
                     budgetSB.setSteps(2500000);
-                }
+                }*/
             }
         });
     }

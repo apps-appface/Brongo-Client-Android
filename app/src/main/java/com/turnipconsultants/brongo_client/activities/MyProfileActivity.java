@@ -29,6 +29,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RatingBar;
 import android.widget.ScrollView;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -131,6 +132,9 @@ public class MyProfileActivity extends AppCompatActivity implements View.OnClick
 
     @BindView(R.id.scrollView)
     ScrollView scrollView;
+
+    @BindView(R.id.ratingBar)
+    RatingBar ratingBar;
 
     private static Context context;
     private String headerToken, headerDeviceId, headerPlatform, clientMobileNo;
@@ -264,7 +268,7 @@ public class MyProfileActivity extends AppCompatActivity implements View.OnClick
                             }
                             clientRating.setText(data.get(0).getRating() + "");
                             activeRequests.setText(data.get(0).getActiveRequests() + "");
-
+                            ratingBar.setRating(data.get(0).getRating());
                             scrollView.post(new Runnable() {
                                 public void run() {
                                     scrollView.fullScroll(ScrollView.FOCUS_UP);
@@ -366,6 +370,7 @@ public class MyProfileActivity extends AppCompatActivity implements View.OnClick
                                 pref.edit().putString(AppConstants.PREFS.USER_PROFILE_PIC_FILE, imgFile.getAbsolutePath()).commit();
                                 save.setVisibility(View.GONE);
                             }
+                            save.setVisibility(View.GONE);
                             Toast.makeText(context, responseModel.getMessage(), Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(context, responseModel.getMessage(), Toast.LENGTH_SHORT).show();

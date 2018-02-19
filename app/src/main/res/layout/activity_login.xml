@@ -45,6 +45,7 @@
                     android:layout_centerVertical="true"
                     android:textColor="@color/appPrimaryFont"
                     android:textSize="@dimen/content_size"
+                    android:visibility="gone"
                     android:textStyle="normal" />
 
                 <android.support.design.widget.TextInputLayout
@@ -65,8 +66,9 @@
                         android:hint="ENTER MOBILE NUMBER"
                         android:imeOptions="actionDone"
                         android:inputType="phone"
-                        android:maxLength="10"
+                        android:maxLength="14"
                         android:maxLines="1"
+                        android:text="+91 "
                         android:paddingBottom="@dimen/signup_mainRL_mtop"
                         android:textColor="@color/appPrimaryFont"
                         android:textSize="@dimen/content_size" />

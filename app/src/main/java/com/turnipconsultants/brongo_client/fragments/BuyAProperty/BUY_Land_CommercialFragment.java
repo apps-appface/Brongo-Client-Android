@@ -158,7 +158,7 @@ public class BUY_Land_CommercialFragment extends BaseFragment implements HasSupp
     private double budgetMin, budgetMax;
     private DecimalFormat df = new DecimalFormat("#.##");
     private ArrayAdapter unitAdapter;
-    private String[] unitsArray = new String[]{"Sqt feet", "acre"};
+    private String[] unitsArray = new String[]{"Ft", "Mtrs"};
     private String headerToken, headerDeviceId, headerPlatform;
     private SharedPreferences pref;
     ViewModelFactory factory;
@@ -302,13 +302,13 @@ public class BUY_Land_CommercialFragment extends BaseFragment implements HasSupp
                 budgetMaxET.setText("\u20B9 " + Utils.Budget(df, String.valueOf(maxValue)));
                 budgetMin = minValue.doubleValue();
                 budgetMax = maxValue.doubleValue();
-                if (budgetMin >= 0 && budgetMax < 10000000) {
+                /*if (budgetMin >= 0 && budgetMax < 10000000) {
                     budgetSB.setSteps(500000);
                 } else if (budgetMin >= 10000000 && budgetMax < 30000000) {
                     budgetSB.setSteps(1000000);
                 }else if (budgetMin >= 30000000 && budgetMax <= 50000000) {
                     budgetSB.setSteps(2500000);
-                }
+                }*/
             }
         });
     }

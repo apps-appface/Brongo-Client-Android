@@ -17,6 +17,13 @@ import com.turnipconsultants.brongo_client.R;
 import com.turnipconsultants.brongo_client.others.Constants.AppConstants;
 import com.turnipconsultants.brongo_client.services.RegistrationIntentService;
 
+import java.io.IOException;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import pl.droidsonroids.gif.GifDrawable;
+import pl.droidsonroids.gif.GifImageView;
+
 import static com.turnipconsultants.brongo_client.R.id.textview;
 
 /**
@@ -24,20 +31,31 @@ import static com.turnipconsultants.brongo_client.R.id.textview;
  */
 
 public class SplashScreenActivity extends AppCompatActivity {
-    private static int SPLASH_TIME_OUT = 2100;
-    private TextView title, subTitle;
+    private static int SPLASH_TIME_OUT = 8000;
+    //    private TextView title, subTitle;
     private SharedPreferences pref;
     private Context context = this;
+    @BindView(R.id.splashGif)
+    GifImageView newGif;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash_screen);
-        title = (TextView) findViewById(textview);
-        subTitle = (TextView) findViewById(R.id.subtitle);
+        setContentView(R.layout.activity_new_splash);
+//        title = (TextView) findViewById(textview);
+//        subTitle = (TextView) findViewById(R.id.subtitle);
         pref = context.getSharedPreferences(AppConstants.PREF_NAME, 0);
-        title.setVisibility(View.GONE);
-        subTitle.setVisibility(View.GONE);
+        ButterKnife.bind(this);
+        GifDrawable gifDrawable = null;
+        try {
+            gifDrawable = new GifDrawable(getResources(), R.drawable.new_splash);
+            gifDrawable.setLoopCount(1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        newGif.setImageDrawable(gifDrawable);
+//        title.setVisibility(View.GONE);
+//        subTitle.setVisibility(View.GONE);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -72,7 +90,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             }
         }, SPLASH_TIME_OUT);
 
-        new Handler().postDelayed(new Runnable() {
+        /*new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 title.setVisibility(View.VISIBLE);
@@ -92,7 +110,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 anim.setInterpolator(bounceInterpolator);
                 anim.setDuration(200).start();
             }
-        }, 1800);
+        }, 1800);*/
     }
 }
 

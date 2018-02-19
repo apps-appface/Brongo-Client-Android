@@ -330,6 +330,17 @@ public class OtpActivity extends AppCompatActivity implements NoInternetTryConne
                             ET2.setText(String.valueOf(otp[1].charAt(1)));
                             ET3.setText(String.valueOf(otp[1].charAt(2)));
                             ET4.setText(String.valueOf(otp[1].charAt(3)));
+                            str = new StringBuilder();
+                            str.append(ET1.getText().toString());
+                            str.append(ET2.getText().toString());
+                            str.append(ET3.getText().toString());
+                            str.append(ET4.getText().toString());
+                            if (checkPermissionAllowed())
+                                if (str.length() == 4) {
+                                    getOTPVerified();
+                                } else {
+                                    Toast.makeText(context, "Invalid OTP", Toast.LENGTH_SHORT).show();
+                                }
                         }
                     }
                 }

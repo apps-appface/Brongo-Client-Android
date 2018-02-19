@@ -97,7 +97,7 @@ public class SubscriptionRepository {
         paymentHashModel.setPaymentId(subscrId);
         paymentHashModel.setBrokerMobileNo("");
         paymentHashModel.setPaymentMode("SUBSCRIPTION");
-        paymentHashModel.setIsDevelopment(1);
+//        paymentHashModel.setIsDevelopment(1);
         paymentHashModel.setUserType("CLIENT");
 
         RetrofitAPIs apiInstance = RetrofitBuilders.getInstance().getAPIService(RetrofitBuilders.getBaseUrl());
@@ -111,8 +111,8 @@ public class SubscriptionRepository {
                     List<PaymentHashResponseModel.Data> data = hashResponseModel.getData();
 
                     PaymentParams paymentParams = new PaymentParams();
-                    paymentParams.setKey("gtKFFx");                  //DEVELOPMENT
-                    //paymentParams.setKey("FHOPnO");               //PRODUCTION
+//                    paymentParams.setKey("gtKFFx");                  //DEVELOPMENT
+                    paymentParams.setKey("FHOPnO");               //PRODUCTION
                     paymentParams.setTxnId(data.get(0).getTxnid());
 
                     paymentParams.setAmount(String.valueOf(amountTopay));
@@ -141,8 +141,8 @@ public class SubscriptionRepository {
                     paymentParams.setUserCredentials(userMobileNo + ":Brongo_Client");
 
                     PayuConfig payuConfig = new PayuConfig();
-                    payuConfig.setEnvironment(PayuConstants.STAGING_ENV);
-                    //payuConfig.setEnvironment(PayuConstants.PRODUCTION_ENV);
+//                    payuConfig.setEnvironment(PayuConstants.STAGING_ENV);
+                    payuConfig.setEnvironment(PayuConstants.PRODUCTION_ENV);
 
                     PayuConfigModel payuConfigModel = new PayuConfigModel();
                     payuConfigModel.setPaymentParams(paymentParams);

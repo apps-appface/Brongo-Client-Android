@@ -65,7 +65,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     private static final String TAG = "SignUpActivity";
     private Context context;
     private Toolbar toolBar;
-    private TextView toolBarTitle, toolBarReset, privacyPolicy;
+    private TextView toolBarTitle, toolBarReset, privacyPolicy, policy3;
     private EditText nameET, mobileET, emailET;
     private Button otpBtn;
     private String nameStr, emailStr, mobileStr, platform, loginType, deviceId;
@@ -86,6 +86,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
         otpBtn.setOnClickListener(this);
         privacyPolicy.setOnClickListener(this);
+        policy3.setOnClickListener(this);
     }
 
     private void initializeViews() {
@@ -108,6 +109,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         mobileET = (EditText) findViewById(R.id.mobileET);
         emailET = (EditText) findViewById(R.id.emailIdET);
         otpBtn = (Button) findViewById(R.id.generateOtpBtn);
+        policy3 = (TextView) findViewById(R.id.policy3);
         pref = context.getSharedPreferences(AppConstants.PREF_NAME, 0);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -118,7 +120,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
         nameET.setText(fbFName + " " + fbLName);
         emailET.setText(fbEmail);
-        mobileET.setText(fbMobile);
+        mobileET.setText("+91 " + fbMobile);
     }
 
     @Override
@@ -127,8 +129,13 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         switch (id) {
             case R.id.generateOtpBtn:
                 if (checkPermissionAllowed()) {
-                    if (!nameET.getText().toString().isEmpty() && !mobileET.getText().toString().isEmpty() && mobileET.getText().toString().length() == 10 && Utils.isValidEmail(emailET.getText().toString())) {
-                        getUserSignUp();
+                    if (!nameET.getText().toString().isEmpty() && nameET.getText().toString().trim().length() >=3 && !mobileET.getText().toString().isEmpty() && mobileET.getText().toString().length() == 14 && Utils.isValidEmail(emailET.getText().toString())) {
+                        if (nameET.getText().toString().contains(" ") && nameET.getText().toString().split(" ")[0].length() < 3) {
+                            Toast.makeText(context, "Invalid username", Toast.LENGTH_SHORT).show();
+                        } else {
+                            getUserSignUp();
+                        }
+
                     } else {
                         Toast.makeText(context, "Name, Mobile Number cannot be empty and Email should be valid", Toast.LENGTH_SHORT).show();
                     }
@@ -140,9 +147,15 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 startActivity(i);
 
                 break;
+            case R.id.policy3:
+                Intent i2 = new Intent(context, TermsAndConditionsActivity.class);
+                i2.putExtra("isPrivacy", true);
+                startActivity(i2);
+
+                break;
             case R.id.reset:
                 nameET.setText("");
-                mobileET.setText("");
+                mobileET.setText("+91 ");
                 emailET.setText("");
                 break;
         }
@@ -168,7 +181,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                                 RegisterOnApplozic();
                             } else if (responseModel.getMessage().equals("Client Updated Successfully")) {
                                 Toast.makeText(context, "User already exists. Please Login", Toast.LENGTH_SHORT).show();
-                                pref.edit().putString(AppConstants.PREFS.USER_MOBILE_NO, mobileET.getText().toString()).commit();
+                                pref.edit().putString(AppConstants.PREFS.USER_MOBILE_NO, mobileET.getText().toString().split(" ")[1]).commit();
                                 Intent intent = new Intent(context, OtpActivity.class);
                                 startActivity(intent);
                                 finish();
@@ -218,7 +231,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         nameStr = nameET.getText().toString();
         nameStr = nameStr.replaceFirst("^\\s*", "");
         emailStr = emailET.getText().toString();
-        mobileStr = mobileET.getText().toString();
+        mobileStr = mobileET.getText().toString().split(" ")[1];
 
         platform = "android";
         if (nameStr.contains(" ")) {
@@ -277,7 +290,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         switch (requestCode) {
             case 1:
                 if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED)) {
-                    if (!nameET.getText().toString().isEmpty() && !mobileET.getText().toString().isEmpty() && mobileET.getText().toString().length() == 10 && Utils.isValidEmail(emailET.getText().toString())) {
+                    if (!nameET.getText().toString().isEmpty() && !mobileET.getText().toString().isEmpty() && mobileET.getText().toString().length() == 14 && Utils.isValidEmail(emailET.getText().toString())) {
                         getUserSignUp();
                     } else {
                         Toast.makeText(context, "Name, Mobile Number cannot be empty and Email should be valid", Toast.LENGTH_SHORT).show();

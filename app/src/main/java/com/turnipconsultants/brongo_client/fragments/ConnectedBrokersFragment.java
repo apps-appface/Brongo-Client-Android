@@ -298,7 +298,7 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
                 case AppConstants.VISIBILITY_PAGE.SECOND_TIME_ACTIVITY:
                     secondTimeLandingLL.setVisibility(View.VISIBLE);
                     getConnectedLL.setVisibility(View.VISIBLE);
-                    connect_broker.setText("Contact "+dataEntity.getBrokerName());
+                    connect_broker.setText("Contact " + dataEntity.getBrokerName());
                     if (dataEntity.getMeetAt().isEmpty()) {
                         projectLocation.setText("No Meetings Scheduled Yet");
                         date.setText("N/A");
@@ -507,7 +507,7 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
             paymentHashModel.setPaymentId(propertyId);
             paymentHashModel.setBrokerMobileNo(brokerNo);
             paymentHashModel.setPaymentMode("DEAL");
-            paymentHashModel.setIsDevelopment(1);
+//            paymentHashModel.setIsDevelopment(1);
             paymentHashModel.setUserType("CLIENT");
 
             AllUtils.LoaderUtils.showLoader(context);
@@ -525,8 +525,8 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
                         List<PaymentHashResponseModel.Data> data = hashResponseModel.getData();
 
                         PaymentParams paymentParams = new PaymentParams();
-                        paymentParams.setKey("gtKFFx");                  //DEVELOPMENT
-                        //paymentParams.setKey("FHOPnO");               //PRODUCTION
+//                        paymentParams.setKey("gtKFFx");                  //DEVELOPMENT
+                        paymentParams.setKey("FHOPnO");               //PRODUCTION
                         paymentParams.setTxnId(data.get(0).getTxnid());
 
                         paymentParams.setAmount("1");
@@ -556,8 +556,8 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
 
                         PayuConfig payuConfig = new PayuConfig();
 //                        payuConfig.setEnvironment(PayuConstants.MOBILE_STAGING_ENV);
-//                        payuConfig.setEnvironment(PayuConstants.PRODUCTION_ENV);
-                        payuConfig.setEnvironment(PayuConstants.STAGING_ENV);
+                        payuConfig.setEnvironment(PayuConstants.PRODUCTION_ENV);
+//                        payuConfig.setEnvironment(PayuConstants.STAGING_ENV);
 
                         Intent intent = new Intent(getActivity(), PayUBaseActivity.class);
                         intent.putExtra(PayuConstants.PAYU_CONFIG, payuConfig);
@@ -619,7 +619,7 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
 
         if (object instanceof SecondLandingResponse.DataEntity) {
             SecondLandingResponse.DataEntity dataEntity = (SecondLandingResponse.DataEntity) object;
-            getKnowalarityCall(dataEntity.getBrokerMobileNo());
+            getKnowalarityCall(dataEntity.getBrokerMobileNo(), dataEntity.getPropertyId());
         }
     }
 
@@ -632,16 +632,15 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
             headerPlatform = "android";
             headerToken = pref.getString("token", "");
             RetrofitAPIs apiInstance = RetrofitBuilders.getInstance().getAPIService(RetrofitBuilders.getBaseUrl());
-            String from, to = "";
+            String from, to = "", propertyId = "";
             from = pref.getString(AppConstants.PREFS.USER_MOBILE_NO, "");
-            if (object instanceof SecondLandingResponseModel.Data.BuyAndRent) {
-                SecondLandingResponseModel.Data.BuyAndRent buyAndRent = (SecondLandingResponseModel.Data.BuyAndRent) object;
-                to = buyAndRent.getBrokerMobileNo();
-            } else if (object instanceof SecondLandingResponseModel.Data.SellAndRentOut) {
-                SecondLandingResponseModel.Data.SellAndRentOut sellAndRentOut = (SecondLandingResponseModel.Data.SellAndRentOut) object;
-                to = sellAndRentOut.getBrokerMobileNo();
+            if (object instanceof SecondLandingResponse.DataEntity) {
+                SecondLandingResponse.DataEntity dataEntity = (SecondLandingResponse.DataEntity) object;
+                to = dataEntity.getBrokerMobileNo();
+                propertyId = dataEntity.getPropertyId();
             }
-            Call<ResponseBody> call = apiInstance.CallBack(headerToken, headerPlatform, headerDeviceId, from, to);
+
+            Call<ResponseBody> call = apiInstance.CallBack(headerToken, headerPlatform, headerDeviceId, from, to, propertyId);
             call.enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -803,12 +802,19 @@ public class ConnectedBrokersFragment extends Fragment implements RetryPaymentLi
     }
 
 
-    private void getKnowalarityCall(String brokerMobileNo) {
+    private void getKnowalarityCall(String brokerMobileNo, String propertyId) {
         selectedTask = TASK.GET_CALL;
         if (InternetConnection.isNetworkAvailable(context)) {
+            headerDeviceId = Utils.getDeviceId(context);
+            headerPlatform = "android";
+            headerToken = pref.getString("token", "");
+            AcceptedBrokersInputModel model = new AcceptedBrokersInputModel();
+            model.setFrom(pref.getString(AppConstants.PREFS.USER_MOBILE_NO, ""));
+            model.setTo(brokerMobileNo);
+            model.setDealId(propertyId);
             AllUtils.LoaderUtils.showLoader(context);
             RetrofitAPIs apiInstance = RetrofitBuilders.getInstance().getAPIService(RetrofitBuilders.getBaseUrl());
-            Call<KnowlarityApiResponseModel> call = apiInstance.getKnowlarityCall(pref.getString(AppConstants.PREFS.USER_MOBILE_NO, ""), brokerMobileNo);
+            Call<KnowlarityApiResponseModel> call = apiInstance.getKnowlarityCall(headerToken, headerPlatform, headerDeviceId, model);
             call.enqueue(new Callback<KnowlarityApiResponseModel>() {
                 @Override
                 public void onResponse(Call<KnowlarityApiResponseModel> call, Response<KnowlarityApiResponseModel> response) {

@@ -22,7 +22,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:gravity="center"
-            android:text="Crore"
+            android:text="Crores"
             android:textAllCaps="false"
             android:textColor="@android:color/black"
             android:textStyle="normal" />
@@ -34,7 +34,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:gravity="center"
-            android:text="Lakh"
+            android:text="Lakhs"
             android:textAllCaps="false"
             android:textColor="@android:color/black"
             android:textStyle="normal" />
@@ -46,7 +46,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:gravity="center"
-            android:text="Thousand"
+            android:text="Thousands"
             android:textAllCaps="false"
             android:textColor="@android:color/black"
             android:textStyle="normal" />
@@ -63,18 +63,29 @@
             android:id="@+id/options1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <com.bigkoo.pickerview.lib.WheelView
             android:id="@+id/options2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <com.bigkoo.pickerview.lib.WheelView
             android:id="@+id/options3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/priceTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:textSize="15sp"
+        android:visibility="gone"
+        android:textColor="@color/black" />
 </LinearLayout>

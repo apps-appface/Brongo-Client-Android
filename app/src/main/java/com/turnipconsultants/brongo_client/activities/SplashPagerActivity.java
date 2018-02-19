@@ -56,9 +56,9 @@ public class SplashPagerActivity extends AppCompatActivity implements ViewPager.
 
     private List<Fragment> getFragments() {
         List<Fragment> fList = new ArrayList<Fragment>();
-        fList.add(SplashPagerFragment.newInstance(R.drawable.splash_1));
+        fList.add(SplashPagerFragment.newInstance(R.drawable.walk1));
         fList.add(SplashPagerFragment.newInstance(R.drawable.splash_2));
-        fList.add(SplashPagerFragment.newInstance(R.drawable.splash_3));
+        fList.add(SplashPagerFragment.newInstance(R.drawable.walk3));
         fList.add(SplashPagerFragment.newInstance(R.drawable.splash_4));
         return fList;
     }

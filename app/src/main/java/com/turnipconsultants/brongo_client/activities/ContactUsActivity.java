@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
@@ -37,11 +38,11 @@ public class ContactUsActivity extends AppCompatActivity implements View.OnClick
     public static String FACEBOOK_URL = "https://www.facebook.com/brongo.in/";
     public static String FACEBOOK_PAGE_ID = "brongo.in";
     public static String YOUTUBE_CHANNEL = "https://www.youtube.com/channel/UC73dLKuzzn8CxFTaOvr-qlw?view_as=subscriber";
-    public static String INSTAGRAM_URL = "https://www.instagram.com/brongo4545/";
+    public static String INSTAGRAM_URL = "https://www.instagram.com/brongo_app";
     public static String INSTAGRAM_SCHEME = "https://www.instagram.com/-u/brongo4545/";
-    public static String TWITTER_URL = "https://twitter.com/brongo_in";
+    public static String TWITTER_URL = "https://twitter.com/brongo_app";
     public static String TWITTER_USER_ID = "915894810900234245";
-    public static String LINKEDIN_URL = "https://www.linkedin.com/company/13443214/";
+    public static String LINKEDIN_URL = "https://www.linkedin.com/company/brongo.in/";
 
     @BindView(R.id.title)
     TextView toolBarTitle;
@@ -79,6 +80,9 @@ public class ContactUsActivity extends AppCompatActivity implements View.OnClick
     @BindView(R.id.botIm)
     ImageView botIm;
 
+    @BindView(R.id.whatsappim1)
+    ImageView whatsappim1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,6 +100,7 @@ public class ContactUsActivity extends AppCompatActivity implements View.OnClick
         twitter.setOnClickListener(this);
         linkedin.setOnClickListener(this);
         botIm.setOnClickListener(this);
+        whatsappim1.setOnClickListener(this);
     }
 
 
@@ -192,7 +197,7 @@ public class ContactUsActivity extends AppCompatActivity implements View.OnClick
                     } else {
                         startActivity(new Intent(Intent.ACTION_VIEW,
                                 Uri.parse(INSTAGRAM_URL)));
-                        Toast.makeText(context, "else", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(context, "else", Toast.LENGTH_SHORT).show();
                     }
                 } catch (ActivityNotFoundException e) {
                     e.printStackTrace();
@@ -220,6 +225,19 @@ public class ContactUsActivity extends AppCompatActivity implements View.OnClick
                 Intent intentchat = new Intent(context, ConversationActivity.class);
                 intentchat.putExtra(ConversationUIService.USER_ID, AppConstants.BOT_ID);
                 startActivity(intentchat);
+                break;
+            case R.id.whatsappim1:
+
+                try {
+                    Uri uri = Uri.parse("smsto:" + "919845155526");
+                    Intent i = new Intent(Intent.ACTION_SENDTO, uri);
+                    i.setPackage("com.whatsapp");
+                    startActivity(i);
+
+                } catch (Exception e) {
+                    Toast.makeText(this, "WhatsApp not Installed", Toast.LENGTH_SHORT)
+                            .show();
+                }
                 break;
         }
     }

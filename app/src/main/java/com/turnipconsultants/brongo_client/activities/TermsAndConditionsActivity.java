@@ -17,6 +17,7 @@ import com.github.barteksc.pdfviewer.listener.OnPageChangeListener;
 import com.github.barteksc.pdfviewer.listener.OnPageErrorListener;
 import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle;
 import com.turnipconsultants.brongo_client.CustomWidgets.BrongoButton;
+import com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView;
 import com.turnipconsultants.brongo_client.R;
 
 import butterknife.BindView;
@@ -33,6 +34,7 @@ public class TermsAndConditionsActivity extends AppCompatActivity implements OnP
 
     private static final String TAG = TermsAndConditionsActivity.class.getSimpleName();
     public static final String FILE_NAME = "tc_users_final.pdf";
+    public static final String PRIVACY_FILE_NAME = "privacy_policy.pdf";
     Integer pageNumber = 0;
     private boolean isSignUpPage = false;
 
@@ -42,18 +44,27 @@ public class TermsAndConditionsActivity extends AppCompatActivity implements OnP
     @BindView(R.id.acceptBtn)
     BrongoButton accept;
 
+    @BindView(R.id.title)
+    BrongoTextView title;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_terms_conditions);
         ButterKnife.bind(this);
         isSignUpPage = getIntent().getBooleanExtra("isSignUpPage", false);
-        displayFromAsset(FILE_NAME);
+        if (getIntent().getBooleanExtra("isPrivacy", false)) {
+            displayFromAsset(PRIVACY_FILE_NAME);
+            title.setText("Privacy Policy");
+        } else {
+            displayFromAsset(FILE_NAME);
+            title.setText("Terms and Conditions");
+        }
     }
 
     private void displayFromAsset(String assetFileName) {
         pdfView.setBackgroundColor(Color.DKGRAY);
-        pdfView.fromAsset(FILE_NAME)
+        pdfView.fromAsset(assetFileName)
                 .defaultPage(pageNumber)
                 .onPageChange(this)
                 .enableAnnotationRendering(true)

@@ -15,7 +15,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0592739f-b3d2-40b3-bfe5-96a864d85c5a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileContent/fileContent.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/fileContent/fileContent.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" />
@@ -25,12 +24,50 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/strings_release" afterPath="$PROJECT_DIR$/app/src/main/assets/strings_release" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/special/ResideMenu/ResideMenu.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/special/ResideMenu/ResideMenu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/ConnectedBrokerActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/ConnectedBrokerActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/ContactUsActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/ContactUsActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/HomeActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/HomeActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/LoginActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/LoginActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/MyProfileActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/MyProfileActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/OtpActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/OtpActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/SignUpActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/SignUpActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/SplashPagerActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/SplashPagerActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/SplashScreenActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/SplashScreenActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/TermsAndConditionsActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/TermsAndConditionsActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/architecture/SubscriptionRepository.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/architecture/SubscriptionRepository.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/BuyAProperty/BUY_A_CommercialFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/BuyAProperty/BUY_A_CommercialFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/BuyAProperty/BUY_A_ResidentialFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/BuyAProperty/BUY_A_ResidentialFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/BuyAProperty/BUY_Land_CommercialFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/BuyAProperty/BUY_Land_CommercialFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/BuyAProperty/BUY_Land_ResidentialFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/BuyAProperty/BUY_Land_ResidentialFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/ConnectedBrokersFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/ConnectedBrokersFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/RentAProperty/RENT_A_CommercialFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/RentAProperty/RENT_A_CommercialFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/RentAProperty/RENT_A_ResidentialFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/RentAProperty/RENT_A_ResidentialFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/SellYourProperty/SELL_Your_CommercialFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/SellYourProperty/SELL_Your_CommercialFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/SellYourProperty/SELL_Your_Land_CommercialFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/SellYourProperty/SELL_Your_Land_CommercialFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/SellYourProperty/SELL_Your_ResidentialFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/SellYourProperty/SELL_Your_ResidentialFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/models/AcceptedBrokersInputModel.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/models/AcceptedBrokersInputModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/others/AllUtils/NumToWords.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/others/AllUtils/NumToWords.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/others/RetrofitAPIs.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/others/RetrofitAPIs.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_contact_us.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_contact_us.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login_signup.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login_signup.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_myprofile.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_myprofile.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_signup.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_signup.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/buy_a_commercial_fragment.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/buy_a_commercial_fragment.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/buy_a_residential_fragment.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/buy_a_residential_fragment.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/no_result_found.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/no_result_found.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/progress_layout.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/progress_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/rent_a_commercial_fragment.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/rent_a_commercial_fragment.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/rent_a_residential_fragment.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/rent_a_residential_fragment.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/rent_your_commercial_fragment.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/rent_your_commercial_fragment.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/rent_your_residential_fragment.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/rent_your_residential_fragment.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/sell_your_commercial_fragment.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/sell_your_commercial_fragment.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/sell_your_residential_fragment.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/sell_your_residential_fragment.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pickerview/src/main/res/layout/brongo_pickerview_topbar.xml" afterPath="$PROJECT_DIR$/pickerview/src/main/res/layout/brongo_pickerview_topbar.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pickerview/src/main/res/layout/rent_container_layout.xml" afterPath="$PROJECT_DIR$/pickerview/src/main/res/layout/rent_container_layout.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -123,90 +160,51 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="BUY_A_CommercialFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/BuyAProperty/BUY_A_CommercialFragment.java">
+    <leaf>
+      <file leaf-file-name="OtpActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/OtpActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="702">
-              <caret line="378" column="17" lean-forward="false" selection-start-line="378" selection-start-column="17" selection-end-line="378" selection-end-column="17" />
+            <state relative-caret-position="1007">
+              <caret line="342" column="33" lean-forward="false" selection-start-line="342" selection-start-column="33" selection-end-line="342" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/LoginActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3234">
+              <caret line="185" column="112" lean-forward="false" selection-start-line="185" selection-start-column="112" selection-end-line="185" selection-end-column="112" />
               <folding>
-                <element signature="e#14235#15055#0" expanded="true" />
-                <element signature="e#15054#15055#0" expanded="true" />
+                <element signature="e#2567#2728#0" expanded="true" />
+                <element signature="e#2727#2728#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BUY_A_ResidentialFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/BuyAProperty/BUY_A_ResidentialFragment.java">
+      <file leaf-file-name="activity_login.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="592">
-              <caret line="341" column="17" lean-forward="false" selection-start-line="341" selection-start-column="17" selection-end-line="341" selection-end-column="17" />
-              <folding>
-                <element signature="e#13111#13931#0" expanded="true" />
-                <element signature="e#13930#13931#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="550">
+              <caret line="70" column="42" lean-forward="false" selection-start-line="70" selection-start-column="42" selection-end-line="70" selection-end-column="42" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BUY_Land_CommercialFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/BuyAProperty/BUY_Land_CommercialFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="768">
-              <caret line="310" column="17" lean-forward="false" selection-start-line="310" selection-start-column="17" selection-end-line="310" selection-end-column="17" />
-              <folding>
-                <element signature="e#12119#12939#0" expanded="true" />
-                <element signature="e#12938#12939#0" expanded="true" />
-              </folding>
-            </state>
+      <file leaf-file-name="activity_otp.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_otp.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BUY_Land_ResidentialFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/BuyAProperty/BUY_Land_ResidentialFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="724">
-              <caret line="347" column="17" lean-forward="false" selection-start-line="347" selection-start-column="17" selection-end-line="347" selection-end-column="17" />
-              <folding>
-                <element signature="e#13419#14240#0" expanded="true" />
-                <element signature="e#14239#14240#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RENT_A_CommercialFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/RentAProperty/RENT_A_CommercialFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="724">
-              <caret line="332" column="17" lean-forward="false" selection-start-line="332" selection-start-column="17" selection-end-line="332" selection-end-column="17" />
-              <folding>
-                <element signature="e#12237#13058#0" expanded="true" />
-                <element signature="e#13057#13058#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RENT_A_ResidentialFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/RentAProperty/RENT_A_ResidentialFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="592">
-              <caret line="203" column="17" lean-forward="false" selection-start-line="203" selection-start-column="17" selection-end-line="203" selection-end-column="17" />
-              <folding>
-                <element signature="e#7699#8519#0" expanded="true" />
-                <element signature="e#8518#8519#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RENT_Your_CommercialFragment.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/RentYourProperty/RENT_Your_CommercialFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1892">
-              <caret line="179" column="62" lean-forward="false" selection-start-line="179" selection-start-column="62" selection-end-line="179" selection-end-column="62" />
+            <state relative-caret-position="490">
+              <caret line="163" column="29" lean-forward="false" selection-start-line="163" selection-start-column="29" selection-end-line="163" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -220,32 +218,14 @@
         <option value="Singleton" />
         <option value="Interface" />
         <option value="resourceFile" />
-        <option value="layoutResourceFile" />
         <option value="valueResourceFile" />
         <option value="Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>accept</find>
-      <find>onClick</find>
-      <find>reload</find>
-      <find>modelObser</find>
-      <find>activeLe</find>
-      <find>circImage</find>
-      <find>deal_closedRL</find>
-      <find>deal_closed_offlineRL</find>
-      <find>payoffline</find>
-      <find>retry</find>
-      <find>signup</find>
-      <find>Authe</find>
-      <find>LEADS_UPDATE</find>
-      <find>j</find>
-      <find>jj</find>
-      <find>applo</find>
-      <find>Apploic</find>
-      <find>Apploi</find>
       <find>Applo</find>
       <find>Apploz</find>
       <find>Applozi</find>
@@ -258,6 +238,24 @@
       <find>tenanted</find>
       <find>tenante</find>
       <find>tenant</find>
+      <find>mobileET</find>
+      <find>knowla</find>
+      <find>knowl</find>
+      <find>callback</find>
+      <find>p</find>
+      <find>pa</find>
+      <find>pat</find>
+      <find>pate</find>
+      <find>paten</find>
+      <find>patent</find>
+      <find>P</find>
+      <find>Pa</find>
+      <find>Patent</find>
+      <find>know</find>
+      <find>knowlarity</find>
+      <find>kno</find>
+      <find>mobileET.addTextChangedListe</find>
+      <find>mobil</find>
     </findStrings>
   </component>
   <component name="GenerateSignedApkSettings">
@@ -4118,57 +4116,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/adapters/PastRequirementsPagerAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/responseModels/PastRequirementResponse.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/adapters/PastReqAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/PastReqClosedFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/PastRequirementActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/architecture/PastRequirementRepository.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/PastReqDroppedFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/past_requirement_row.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/others/RetrofitAPIs.java" />
-        <option value="$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-auth-11.0.2.aar/37ed64cdaa41acfac1315d9c85ad2cba/jars/classes.jar!/com/google/firebase/auth/FirebaseAuth.class" />
-        <option value="$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-auth-11.0.2.aar/97fed646cca5020de1f494a8a2205db0/jars/classes.jar!/com/google/android/gms/auth/api/Auth.class" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/others/CheckIfForeground.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/others/Constants/AppConstants.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/services/MyFirebaseMessagingService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/LoginSignUpActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/ConnectedBrokersFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_otp.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/architecture/SubscriptionRepository.java" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/others/AllUtils/AllUtils.java" />
-        <option value="$PROJECT_DIR$/app/src/release/res/values/google_maps_api.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/assets/google_maps_api_release" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_about_us.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/HomeActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/popup_dialog_two_btn.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/HelpFAQFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/RentYourProperty/RENT_Your_CommercialFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/SellYourProperty/SELL_Your_ResidentialFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/OtpActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/SignUpActivity.java" />
-        <option value="$USER_HOME$/.gradle/caches/transforms-1/files-1.1/audiovideo-1.4.aar/bb065bddc545661c7930cceb67559949/res/values/values.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/notification_row.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/PaymentSubscriptionActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/others/RetrofitBuilders.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/map_app_bar_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/SellYourProperty/SELL_Your_CommercialFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/SellYourProperty/SELL_Your_Land_ResidentialFragment.java" />
         <option value="$PROJECT_DIR$/app/google-services.json" />
         <option value="$PROJECT_DIR$/app/src/debug/res/values/google_maps_api.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/assets/strings_release" />
         <option value="$PROJECT_DIR$/app/src/main/assets/strings_debug" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/BuyAProperty/BUY_A_CommercialFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_new_splash.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login_signup.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/TermsAndConditionsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_signup.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/SignUpActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/home_activity.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/SplashPagerActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/SplashScreenActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/BuyAProperty/BUY_A_ResidentialFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/BuyAProperty/BUY_Land_CommercialFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/BuyAProperty/BUY_A_CommercialFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/BuyAProperty/BUY_Land_ResidentialFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/RentAProperty/RENT_A_CommercialFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/RentAProperty/RENT_A_ResidentialFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/BuyAProperty/BUY_Land_CommercialFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/SellYourProperty/SELL_Your_Land_CommercialFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/ContactUsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/SellYourProperty/SELL_Your_CommercialFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_contact_us.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/buy_a_commercial_fragment.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/buy_a_residential_fragment.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/rent_a_commercial_fragment.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/rent_a_residential_fragment.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/sell_your_commercial_fragment.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/sell_your_residential_fragment.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/SellYourProperty/SELL_Your_ResidentialFragment.java" />
+        <option value="$PROJECT_DIR$/pickerview/src/main/res/layout/brongo_pickerview_topbar.xml" />
+        <option value="$PROJECT_DIR$/pickerview/src/main/res/layout/rent_container_layout.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/others/AllUtils/NumToWords.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/assets/strings_release" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/HomeActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/MyProfileActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/special/ResideMenu/ResideMenu.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_myprofile.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/no_result_found.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/architecture/SubscriptionRepository.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/progress_layout.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/rent_your_commercial_fragment.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/rent_your_residential_fragment.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/ConnectedBrokerActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/others/RetrofitAPIs.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/models/AcceptedBrokersInputModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/ConnectedBrokersFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/OtpActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/LoginActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
       </list>
     </option>
   </component>
@@ -4178,9 +4176,11 @@
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectView">
-    <navigator currentView="AndroidView" proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -4194,131 +4194,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Brongo-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Brongo-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Brongo-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Brongo-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Brongo-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Brongo-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Brongo-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Brongo-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="release" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Brongo-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Brongo-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="debug" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scratches" />
-      <pane id="Scope">
-        <subPane subId="Production">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="app">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="app">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
@@ -4345,10 +4220,6 @@
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -4363,6 +4234,10 @@
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="drawable" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -4372,6 +4247,10 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -4407,6 +4286,62 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="brongo_client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Brongo-client" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brongo_client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="others" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Brongo-client" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brongo_client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="others" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AllUtils" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -4573,6 +4508,245 @@
               <option name="myItemId" value="com" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brongo_client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="activities" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Brongo-client" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Brongo-client" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="manifests" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidManifestsGroupNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Production">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Brongo-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Brongo-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Brongo-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Brongo-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Brongo-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Brongo-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Brongo-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Brongo-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Brongo-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Brongo-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Brongo-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Brongo-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="drawable-xxxhdpi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Brongo-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Brongo-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="drawable-xhdpi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Brongo-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Brongo-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -4606,11 +4780,11 @@
       <recent name="com.turnipconsultants.brongo_client.fragments.BuyAProperty" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\MohitaAndroidexp\Brongo-client\app\src" />
       <recent name="F:\MohitaAndroidexp\Brongo-client\app\src\main\res\drawable" />
+      <recent name="F:\MohitaAndroidexp\Brongo-client\app\src\main\res\drawable-xhdpi" />
       <recent name="F:\MohitaAndroidexp\Brongo-client\app\src\main\assets" />
+      <recent name="F:\MohitaAndroidexp\Brongo-client\app\src" />
       <recent name="F:\MohitaAndroidexp\Brongo-client\app" />
-      <recent name="F:\MohitaAndroidexp\Brongo-client\app\src\main\res\layout" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -4714,7 +4888,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1518696423204" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519046408002" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -4762,7 +4936,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1518696423204" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519046408002" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -4945,7 +5119,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1518696423206" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519046408004" />
       </method>
     </configuration>
     <list size="2">
@@ -5007,13 +5181,13 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20917822" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.49786553" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21664888" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38847384" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -5183,362 +5357,345 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="151" />
+      <option name="time" value="158" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/build.gradle">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/RentAProperty/RENT_A_ResidentialFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="2706">
+          <caret line="203" column="18" lean-forward="false" selection-start-line="203" selection-start-column="18" selection-end-line="203" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/rent_a_residential_fragment.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="62" column="34" lean-forward="false" selection-start-line="62" selection-start-column="34" selection-end-line="62" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/SellYourProperty/SELL_Your_CommercialFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1980">
+          <caret line="185" column="77" lean-forward="false" selection-start-line="185" selection-start-column="77" selection-end-line="185" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/SellYourProperty/SELL_Your_Land_CommercialFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1804">
+          <caret line="166" column="58" lean-forward="false" selection-start-line="166" selection-start-column="58" selection-end-line="166" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_sell_land_commercial.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-264">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1738">
-          <caret line="79" column="47" lean-forward="false" selection-start-line="79" selection-start-column="42" selection-end-line="79" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="84" column="44" lean-forward="false" selection-start-line="84" selection-start-column="44" selection-end-line="84" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/assets/google_maps_api_debug">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="23" column="46" lean-forward="true" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/release/res/values/google_maps_api.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" column="47" lean-forward="false" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/AboutUsActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="15" column="43" lean-forward="true" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_about_us.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="42" column="12" lean-forward="false" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="12" />
-          <folding>
-            <element signature="e#1176#1193#0" expanded="true" />
-            <element signature="e#1547#1564#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/sell_your_commercial_fragment.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="43" column="39" lean-forward="false" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="39" />
-          <folding>
-            <element signature="e#1168#1190#0" expanded="true" />
-            <element signature="e#1517#1546#0" expanded="true" />
-            <element signature="e#2034#2055#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="330">
+          <caret line="63" column="34" lean-forward="false" selection-start-line="63" selection-start-column="34" selection-end-line="63" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pickerview/src/main/res/layout/budget_selection_layout.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/ConnectedBrokersFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="978" column="8" lean-forward="false" selection-start-line="978" selection-start-column="8" selection-end-line="978" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/HomeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="311" column="57" lean-forward="false" selection-start-line="311" selection-start-column="57" selection-end-line="311" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#13661#13819#0" expanded="false" />
-            <element signature="e#13818#13819#0" expanded="false" />
-            <element signature="e#13940#14138#0" expanded="false" />
-            <element signature="e#14137#14138#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="39" column="58" lean-forward="true" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/popup_dialog_two_btn.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="66" column="38" lean-forward="false" selection-start-line="66" selection-start-column="38" selection-end-line="66" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/HelpFAQFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="104" column="5" lean-forward="true" selection-start-line="104" selection-start-column="5" selection-end-line="104" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/SellYourProperty/SELL_Your_LandFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1017">
-          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="123" column="125" lean-forward="false" selection-start-line="123" selection-start-column="125" selection-end-line="123" selection-end-column="125" />
-          <folding>
-            <element signature="e#2567#2724#0" expanded="false" />
-            <element signature="e#2723#2724#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/OtpActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="189" column="74" lean-forward="false" selection-start-line="189" selection-start-column="74" selection-end-line="189" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_signup.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
-          <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+          <caret line="43" column="4" lean-forward="false" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/BuyAProperty/BUY_A_CommercialFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="773">
+          <caret line="680" column="52" lean-forward="false" selection-start-line="680" selection-start-column="52" selection-end-line="680" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/sell_your_residential_fragment.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/SignUpActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="104" column="46" lean-forward="false" selection-start-line="104" selection-start-column="46" selection-end-line="104" selection-end-column="46" />
+        <state relative-caret-position="515">
+          <caret line="201" column="51" lean-forward="false" selection-start-line="201" selection-start-column="51" selection-end-line="201" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/responseModels/NotificationResponseModel.java">
+    <entry file="file://$PROJECT_DIR$/pickerview/build/intermediates/bundles/debug/res/layout/brongo_pickerview_topbar.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="37" column="24" lean-forward="false" selection-start-line="37" selection-start-column="24" selection-end-line="37" selection-end-column="24" />
+        <state relative-caret-position="-645">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/adapters/NotificationAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/SellYourProperty/SELL_Your_ResidentialFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="137" column="90" lean-forward="false" selection-start-line="137" selection-start-column="90" selection-end-line="137" selection-end-column="90" />
-          <folding />
+        <state relative-caret-position="553">
+          <caret line="924" column="56" lean-forward="false" selection-start-line="924" selection-start-column="56" selection-end-line="924" selection-end-column="56" />
+          <folding>
+            <element signature="e#36497#37948#0" expanded="false" />
+            <element signature="e#37947#37948#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/audiovideo-1.4.aar/bb065bddc545661c7930cceb67559949/res/values/values.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/notification_row.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="80" column="34" lean-forward="false" selection-start-line="80" selection-start-column="34" selection-end-line="80" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/pickerview/src/main/res/layout/rent_container_layout.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/NotificationActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3459">
-          <caret line="64" column="24" lean-forward="false" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_payment_and_subscription.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="191" column="46" lean-forward="false" selection-start-line="191" selection-start-column="46" selection-end-line="191" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="721">
-          <caret line="57" column="34" lean-forward="false" selection-start-line="57" selection-start-column="34" selection-end-line="57" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/PaymentSubscriptionActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="166" column="75" lean-forward="false" selection-start-line="166" selection-start-column="75" selection-end-line="166" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/others/RetrofitBuilders.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-181">
-          <caret line="21" column="63" lean-forward="false" selection-start-line="21" selection-start-column="63" selection-end-line="21" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/BrokersMapActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="89" column="45" lean-forward="false" selection-start-line="89" selection-start-column="45" selection-end-line="89" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_brokers_map.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="33" lean-forward="false" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/map_app_bar_main.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
-          <caret line="7" column="38" lean-forward="true" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
+          <caret line="7" column="40" lean-forward="false" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pickerview/src/main/res/layout/brongo_pickerview_topbar.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/assets/google-services_debug">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" column="10" lean-forward="true" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/google-services.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="809">
-          <caret line="58" column="1" lean-forward="false" selection-start-line="58" selection-start-column="1" selection-end-line="58" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/assets/google-services_release">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="23" column="10" lean-forward="true" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/assets/google_maps_api_release">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="23" column="46" lean-forward="true" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="57" column="2" lean-forward="false" selection-start-line="57" selection-start-column="2" selection-end-line="57" selection-end-column="2" />
+        <state relative-caret-position="264">
+          <caret line="21" column="33" lean-forward="false" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/assets/strings_release">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="56" column="83" lean-forward="false" selection-start-line="56" selection-start-column="83" selection-end-line="56" selection-end-column="83" />
+        <state relative-caret-position="562">
+          <caret line="77" column="65" lean-forward="false" selection-start-line="77" selection-start-column="65" selection-end-line="77" selection-end-column="65" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/assets/strings_debug">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="56" column="72" lean-forward="false" selection-start-line="56" selection-start-column="72" selection-end-line="56" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/debug/res/values/google_maps_api.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="23" column="46" lean-forward="true" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/BuyAProperty/BUY_A_LandFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/responseModels/KnowlarityApiResponseModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
-          <caret line="31" column="13" lean-forward="false" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/others/AllUtils/NumToWords.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="58" column="41" lean-forward="false" selection-start-line="58" selection-start-column="41" selection-end-line="58" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1056">
+          <caret line="3" column="17" lean-forward="false" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+          <folding>
+            <element signature="e#714#719#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/home_activity.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5654">
+          <caret line="263" column="60" lean-forward="false" selection-start-line="263" selection-start-column="60" selection-end-line="263" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/special/ResideMenu/ResideMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2156">
+          <caret line="131" column="91" lean-forward="false" selection-start-line="131" selection-start-column="91" selection-end-line="131" selection-end-column="91" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/HomeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1826">
+          <caret line="156" column="39" lean-forward="false" selection-start-line="156" selection-start-column="39" selection-end-line="156" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/MyProfileActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="554">
+          <caret line="155" column="36" lean-forward="false" selection-start-line="155" selection-start-column="36" selection-end-line="155" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_myprofile.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_feedback_fragment_stage1.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2040">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/no_result_found.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="682">
+          <caret line="43" column="32" lean-forward="false" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/FeedbackFragmentStage1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="114" column="55" lean-forward="false" selection-start-line="114" selection-start-column="55" selection-end-line="114" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/PaymentSubscriptionActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="284" column="39" lean-forward="false" selection-start-line="284" selection-start-column="39" selection-end-line="284" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/architecture/SubscriptionRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1169">
+          <caret line="143" column="75" lean-forward="false" selection-start-line="143" selection-start-column="75" selection-end-line="143" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/others/AllUtils/AllUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="110" column="61" lean-forward="false" selection-start-line="110" selection-start-column="61" selection-end-line="110" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/loader_new_ugly.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/progress_layout.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="21" column="33" lean-forward="false" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_connected_brokers.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="292" column="48" lean-forward="false" selection-start-line="292" selection-start-column="48" selection-end-line="292" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/others/CommissionDialogFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="32" column="57" lean-forward="false" selection-start-line="32" selection-start-column="57" selection-end-line="32" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/buy_commision_dialog.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3102">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/RentYourProperty/RENT_Your_CommercialFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1892">
+          <caret line="179" column="62" lean-forward="false" selection-start-line="179" selection-start-column="62" selection-end-line="179" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/rent_your_commercial_fragment.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-170">
+          <caret line="329" column="48" lean-forward="false" selection-start-line="329" selection-start-column="48" selection-end-line="329" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/rent_your_residential_fragment.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="372" column="48" lean-forward="false" selection-start-line="372" selection-start-column="48" selection-end-line="372" selection-end-column="48" />
           <folding />
         </state>
       </provider>
@@ -5551,108 +5708,131 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/SellYourProperty/SELL_Your_Land_CommercialFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/BrokerReviewActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="92" column="13" lean-forward="false" selection-start-line="92" selection-start-column="13" selection-end-line="92" selection-end-column="13" />
+        <state relative-caret-position="440">
+          <caret line="61" column="43" lean-forward="false" selection-start-line="61" selection-start-column="43" selection-end-line="61" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/SellYourProperty/SELL_Your_Land_ResidentialFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_broker_review.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="90" column="14" lean-forward="false" selection-start-line="90" selection-start-column="14" selection-end-line="90" selection-end-column="14" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/SellYourProperty/SELL_Your_ResidentialFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/ConnectedBrokerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1848">
-          <caret line="174" column="62" lean-forward="false" selection-start-line="174" selection-start-column="62" selection-end-line="174" selection-end-column="62" />
+        <state relative-caret-position="188">
+          <caret line="208" column="0" lean-forward="false" selection-start-line="208" selection-start-column="0" selection-end-line="208" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/others/RetrofitAPIs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="120" column="43" lean-forward="false" selection-start-line="120" selection-start-column="43" selection-end-line="120" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/SellYourProperty/SELL_Your_CommercialFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/models/AcceptedBrokersInputModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1936">
-          <caret line="183" column="125" lean-forward="false" selection-start-line="183" selection-start-column="125" selection-end-line="183" selection-end-column="125" />
+        <state relative-caret-position="616">
+          <caret line="28" column="29" lean-forward="false" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/BuyAProperty/BUY_A_CommercialFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/ConnectedBrokersFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="378" column="17" lean-forward="false" selection-start-line="378" selection-start-column="17" selection-end-line="378" selection-end-column="17" />
+        <state relative-caret-position="570">
+          <caret line="816" column="132" lean-forward="false" selection-start-line="816" selection-start-column="132" selection-end-line="816" selection-end-column="132" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_otp.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="163" column="29" lean-forward="false" selection-start-line="163" selection-start-column="29" selection-end-line="163" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/OtpActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1007">
+          <caret line="342" column="33" lean-forward="false" selection-start-line="342" selection-start-column="33" selection-end-line="342" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/SignUpActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="68" column="34" lean-forward="false" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="277" column="26" lean-forward="false" selection-start-line="277" selection-start-column="26" selection-end-line="277" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/activities/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3234">
+          <caret line="185" column="112" lean-forward="false" selection-start-line="185" selection-start-column="112" selection-end-line="185" selection-end-column="112" />
           <folding>
-            <element signature="e#14235#15055#0" expanded="true" />
-            <element signature="e#15054#15055#0" expanded="true" />
+            <element signature="e#2567#2728#0" expanded="true" />
+            <element signature="e#2727#2728#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/BuyAProperty/BUY_A_ResidentialFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/assets/google-services_release">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="341" column="17" lean-forward="false" selection-start-line="341" selection-start-column="17" selection-end-line="341" selection-end-column="17" />
-          <folding>
-            <element signature="e#13111#13931#0" expanded="true" />
-            <element signature="e#13930#13931#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/BuyAProperty/BUY_Land_CommercialFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/google-services.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="768">
-          <caret line="310" column="17" lean-forward="false" selection-start-line="310" selection-start-column="17" selection-end-line="310" selection-end-column="17" />
-          <folding>
-            <element signature="e#12119#12939#0" expanded="true" />
-            <element signature="e#12938#12939#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-27">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/BuyAProperty/BUY_Land_ResidentialFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="724">
-          <caret line="347" column="17" lean-forward="false" selection-start-line="347" selection-start-column="17" selection-end-line="347" selection-end-column="17" />
-          <folding>
-            <element signature="e#13419#14240#0" expanded="true" />
-            <element signature="e#14239#14240#0" expanded="true" />
-          </folding>
-        </state>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/RentAProperty/RENT_A_CommercialFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="724">
-          <caret line="332" column="17" lean-forward="false" selection-start-line="332" selection-start-column="17" selection-end-line="332" selection-end-column="17" />
-          <folding>
-            <element signature="e#12237#13058#0" expanded="true" />
-            <element signature="e#13057#13058#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/RentAProperty/RENT_A_ResidentialFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="203" column="17" lean-forward="false" selection-start-line="203" selection-start-column="17" selection-end-line="203" selection-end-column="17" />
-          <folding>
-            <element signature="e#7699#8519#0" expanded="true" />
-            <element signature="e#8518#8519#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/turnipconsultants/brongo_client/fragments/RentYourProperty/RENT_Your_CommercialFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1892">
-          <caret line="179" column="62" lean-forward="false" selection-start-line="179" selection-start-column="62" selection-end-line="179" selection-end-column="62" />
+        <state relative-caret-position="550">
+          <caret line="70" column="42" lean-forward="false" selection-start-line="70" selection-start-column="42" selection-end-line="70" selection-end-column="42" />
           <folding />
         </state>
       </provider>

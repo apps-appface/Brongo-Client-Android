@@ -19,6 +19,7 @@
             android:text="Cancel"
             android:textColor="@color/white"
             android:textSize="@dimen/pickerview_topbar_btn_textsize"
+            android:background="@null"
             android:textStyle="normal"
             android:textAllCaps="false"/>
 
@@ -30,7 +31,7 @@
             android:layout_toLeftOf="@+id/btnSubmit"
             android:layout_toRightOf="@+id/btnCancel"
             android:gravity="center"
-            android:text="BUDGET"
+            android:text="PRICE"
             android:textColor="@color/white"
             android:textSize="@dimen/pickerview_topbar_title_textsize"
             android:textStyle="normal" />
@@ -43,6 +44,7 @@
             android:gravity="right|center_vertical"
             android:paddingRight="@dimen/pickerview_topbar_padding"
             android:text="Done"
+            android:background="@null"
             android:textColor="@color/white"
             android:textSize="@dimen/pickerview_topbar_btn_textsize"
             android:textStyle="normal"

@@ -37,6 +37,7 @@ import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
@@ -113,7 +114,11 @@ public interface RetrofitAPIs {
     Call<BrokerRatingResponseModel> getBrokerRating(@Header("accessToken") String accessToken, @Header("platform") String platform, @Header("deviceId") String deviceId, @Body AcceptedBrokersInputModel accepBrokInputModel);
 
     @GET("/Brongo/client/call")
-    Call<KnowlarityApiResponseModel> getKnowlarityCall(@Query("from") String from, @Query("to") String to);
+    Call<KnowlarityApiResponseModel> getKnowlarityCallOld(@Query("from") String from, @Query("to") String to);
+
+    @Headers({"Accept: application/json"})
+    @POST("/Brongo/client/knowlarity")
+    Call<KnowlarityApiResponseModel> getKnowlarityCall(@Header("accessToken") String accessToken, @Header("platform") String platform, @Header("deviceId") String deviceId, @Body Object callModel);
 
 //    @GET("/Brongo/client/activeLeads")
 //    Call<PastRequirementResponse> getPastRequirementData(@Header("accessToken") String accessToken, @Header("platform") String platform, @Header("deviceId") String deviceId, @Query("mobileNo") String mobileNo, @Query("onlyConnected") boolean onlyConnected);
@@ -179,7 +184,7 @@ public interface RetrofitAPIs {
     Call<ResponseBody> SetNotificationRead(@Header("accessToken") String accessToken, @Header("platform") String platform, @Header("deviceId") String deviceId, @Query("mobileNo") String mobileNo, @Query("id") String id);
 
     @GET("/Brongo/client/callBack")
-    Call<ResponseBody> CallBack(@Header("accessToken") String accessToken, @Header("platform") String platform, @Header("deviceId") String deviceId, @Query("from") String from, @Query("to") String to);
+    Call<ResponseBody> CallBack(@Header("accessToken") String accessToken, @Header("platform") String platform, @Header("deviceId") String deviceId, @Query("from") String from, @Query("to") String to, @Query("propertyId") String propertyId);
 
     @Headers({"Accept: application/json"})
     @POST("/Brongo/client/brokerRating")

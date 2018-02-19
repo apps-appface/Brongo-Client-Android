@@ -83,7 +83,7 @@ public class LoginActivity extends AppCompatActivity implements NoInternetTryCon
         toolBarReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mobileET.setText("");
+                mobileET.setText("+91 ");
             }
         });
         mobileET.addTextChangedListener(new TextWatcher() {
@@ -99,7 +99,7 @@ public class LoginActivity extends AppCompatActivity implements NoInternetTryCon
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (s.length() == 10) {
+                if (s.length() == 14) {
                     AllUtils.KeyboardUtils.hideKeyBoard(mobileET, context);
                 }
             }
@@ -110,7 +110,7 @@ public class LoginActivity extends AppCompatActivity implements NoInternetTryCon
         if (InternetConnection.isNetworkAvailable(context)) {
             AllUtils.LoaderUtils.showLoader(context);
             RetrofitAPIs apiInstance = RetrofitBuilders.getInstance().getAPIService(RetrofitBuilders.getBaseUrl());
-            Call<UserExistResponseModel> call = apiInstance.getLoginOtp(mobileET.getText().toString(), "normal");
+            Call<UserExistResponseModel> call = apiInstance.getLoginOtp(mobileET.getText().toString().split(" ")[1], "normal");
             call.enqueue(new Callback<UserExistResponseModel>() {
                 @Override
                 public void onResponse(Call<UserExistResponseModel> call, Response<UserExistResponseModel> response) {
@@ -121,7 +121,7 @@ public class LoginActivity extends AppCompatActivity implements NoInternetTryCon
                             //Toast.makeText(context, responseModel.getMessage(), Toast.LENGTH_SHORT).show();
                             List<UserExistResponseModel.DataEntity> data = responseModel.getData();
                             Log.e(TAG, "OTP: " + data.get(0).getOtp());
-                            pref.edit().putString(AppConstants.PREFS.USER_MOBILE_NO, mobileET.getText().toString()).commit();
+                            pref.edit().putString(AppConstants.PREFS.USER_MOBILE_NO, mobileET.getText().toString().split(" ")[1]).commit();
                             pref.edit().putString(AppConstants.PREFS.USER_FIRST_NAME, AllUtils.StringUtilsBrongo.toCamelCase(data.get(0).getFirstName())).commit();
                             Intent intent = new Intent(context, OtpActivity.class);
                             startActivity(intent);
@@ -152,7 +152,7 @@ public class LoginActivity extends AppCompatActivity implements NoInternetTryCon
 
     public void openOTP(View v) {
         if (checkPermissionAllowed())
-            if (!mobileET.getText().toString().isEmpty() && mobileET.getText().toString().length() == 10) {
+            if (!mobileET.getText().toString().isEmpty() && mobileET.getText().toString().length() == 14) {
                 AllUtils.KeyboardUtils.hideKeyBoard(v, context);
                 LoginCheck();
             } else {
@@ -183,7 +183,7 @@ public class LoginActivity extends AppCompatActivity implements NoInternetTryCon
             case 1:
                 if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED)) {
 //                    Toast.makeText(context, "allowed", Toast.LENGTH_LONG).show();
-                    if (!mobileET.getText().toString().isEmpty() && mobileET.getText().toString().length() == 10) {
+                    if (!mobileET.getText().toString().isEmpty() && mobileET.getText().toString().length() == 14) {
                         LoginCheck();
                     }
                 }
