@@ -1,10 +1,10 @@
 <component name="libraryTable">
   <library name="com.applozic.communication.message:mobicomkit-4.99">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/mobicomkit-4.99.aar/82dcfcec1850c5cb7221ab1aa66482b8/jars/classes.jar!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/mobicomkit-4.99.aar/82dcfcec1850c5cb7221ab1aa66482b8/jars/libs/org.eclipse.paho.android.service-1.0.2.jar!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/mobicomkit-4.99.aar/82dcfcec1850c5cb7221ab1aa66482b8/jars/libs/org.eclipse.paho.client.mqttv3-1.0.2.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/mobicomkit-4.99.aar/82dcfcec1850c5cb7221ab1aa66482b8/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/mobicomkit-4.99.aar/c3c6a15eebd8a4bac53bca8c364d324e/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/mobicomkit-4.99.aar/c3c6a15eebd8a4bac53bca8c364d324e/jars/libs/org.eclipse.paho.android.service-1.0.2.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/mobicomkit-4.99.aar/c3c6a15eebd8a4bac53bca8c364d324e/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/mobicomkit-4.99.aar/c3c6a15eebd8a4bac53bca8c364d324e/jars/libs/org.eclipse.paho.client.mqttv3-1.0.2.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="com.applozic.communication.uiwidget:audiovideo-1.4">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/audiovideo-1.4.aar/bb065bddc545661c7930cceb67559949/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/audiovideo-1.4.aar/bb065bddc545661c7930cceb67559949/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/audiovideo-1.4.aar/0b9a1e601b545121bc02e895d339c209/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/audiovideo-1.4.aar/0b9a1e601b545121bc02e895d339c209/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

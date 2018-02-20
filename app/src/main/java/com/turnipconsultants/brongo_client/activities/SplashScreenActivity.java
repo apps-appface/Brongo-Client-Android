@@ -13,6 +13,7 @@ import android.view.animation.BounceInterpolator;
 import android.widget.TextView;
 
 import com.applozic.mobicomkit.api.account.user.MobiComUserPreference;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.turnipconsultants.brongo_client.R;
 import com.turnipconsultants.brongo_client.others.Constants.AppConstants;
 import com.turnipconsultants.brongo_client.services.RegistrationIntentService;
@@ -37,6 +38,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     private Context context = this;
     @BindView(R.id.splashGif)
     GifImageView newGif;
+    private FirebaseAnalytics firebaseAnalytics;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 //        subTitle = (TextView) findViewById(R.id.subtitle);
         pref = context.getSharedPreferences(AppConstants.PREF_NAME, 0);
         ButterKnife.bind(this);
+        initializeFirebase();
         GifDrawable gifDrawable = null;
         try {
             gifDrawable = new GifDrawable(getResources(), R.drawable.new_splash);
@@ -111,6 +114,11 @@ public class SplashScreenActivity extends AppCompatActivity {
                 anim.setDuration(200).start();
             }
         }, 1800);*/
+    }
+
+    private void initializeFirebase() {
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        firebaseAnalytics.setAnalyticsCollectionEnabled(true);
     }
 }
 

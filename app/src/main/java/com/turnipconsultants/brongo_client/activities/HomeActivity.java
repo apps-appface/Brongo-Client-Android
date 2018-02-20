@@ -196,7 +196,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView, View.On
         resideMenu.setBackground(R.drawable.blue_purple_bg_radial);
         resideMenu.attachToActivity(this);
         resideMenu.setShadowVisible(false);
-        resideMenu.setScaleValue(0.48f);
+        resideMenu.setScaleValue(0.6f);
 
 
         itemHeader = new ResideMenuItem(this, pref.getString(AppConstants.PREFS.USER_MOBILE_NO, ""), pref.getString(AppConstants.PREFS.USER_FIRST_NAME, ""));

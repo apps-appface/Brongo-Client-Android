@@ -55,7 +55,7 @@
 
     <!-- About Page Content-->
     <string name="title_activity_about_us">AboutUsActivity</string>
-    <string name="about_1">A product of Turnip Technologies pvt. ltd \n Version 0.1</string>
+    <string name="about_1">A product of Turnip Technologies pvt. ltd \n Version 1.0</string>
     <string name="about_2">Indian real estate takes a digital step forward. We bring real estate closer to you with an app dedicated to put you in touch with real estate brokers in the shortest time possible. Now, no more running around to find the right broker, because we give it all to you in your phone. Now find expert help for your real estate needs using the Brongo app.</string>
 
     <string name="about_3">Lorem ipsum dolor sit amet, consectetur adipiscing elit metus. Suspendisse et egestas felis.</string>
@@ -71,8 +71,8 @@
     <string name="back_to_broker_list">&lt;  Back to the broker list</string>
 
     <!--Facebook-->
-    <string name="facebook_app_id">1201675136601649</string>
-    <string name="fb_login_protocol_scheme">fb1201675136601649</string>
+    <string name="facebook_app_id">411406219319924</string>
+    <string name="fb_login_protocol_scheme">fb411406219319924</string>
 
     <!--Applozic Key-->
     <string name="applozic_key">32379970215f70dcb6a6e150693b60026</string>

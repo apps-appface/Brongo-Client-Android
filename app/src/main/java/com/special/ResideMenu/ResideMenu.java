@@ -386,7 +386,7 @@ public class ResideMenu extends FrameLayout {
         setScaleDirection(direction);
 
         isOpened = true;
-        AnimatorSet scaleDown_activity = buildScaleDownAnimation(viewActivity, mScaleValue, 0.75f);
+        AnimatorSet scaleDown_activity = buildScaleDownAnimation(viewActivity, mScaleValue, 0.6f);
         //AnimatorSet scaleDown_activity = buildScaleDownAnimation(viewActivity, mScaleValue, 0.8f);
         AnimatorSet scaleDown_shadow = buildScaleDownAnimation(imageViewShadow,
                 mScaleValue + shadowAdjustScaleX, mScaleValue + shadowAdjustScaleY);
