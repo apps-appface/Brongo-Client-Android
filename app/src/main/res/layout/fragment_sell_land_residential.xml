@@ -60,80 +60,87 @@
                 android:textSize="@dimen/content_size"
                 android:textStyle="normal" />
 
-            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
-                android:id="@+id/property_types_TV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/different_locations_TV"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:text="Select Property Types"
-                android:textColor="@color/black"
-                android:textSize="@dimen/content_size"
-                android:textStyle="normal" />
-
-            <com.zhy.view.flowlayout.TagFlowLayout
-                android:id="@+id/property_types_FL"
+            <RelativeLayout
+                android:id="@+id/residentilaRL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/property_types_TV"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="10dp"
-                zhy:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
+                android:layout_below="@id/different_locations_TV">
 
-            <EditText
-                android:id="@+id/gated_ET"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/property_types_FL"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="20dp"
-                android:visibility="gone"
-                android:hint="Name of the Gated Community Plot"
-                android:textColorHint="@color/appPrimaryFont"
-                android:textSize="15sp" />
+                <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                    android:id="@+id/property_types_TV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
-            <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
-                android:id="@+id/plot_TV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/property_types_FL"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:text="Plot Type"
-                android:textColor="@color/black"
-                android:textSize="@dimen/content_size"
-                android:textStyle="normal" />
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Select Property Types"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/content_size"
+                    android:textStyle="normal" />
 
-            <com.zhy.view.flowlayout.TagFlowLayout
-                android:id="@+id/plot_types_FL"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/plot_TV"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="10dp"
-                zhy:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
+                <com.zhy.view.flowlayout.TagFlowLayout
+                    android:id="@+id/property_types_FL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/property_types_TV"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    zhy:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
 
-            <EditText
-                android:id="@+id/other_plot_ET"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/plot_types_FL"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="20dp"
-                android:hint="Any other"
-                android:textColorHint="@color/appPrimaryFont"
-                android:textSize="15sp" />
+                <EditText
+                    android:id="@+id/gated_ET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/property_types_FL"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="Name of the Gated Community Plot"
+                    android:textColorHint="@color/appPrimaryFont"
+                    android:textSize="15sp"
+                    android:visibility="gone" />
+
+                <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
+                    android:id="@+id/plot_TV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/property_types_FL"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Plot Type"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/content_size"
+                    android:textStyle="normal" />
+
+                <com.zhy.view.flowlayout.TagFlowLayout
+                    android:id="@+id/plot_types_FL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/plot_TV"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    zhy:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
+
+                <EditText
+                    android:id="@+id/other_plot_ET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/plot_types_FL"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:hint="Any other"
+                    android:textColorHint="@color/appPrimaryFont"
+                    android:textSize="15sp" />
+            </RelativeLayout>
 
             <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
                 android:id="@+id/area_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/other_plot_ET"
+                android:layout_below="@id/residentilaRL"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:text="Plot size ( In Sqft )"
@@ -173,8 +180,7 @@
                 android:layout_marginRight="20dp"
                 android:hint="\u20B9 20000"
                 android:textColorHint="@color/appPrimaryFont"
-                android:textSize="15sp"
-                />
+                android:textSize="15sp" />
 
             <com.turnipconsultants.brongo_client.CustomWidgets.BrongoTextView
                 android:id="@+id/expected_amount_TV3"
@@ -277,8 +283,8 @@
                         android:layout_marginTop="5dp"
                         android:adjustViewBounds="false"
                         android:elevation="20dp"
-                        android:visibility="gone"
-                        android:src="@drawable/cancel" />
+                        android:src="@drawable/cancel"
+                        android:visibility="gone" />
 
                     <ImageView
                         android:id="@+id/img1"
@@ -304,8 +310,8 @@
                         android:layout_marginTop="5dp"
                         android:adjustViewBounds="false"
                         android:elevation="20dp"
-                        android:visibility="gone"
-                        android:src="@drawable/cancel" />
+                        android:src="@drawable/cancel"
+                        android:visibility="gone" />
 
                     <ImageView
                         android:id="@+id/img2"
@@ -331,8 +337,8 @@
                         android:layout_marginTop="5dp"
                         android:adjustViewBounds="false"
                         android:elevation="20dp"
-                        android:visibility="gone"
-                        android:src="@drawable/cancel" />
+                        android:src="@drawable/cancel"
+                        android:visibility="gone" />
 
                     <ImageView
                         android:id="@+id/img3"

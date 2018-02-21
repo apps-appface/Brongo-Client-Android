@@ -171,8 +171,8 @@ public class BUY_Land_ResidentialFragment extends BaseFragment implements Custom
         ButterKnife.bind(this, v);
         initValues();
         viewModel.getApiResponseData().observeForever(modelObserver);
-        OnReset();
         setFLAdapters();
+        OnReset();
         new BudgetTask().execute();
         return v;
     }
@@ -586,10 +586,27 @@ public class BUY_Land_ResidentialFragment extends BaseFragment implements Custom
 
     @Override
     public void OnReset() {
+        liveLocStr = "";
+        liveLocationsFL.getAdapter().notifyDataChanged();
+
+        orientationStr = "";
+        housing_orientation_FL.getAdapter().notifyDataChanged();
+
+        propTypeStr = "";
+        propertytypesFL.getAdapter().notifyDataChanged();
+
+        plotTypeStr = "";
+        plottypesFL.getAdapter().notifyDataChanged();
+        otherplotET.setText("");
+
+        gatedETSTr = "";
+        gatedET.setText("");
+
         setRequiredSizeReset();
         SetBudgetReset();
         commentsET.setText("");
         connectBtn.setText("CONNECT TO THE BEST LOCAL BROKERS");
+        DecideSubmitButtonColor();
     }
 
     @OnClick(R.id.different_locations_TV)

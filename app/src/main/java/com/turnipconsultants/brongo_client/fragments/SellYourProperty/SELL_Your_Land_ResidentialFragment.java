@@ -204,6 +204,7 @@ public class  SELL_Your_Land_ResidentialFragment extends BaseFragment implements
         ButterKnife.bind(this, v);
         initValues();
         setFLAdapters();
+        OnReset();
         new BudgetTask().execute();
         viewModel.getApiResponseData().observeForever(modelObserver);
         return v;
@@ -745,6 +746,23 @@ public class  SELL_Your_Land_ResidentialFragment extends BaseFragment implements
         liveLocationsFL.getAdapter().notifyDataChanged();
         orientationStr = "";
         housing_orientation_FL.getAdapter().notifyDataChanged();
+        propTypeStr="";
+        propertytypesFL.getAdapter().notifyDataChanged();
+        gatedET.setText("");
+        areaET.setText("");
+        expected_amount_TV.setText("");
+        expectedRentAmount=0;
+        expectedRentET.setText("");
+        IV1.setImageResource(0);
+        IV2.setImageResource(0);
+        IV3.setImageResource(0);
+        cancel1.setVisibility(View.GONE);
+        cancel2.setVisibility(View.GONE);
+        cancel3.setVisibility(View.GONE);
+
+        commentsET.setText("");
+        connectBtn.setText("CONNECT TO THE BEST LOCAL BROKERS");
+        DecideSubmitButtonColor();
     }
 
     @Override

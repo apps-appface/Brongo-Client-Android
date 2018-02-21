@@ -854,8 +854,13 @@ public class SELL_Your_ResidentialFragment extends BaseFragment implements Commi
         propertyPic1.setImageResource(0);
         propertyPic2.setImageResource(0);
         propertyPic3.setImageResource(0);
+        cancel1.setVisibility(View.GONE);
+        cancel2.setVisibility(View.GONE);
+        cancel3.setVisibility(View.GONE);
 
         commentsET.setText("");
+        connectBrokersBTN.setText("CONNECT TO THE BEST LOCAL BROKERS");
+        DecideSubmitButtonColor();
     }
 
     @Override

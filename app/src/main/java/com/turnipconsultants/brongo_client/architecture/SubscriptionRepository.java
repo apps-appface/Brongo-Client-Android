@@ -142,7 +142,7 @@ public class SubscriptionRepository {
 
                     PayuConfig payuConfig = new PayuConfig();
 //                    payuConfig.setEnvironment(PayuConstants.STAGING_ENV);
-                    payuConfig.setEnvironment(PayuConstants.PRODUCTION_ENV);
+                      payuConfig.setEnvironment(PayuConstants.PRODUCTION_ENV);
 
                     PayuConfigModel payuConfigModel = new PayuConfigModel();
                     payuConfigModel.setPaymentParams(paymentParams);

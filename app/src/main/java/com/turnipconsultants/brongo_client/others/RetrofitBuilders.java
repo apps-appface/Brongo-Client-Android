@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitBuilders {
 
-    private static String DEVELOPMENT_URL = "http://18.220.16.149:8080";
+//    private static String DEVELOPMENT_URL = "https://dev.brongo.in";
     private static String SERVER_IP = "http://18.218.3.165:8080";
     private static String LOCAL_IP = "http://192.168.1.21:8081";
     private static String PRODUCTION_IP="https://prod.brongo.in";

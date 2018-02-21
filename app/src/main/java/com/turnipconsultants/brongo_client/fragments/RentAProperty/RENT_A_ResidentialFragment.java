@@ -579,6 +579,7 @@ public class RENT_A_ResidentialFragment extends BaseFragment implements Commissi
         housingOrientationStr = housingOrientationArray[8];
         furnishedStr = furnishingArray[3];
         connectBrokersBTN.setText("CONNECT TO THE BEST LOCAL BROKERS");
+
         SetBudgetReset();
 
         /*By Default Selected Values*/

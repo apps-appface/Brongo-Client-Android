@@ -122,6 +122,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:hint="Enter plot area"
+                android:inputType="number"
                 android:textColorHint="@color/appPrimaryFont"
                 android:textSize="15sp" />
 
@@ -240,12 +241,12 @@
                     android:id="@+id/fl1"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:layout_marginLeft="20dp">
+                    android:layout_marginLeft="10dp">
 
                     <ImageView
                         android:id="@+id/cancel1"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_gravity="right"
                         android:layout_marginRight="10dp"
                         android:layout_marginTop="5dp"
@@ -266,13 +267,13 @@
                     android:id="@+id/fl2"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:layout_marginLeft="20dp"
+
                     android:layout_toRightOf="@id/fl1">
 
                     <ImageView
                         android:id="@+id/cancel2"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_gravity="right"
                         android:layout_marginRight="10dp"
                         android:layout_marginTop="5dp"
@@ -293,13 +294,13 @@
                     android:id="@+id/fl3"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:layout_marginLeft="20dp"
+
                     android:layout_toRightOf="@id/fl2">
 
                     <ImageView
                         android:id="@+id/cancel3"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_gravity="right"
                         android:layout_marginRight="10dp"
                         android:layout_marginTop="5dp"

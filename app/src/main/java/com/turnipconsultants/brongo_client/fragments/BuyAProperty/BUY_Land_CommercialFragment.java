@@ -431,6 +431,7 @@ public class BUY_Land_CommercialFragment extends BaseFragment implements HasSupp
         setRequiredSizeReset();
         SetBudgetReset();
 
+        width_ET.setText("");
 
         commentsET.setText("");
         DecideSubmitButtonColor();

@@ -101,7 +101,7 @@ import static com.turnipconsultants.brongo_client.others.Constants.AppConstants.
  * Created by mohit on 18-09-2017.
  */
 
-public class SELL_Your_CommercialFragment extends BaseFragment implements CommissionListenerFactory.SellCommissionListener, NoInternetTryConnectListener, CustomListener,AllUtils.RequestReachedListener {
+public class SELL_Your_CommercialFragment extends BaseFragment implements CommissionListenerFactory.SellCommissionListener, NoInternetTryConnectListener, CustomListener, AllUtils.RequestReachedListener {
 
     private static final String TAG = "SELL_Your_CommercialFra";
     public static final int REQUEST_CAMERA_AND_WRITABLE_PERMISSIONS = 111;
@@ -182,7 +182,7 @@ public class SELL_Your_CommercialFragment extends BaseFragment implements Commis
     private String[] popularLocArray = BANGALORE;
     private String[] propTypesArray = new String[]{"Office Space", "Showroom/Retail space", "Food & Beverage", "Any"};
     private String[] propertyStatusArray = new String[]{"Ready to move-in", "Under Construction", "Resale Tenanted", "Resale non-tenanted"};
-    private String[] floorArray = new String[]{"Ground floor","1st", "2nd", "3rd", "4th", "4th+"};
+    private String[] floorArray = new String[]{"Ground floor", "1st", "2nd", "3rd", "4th", "4th+"};
     private String[] currentStatusArray = new String[]{"Tenanted", "Non-tenanted"};
 
 
@@ -527,7 +527,7 @@ public class SELL_Your_CommercialFragment extends BaseFragment implements Commis
                                 new Utils().getTokenRefresh(context, new TokenInputModel(headerPlatform, headerDeviceId, pref.getString(AppConstants.PREFS.USER_MOBILE_NO, "")));
                                 SellProperty();
                             } else if (jObjError.getString("statusCode").equals("412")) {
-                                AllUtils.showMaxRequestReached(context,jObjError.getString("message"),SELL_Your_CommercialFragment.this);
+                                AllUtils.showMaxRequestReached(context, jObjError.getString("message"), SELL_Your_CommercialFragment.this);
                             } else {
                                 Toast.makeText(context, "Please Try Again", Toast.LENGTH_SHORT).show();
                             }
@@ -797,8 +797,33 @@ public class SELL_Your_CommercialFragment extends BaseFragment implements Commis
         propertyTypesFL.getAdapter().notifyDataChanged();
 
         propStatusStr = "";
-        propertyTypesFL.getAdapter().notifyDataChanged();
+        propertyStatusFL.getAdapter().notifyDataChanged();
 
+        areaET.setText("");
+        floorStr = "";
+        floorFL.getAdapter().notifyDataChanged();
+
+        expected_amount_TV.setText("");
+        expected_amount_text.setText("");
+        expectedRentAmount = 0;
+        currentStatusStr = "";
+        currentStatusFL.getAdapter().notifyDataChanged();
+
+        possessionDateTV.setText("");
+
+        uriImg1 = null;
+        uriImg2 = null;
+        uriImg3 = null;
+
+        IV1.setImageResource(0);
+        IV2.setImageResource(0);
+        IV3.setImageResource(0);
+        cancel1.setVisibility(View.GONE);
+        cancel2.setVisibility(View.GONE);
+        cancel3.setVisibility(View.GONE);
+
+        commentsET.setText("");
+        connectBTN.setText("CONNECT TO THE BEST LOCAL BROKERS");
 
     }
 
@@ -819,7 +844,6 @@ public class SELL_Your_CommercialFragment extends BaseFragment implements Commis
             }
         });
     }
-
 
 
     private class BudgetTask extends AsyncTask {

@@ -194,6 +194,7 @@ public class SELL_Your_Land_CommercialFragment extends BaseFragment implements C
         ButterKnife.bind(this, v);
         initValues();
         setFLAdapters();
+        OnReset();
         new BudgetTask().execute();
         viewModel.getApiResponseData().observeForever(modelObserver);
         return v;
@@ -664,17 +665,16 @@ public class SELL_Your_Land_CommercialFragment extends BaseFragment implements C
                         intent.putExtra("place", liveLocStr);
                         intent.putStringArrayListExtra("coordinates", coordinates);
                         startActivity(intent);
-                    } else if(newValue.getStatusCode()==412){
-                        AllUtils.showMaxRequestReached(context,newValue.getMessage(),SELL_Your_Land_CommercialFragment.this);
-                    }
-                    else {
+                    } else if (newValue.getStatusCode() == 412) {
+                        AllUtils.showMaxRequestReached(context, newValue.getMessage(), SELL_Your_Land_CommercialFragment.this);
+                    } else {
                         Toast.makeText(context, newValue.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     AllUtils.LoaderUtils.dismissLoader();
                     Toast.makeText(context, "Please Try Again", Toast.LENGTH_LONG).show();
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -693,6 +693,24 @@ public class SELL_Your_Land_CommercialFragment extends BaseFragment implements C
         liveLocationsFL.getAdapter().notifyDataChanged();
         orientationStr = "";
         housing_orientation_FL.getAdapter().notifyDataChanged();
+        width_ET.setText("");
+        plotSizeSTr="";
+        areaET.setText("");
+        expectedRentET.setText("");
+        uriImg1 = null;
+        uriImg2 = null;
+        uriImg3 = null;
+
+        IV1.setImageResource(0);
+        IV2.setImageResource(0);
+        IV3.setImageResource(0);
+        cancel1.setVisibility(View.GONE);
+        cancel2.setVisibility(View.GONE);
+        cancel3.setVisibility(View.GONE);
+
+        commentsET.setText("");
+        connectBtn.setText("CONNECT TO THE BEST LOCAL BROKERS");
+        DecideSubmitButtonColor();
     }
 
     @Override
